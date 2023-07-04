@@ -1,0 +1,37 @@
+version: '2'
+services:
+  learn-cases1:
+    container_name: learn-cases1
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: learncase:latest
+    ports:
+      - "8080:8080"
+    environment:
+      # 设置时区为上海，否则时间会有问题
+      - TZ=Asia/Shanghai
+
+  learn-cases2:
+    container_name: learn-cases2
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: learncase:latest
+    # 外部端口8081 容器端口8080
+    ports:
+      - "8081:8080"
+    environment:
+      # 设置时区为上海，否则时间会有问题
+      - TZ=Asia/Shanghai
+  learn-cases3:
+    container_name: learn-cases3
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: learncase:latest
+    ports:
+      - "8082:8080"
+    environment:
+      # 设置时区为上海，否则时间会有问题
+      - TZ=Asia/Shanghai

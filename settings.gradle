@@ -1,0 +1,5 @@
+rootProject.name = 'learn-cases'
+include 'annotation-processor'
+include 'learncases'
+include 'spring-spi'
+

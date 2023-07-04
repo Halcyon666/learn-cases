@@ -1,0 +1,11 @@
+FROM openjdk:8u342-jdk
+
+WORKDIR /deployment
+
+# 将当前目录下的jar包复制到docker容器的/目录下
+ADD ./target/learncases-0.0.1-SNAPSHOT.jar app.jar
+RUN jar -xvf app.jar && rm -f app.jar
+# 声明服务运行在8080端口
+EXPOSE 8080
+# 指定docker容器启动时运行jar包
+ENTRYPOINT ["java","-cp","/deployment","-DSpring.profiles.active=default","org.springframework.boot.loader.JarLauncher"]
