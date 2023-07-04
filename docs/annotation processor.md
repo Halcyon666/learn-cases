@@ -6,7 +6,7 @@ JAVA APT base annotation processor, in this project, just print some message in 
 
 ## how to use compile the project
 
-`gradle clean build` this command will install jar in your local repository
+copy the jar to your project, and dependent on it 
 
 ## how to use the processor jar in other project
 
