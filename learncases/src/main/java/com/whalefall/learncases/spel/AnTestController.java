@@ -3,7 +3,7 @@ package com.whalefall.learncases.spel;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 @RestController
 public class AnTestController {

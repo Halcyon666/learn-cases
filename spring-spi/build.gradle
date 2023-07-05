@@ -18,10 +18,12 @@ dependencies {
     implementation 'org.springframework:spring-context:5.3.27'
 }
 
-group = 'com.whalefall'
-version = '0.0.3-SNAPSHOT'
+group = rootProject.group
+version = rootProject.version
 description = 'spring-spi'
+
 java.sourceCompatibility = JavaVersion.VERSION_17
+java.targetCompatibility = JavaVersion.VERSION_17
 
 publishing {
     publications {
