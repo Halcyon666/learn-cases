@@ -1,4 +1,4 @@
-package com.apt;
+package com.whalefall.apt;
 
 import com.google.auto.service.AutoService;
 

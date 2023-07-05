@@ -1,6 +1,20 @@
+group = "com.whalefall"
+version = "0.0.1-SNAPSHOT"
+
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+        google()
+    }
+}
+
 wrapper {
     distributionType = Wrapper.DistributionType.ALL
 }
-
-
-
