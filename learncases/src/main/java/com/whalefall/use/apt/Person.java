@@ -16,7 +16,6 @@ public class Person {
     private String name;
 
     @BuilderProperty
-    @Subscribe
     public void setAge(int age) {
         this.age = age;
     }
@@ -24,5 +23,10 @@ public class Person {
     @BuilderProperty
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Subscribe
+    public void onEvent(Person p) {
+        System.out.println("p = " + p);
     }
 }
