@@ -1,4 +1,4 @@
-name: Java CI
+name: learn cases workflows
 
 on: [push]
 

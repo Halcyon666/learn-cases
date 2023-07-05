@@ -33,16 +33,12 @@ public class EventBusIndexTest {
      */
     @Test
     public void testManualIndexWithoutAnnotation() {
-        SubscriberInfoIndex index = new SubscriberInfoIndex() {
-
-            @Override
-            public SubscriberInfo getSubscriberInfo(Class<?> subscriberClass) {
-                Assert.assertEquals(EventBusIndexTest.class, subscriberClass);
-                SubscriberMethodInfo[] methodInfos = {
-                        new SubscriberMethodInfo("someMethodWithoutAnnotation", String.class)
-                };
-                return new SimpleSubscriberInfo(EventBusIndexTest.class, false, methodInfos);
-            }
+        SubscriberInfoIndex index = subscriberClass -> {
+            Assert.assertEquals(EventBusIndexTest.class, subscriberClass);
+            SubscriberMethodInfo[] methodInfos = {
+                    new SubscriberMethodInfo("someMethodWithoutAnnotation", String.class)
+            };
+            return new SimpleSubscriberInfo(EventBusIndexTest.class, false, methodInfos);
         };
 
         EventBus eventBus = EventBus.builder().addIndex(index).build();
@@ -66,6 +62,6 @@ public class EventBusIndexTest {
 
     @Subscribe
     public void onEvent(String event) {
-        Assert.assertEquals("Yepp", event);
+        Assert.assertEquals("Yepp1", event);
     }
 }
