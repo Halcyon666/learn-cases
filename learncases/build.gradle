@@ -15,9 +15,7 @@ dependencies {
     implementation project(":spring-spi")
 
     annotationProcessor 'org.projectlombok:lombok'
-//  dependent on project annotation processor not work
-//    annotationProcessor project(':annotation-processor')
-//    annotationProcessor 'com.whalefall:annotation-processor:0.0.1-SNAPSHOT'
+    annotationProcessor project(':annotation-processor')
     annotationProcessor 'org.greenrobot:eventbus-annotation-processor:3.3.1'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -34,7 +32,7 @@ java.targetCompatibility = JavaVersion.VERSION_17
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
-    options.compilerArgs += [ "-AeventBusIndex=com.whalefall.use.apt.EventBusJavaTestsIndex" ]
+    options.compilerArgs += ["-AeventBusIndex=com.whalefall.use.apt.EventBusJavaTestsIndex"]
 }
 
 
