@@ -8,10 +8,10 @@ java.sourceCompatibility = JavaVersion.VERSION_17
 java.targetCompatibility = JavaVersion.VERSION_17
 
 dependencies {
-    implementation 'com.google.auto.service:auto-service:1.1.1'
+    implementation 'com.google.auto.service:auto-service:1.0.1'
     // maybe maven needn't this, but gradle need
     // actually most scenery just need annotationProcessor
-    annotationProcessor 'com.google.auto.service:auto-service:1.1.1'
+    annotationProcessor 'com.google.auto.service:auto-service:1.0.1'
 }
 
 tasks.withType(JavaCompile).configureEach {
