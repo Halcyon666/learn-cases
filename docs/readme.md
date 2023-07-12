@@ -1,55 +1,13 @@
-# package the annotation processor
+# Usage of java tech
 
-## content of the repository
+[this GitHub repo](https://github.com/Halcyon666/learn-cases),
 
-JAVA APT base annotation processor, in this project, just print some message in the processors
+## Description of aggregate module
+the processor module is APT annotation processor, the spring SPI module is spring SPI, all cases are in module learncases.
 
-## how to use compile the project
+## Package info about learncases
+[details of Package info](../learncases/readme.md)
 
-copy the jar to your project, and dependent on it 
+## APT USAGE
+[USAGE OF APT](01/annotation processor.md)
 
-## how to use the processor jar in other project
-
-### maven
-
-```xml
-
-<!--...-->
-<plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-compiler-plugin</artifactId>
-    <version>3.11.0</version>
-    <configuration>
-        <source>1.8</source>
-        <target>1.8</target>
-        <annotationProcessorPaths>
-            <path>
-                <groupId>com.whalefall</groupId>
-                <artifactId>annotation-processor</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
-            </path>
-            <path>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>1.18.26</version>
-            </path>
-        </annotationProcessorPaths>
-        <showWarnings>true</showWarnings>
-    </configuration>
-</plugin>
-        <!--...-->
-```
-
-Here are include lombok, thus I use the plugin.
-
-### gradle
-
-```groovy
-dependencies {
-//    ...
-    annotationProcessor 'com.whalefall:annotation-processor:0.0.1-SNAPSHOT'
-    testAnnotationProcessor 'com.whalefall:annotation-processor:0.0.1-SNAPSHOT'
-    // if you are using processor in test code
-}
-```
-[pageA](./a/readme.md)
