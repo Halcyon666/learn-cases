@@ -5,7 +5,6 @@
 | spring boot       | 3.1.1   |
 | JDK               | 17.0.7  |
 
-
 ## modules have
 
 - learn-cases
@@ -14,6 +13,7 @@
     - spring-spi
     - docs
 
-the processor module is APT annotation processor, the spring SPI module is spring SPI, all cases are in module learncases.
+the processor module is APT annotation processor, the spring SPI module is spring SPI, all cases are in module
+learncases.
 
-docs directory is GitHub pages,you can visit the website at [learn-cases](https://halcyon666.github.io/learn-cases/)
+docs directory is GitHub page, you can visit the website at [learn-cases](https://halcyon666.github.io/learn-cases/)
