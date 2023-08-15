@@ -3,8 +3,8 @@ package com.whalefall.learncases.valid.standvalid;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -15,19 +15,27 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @Slf4j
 public class TestController {
+    private final UserService userService;
+
+    public TestController(UserService userService) {
+        this.userService = userService;
+    }
+
+    /**
+     * {
+     * "name": "String",
+     * "password": "1234567",
+     * "email": "12314@qq.com"
+     * }
+     */
     @PostMapping(value = "/saveBasicInfo")
-    public String saveBasicInfo(
-            @Valid @ModelAttribute("useraccount") UserAccount useraccount
-            /*,BindingResult result*/) {
-       /* if (result.hasErrors()) {
-            return result.getFieldError().getDefaultMessage();
-        }*/
+    public String saveBasicInfo(@Valid @RequestBody UserAccount useraccount) {
         return "success";
     }
 
-    @GetMapping("/")
-    public String defaultRequest() {
-        return "Hello, World";
+    @GetMapping("/testServiceValid")
+    public String testServiceValid() {
+        return userService.testValid(new UserAccount());
     }
 
 }

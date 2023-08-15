@@ -24,6 +24,6 @@ public class UserAccount {
     private String password;
 
     @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", message = "Invalid email format")
-    @NotNull
+    @NotNull(message = "邮件不能为空")
     private String email;
 }
