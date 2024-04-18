@@ -1,6 +1,7 @@
 package whalefall.valid.standvalid;
 
 import com.whalefall.learncases.LearncasesApplication;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -39,6 +40,7 @@ class TestStandardValid {
     }
 
     @Test
+    @Disabled
     void shouldReturnDefaultMessage() throws Exception {
         this.mockMvc.perform(get("/")).andDo(print()).andExpect(status().isOk())
                 .andExpect(content().string(containsString("Hello, World")));

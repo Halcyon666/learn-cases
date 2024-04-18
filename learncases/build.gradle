@@ -37,3 +37,6 @@ tasks.withType(JavaCompile).configureEach {
     options.compilerArgs += ["-AeventBusIndex=com.whalefall.use.apt.EventBusIndex"]
 }
 
+tasks.named('test') {
+    useJUnitPlatform()
+}
