@@ -1,6 +1,7 @@
 package whalefall.lambda;
 
 import com.whalefall.learncases.valid.standvalid.UserAccount;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.platform.commons.util.StringUtils;
@@ -15,6 +16,7 @@ import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.*;
 
+@Slf4j
 class CollectorsTest {
 
     private static void getAccount(String mail, List<UserAccount> accounts) {
