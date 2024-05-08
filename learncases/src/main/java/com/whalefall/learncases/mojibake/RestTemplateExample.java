@@ -1,11 +1,13 @@
 package com.whalefall.learncases.mojibake;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+@Slf4j
 public class RestTemplateExample {
 
     public static void main(String[] args) {
@@ -50,6 +52,6 @@ public class RestTemplateExample {
 
         // 处理响应
         String responseBody = responseEntity.getBody();
-        System.out.println(responseBody);
+        log.info(responseBody);
     }
 }

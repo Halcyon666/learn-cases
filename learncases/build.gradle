@@ -12,7 +12,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.yaml:snakeyaml:2.2'
     implementation 'org.greenrobot:eventbus-java:3.3.1'
-    implementation 'org.apache.httpcomponents:httpclient:4.5.14'
+    implementation 'org.apache.httpcomponents:httpclient:4.5.14' exclude group: 'commons-logging'
     // https://mvnrepository.com/artifact/io.netty/netty-all
     implementation 'io.netty:netty-all:4.1.109.Final'
     // https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java

@@ -13,6 +13,7 @@ import io.netty.handler.codec.LengthFieldPrepender;
 import io.netty.handler.codec.protobuf.ProtobufDecoder;
 import io.netty.handler.codec.protobuf.ProtobufEncoder;
 import jakarta.validation.constraints.NotNull;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * <p>@ProjectName:     BoChat</p>
@@ -25,7 +26,11 @@ import jakarta.validation.constraints.NotNull;
  * <p>@date:            2019/02/15 14:42</p>
  * <p>@email:           chenshichao@outlook.com</p>
  */
+@Slf4j
 public class NettyServer {
+
+    private NettyServer() {
+    }
 
     public static void start(int port) {
 
@@ -68,7 +73,7 @@ public class NettyServer {
 
             //绑定端口
             ChannelFuture future = bootstrap.bind(port).sync();
-            System.out.println("server start on port" + port);
+            log.info("server start on port [{}]", port);
 
             //等待服务端监听端口关闭
             future.channel().closeFuture().sync();

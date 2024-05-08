@@ -42,7 +42,7 @@ class CollectorsTest {
     }
 
     private static void printMap(Map<String, Set<String>> emailsByName) {
-        emailsByName.forEach((name, emailSet) -> emailSet.forEach(email -> System.out.println("name = " + name + ", email = " + email)));
+        emailsByName.forEach((name, emailSet) -> emailSet.forEach(email -> log.info("name = " + name + ", email = " + email)));
     }
 
     private static void putMap2List(String name, String mail, List<HashMap<String, String>> list) {
@@ -99,7 +99,7 @@ class CollectorsTest {
         Map<Boolean, Set<String>> collect = list.stream()
                 .collect(partitioningBy(getNotBlankFieldPredicate("name"), mapping(getFieldFunction("email"), toSet())));
 
-        collect.forEach((b, emailSet) -> emailSet.forEach(email -> System.out.println("b = " + b + ", email = " + email)));
+        collect.forEach((b, emailSet) -> emailSet.forEach(email -> log.info("b = " + b + ", email = " + email)));
         Assertions.assertEquals(2, collect.size(), "emails lengths is not correct");
     }
 

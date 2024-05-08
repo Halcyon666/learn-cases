@@ -1,5 +1,6 @@
 package com.whalefall.learncases.mojibake;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
@@ -12,6 +13,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
+@Slf4j
 public class HttpClientExample {
 
     public static void main(String[] args) throws IOException {
@@ -41,7 +43,7 @@ public class HttpClientExample {
                     try (BufferedReader reader = new BufferedReader(new InputStreamReader(entity.getContent()))) {
                         String line;
                         while ((line = reader.readLine()) != null) {
-                            System.out.println(line);
+                            log.info(line);
                         }
                     }
                 }

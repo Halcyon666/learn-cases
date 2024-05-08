@@ -6,6 +6,7 @@ import com.whalefall.learncases.netty.protobuf.MessageProtobuf;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -14,6 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author Halcyon
  * @since 1.0.0
  */
+@Slf4j
 public class ServerHandler extends ChannelInboundHandlerAdapter {
 
     private static final String TAG = ServerHandler.class.getSimpleName();
@@ -21,13 +23,13 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         super.channelActive(ctx);
-        System.out.println("ServerHandler channelActive()" + ctx.channel().remoteAddress());
+        log.info("ServerHandler channelActive{}", ctx.channel().remoteAddress());
     }
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         super.channelInactive(ctx);
-        System.out.println("ServerHandler channelInactive()");
+        log.info("ServerHandler channelInactive{}", ctx.channel().remoteAddress());
         // 用户断开连接后，移除channel
         ServerHandler.ChannelContainer.getInstance().removeChannelIfConnectNoActive(ctx.channel());
     }
@@ -35,19 +37,19 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         super.exceptionCaught(ctx, cause);
-        System.out.println("ServerHandler exceptionCaught()");
+        log.info("ServerHandler exceptionCaught()");
     }
 
     @Override
     public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
         super.userEventTriggered(ctx, evt);
-        System.out.println("ServerHandler userEventTriggered()");
+        log.info("ServerHandler userEventTriggered()");
     }
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         MessageProtobuf.Msg message = (MessageProtobuf.Msg) msg;
-        System.out.println("收到来自客户端的消息：" + message);
+        log.info("收到来自客户端的消息：{}", message);
         int msgType = message.getHead().getMsgType();
         switch (msgType) {
             // 握手消息
