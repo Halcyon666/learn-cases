@@ -130,6 +130,7 @@ public class NettyTcpClient implements IMSClientInterface {
                 Thread.sleep(IMSConfig.DEFAULT_RECONNECT_INTERVAL);
             } catch (InterruptedException e) {
                 log.error(e.getMessage(), e);
+                Thread.currentThread().interrupt();
             }
         }
 
@@ -165,13 +166,13 @@ public class NettyTcpClient implements IMSClientInterface {
         try {
             closeChannel();
         } catch (Exception ex) {
-            ex.printStackTrace();
+            log.error(ex.getMessage(), ex);
         }
 
         // 关闭bootstrap
         try {
             if (bootstrap != null) {
-                bootstrap.group().shutdownGracefully();
+                bootstrap.config().group().shutdownGracefully();
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -488,7 +489,7 @@ public class NettyTcpClient implements IMSClientInterface {
             }
             // 3次心跳没响应，代表连接已断开
             channel.pipeline().addFirst(IdleStateHandler.class.getSimpleName(), new IdleStateHandler(
-                    heartbeatInterval * 3, heartbeatInterval, 0, TimeUnit.MILLISECONDS));
+                    heartbeatInterval * 3L, heartbeatInterval, 0, TimeUnit.MILLISECONDS));
 
             // 重新添加HeartbeatHandler
             if (channel.pipeline().get(HeartbeatHandler.class.getSimpleName()) != null) {
@@ -573,10 +574,12 @@ public class NettyTcpClient implements IMSClientInterface {
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e1) {
-                e1.printStackTrace();
+                log.error(e1.getMessage(), e1);
+                Thread.currentThread().interrupt();
             }
             log.error(String.format("连接Server(ip[%s], port[%s])失败", currentHost, currentPort));
             channel = null;
+            Thread.currentThread().interrupt();
         }
     }
 
