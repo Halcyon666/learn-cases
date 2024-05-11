@@ -2,7 +2,9 @@
 // source: com/whalefall/learncases/netty/protobuf/msg.proto
 // Protobuf Java Version: 4.26.1
 
-package com.whalefall.learncases.netty.protobuf;
+package com.whalefall.learncases.netty.server.protobuf;
+
+import com.google.protobuf.AbstractMessage;
 
 public final class MessageProtobuf {
     private static final com.google.protobuf.Descriptors.Descriptor
@@ -100,7 +102,7 @@ public final class MessageProtobuf {
          *
          * @return The head.
          */
-        com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head getHead();
+        MessageProtobuf.Head getHead();
 
         /**
          * <pre>
@@ -109,7 +111,7 @@ public final class MessageProtobuf {
          *
          * <code>.Head head = 1;</code>
          */
-        com.whalefall.learncases.netty.protobuf.MessageProtobuf.HeadOrBuilder getHeadOrBuilder();
+        MessageProtobuf.HeadOrBuilder getHeadOrBuilder();
 
         /**
          * <pre>
@@ -287,7 +289,7 @@ public final class MessageProtobuf {
         public static final int BODY_FIELD_NUMBER = 2;
         private static final long serialVersionUID = 0L;
         // @@protoc_insertion_point(class_scope:Msg)
-        private static final com.whalefall.learncases.netty.protobuf.MessageProtobuf.Msg DEFAULT_INSTANCE;
+        private static final MessageProtobuf.Msg DEFAULT_INSTANCE;
         private static final com.google.protobuf.Parser<Msg>
                 PARSER = new com.google.protobuf.AbstractParser<Msg>() {
             @java.lang.Override
@@ -321,11 +323,11 @@ public final class MessageProtobuf {
         }
 
         static {
-            DEFAULT_INSTANCE = new com.whalefall.learncases.netty.protobuf.MessageProtobuf.Msg();
+            DEFAULT_INSTANCE = new MessageProtobuf.Msg();
         }
 
         private int bitField0_;
-        private com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head head_;
+        private MessageProtobuf.Head head_;
         @SuppressWarnings("serial")
         private volatile java.lang.Object body_ = "";
         private byte memoizedIsInitialized = -1;
@@ -341,54 +343,54 @@ public final class MessageProtobuf {
 
         public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-            return com.whalefall.learncases.netty.protobuf.MessageProtobuf.internal_static_Msg_descriptor;
+            return MessageProtobuf.internal_static_Msg_descriptor;
         }
 
-        public static com.whalefall.learncases.netty.protobuf.MessageProtobuf.Msg parseFrom(
+        public static MessageProtobuf.Msg parseFrom(
                 java.nio.ByteBuffer data)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
 
-        public static com.whalefall.learncases.netty.protobuf.MessageProtobuf.Msg parseFrom(
+        public static MessageProtobuf.Msg parseFrom(
                 java.nio.ByteBuffer data,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
 
-        public static com.whalefall.learncases.netty.protobuf.MessageProtobuf.Msg parseFrom(
+        public static MessageProtobuf.Msg parseFrom(
                 com.google.protobuf.ByteString data)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
 
-        public static com.whalefall.learncases.netty.protobuf.MessageProtobuf.Msg parseFrom(
+        public static MessageProtobuf.Msg parseFrom(
                 com.google.protobuf.ByteString data,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
 
-        public static com.whalefall.learncases.netty.protobuf.MessageProtobuf.Msg parseFrom(byte[] data)
+        public static MessageProtobuf.Msg parseFrom(byte[] data)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
 
-        public static com.whalefall.learncases.netty.protobuf.MessageProtobuf.Msg parseFrom(
+        public static MessageProtobuf.Msg parseFrom(
                 byte[] data,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
 
-        public static com.whalefall.learncases.netty.protobuf.MessageProtobuf.Msg parseFrom(java.io.InputStream input)
+        public static MessageProtobuf.Msg parseFrom(java.io.InputStream input)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessage
                     .parseWithIOException(PARSER, input);
         }
 
-        public static com.whalefall.learncases.netty.protobuf.MessageProtobuf.Msg parseFrom(
+        public static MessageProtobuf.Msg parseFrom(
                 java.io.InputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws java.io.IOException {
@@ -396,13 +398,13 @@ public final class MessageProtobuf {
                     .parseWithIOException(PARSER, input, extensionRegistry);
         }
 
-        public static com.whalefall.learncases.netty.protobuf.MessageProtobuf.Msg parseDelimitedFrom(java.io.InputStream input)
+        public static MessageProtobuf.Msg parseDelimitedFrom(java.io.InputStream input)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessage
                     .parseDelimitedWithIOException(PARSER, input);
         }
 
-        public static com.whalefall.learncases.netty.protobuf.MessageProtobuf.Msg parseDelimitedFrom(
+        public static MessageProtobuf.Msg parseDelimitedFrom(
                 java.io.InputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws java.io.IOException {
@@ -410,14 +412,14 @@ public final class MessageProtobuf {
                     .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
         }
 
-        public static com.whalefall.learncases.netty.protobuf.MessageProtobuf.Msg parseFrom(
+        public static MessageProtobuf.Msg parseFrom(
                 com.google.protobuf.CodedInputStream input)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessage
                     .parseWithIOException(PARSER, input);
         }
 
-        public static com.whalefall.learncases.netty.protobuf.MessageProtobuf.Msg parseFrom(
+        public static MessageProtobuf.Msg parseFrom(
                 com.google.protobuf.CodedInputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws java.io.IOException {
@@ -429,11 +431,11 @@ public final class MessageProtobuf {
             return DEFAULT_INSTANCE.toBuilder();
         }
 
-        public static Builder newBuilder(com.whalefall.learncases.netty.protobuf.MessageProtobuf.Msg prototype) {
+        public static Builder newBuilder(MessageProtobuf.Msg prototype) {
             return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
         }
 
-        public static com.whalefall.learncases.netty.protobuf.MessageProtobuf.Msg getDefaultInstance() {
+        public static MessageProtobuf.Msg getDefaultInstance() {
             return DEFAULT_INSTANCE;
         }
 
@@ -444,9 +446,9 @@ public final class MessageProtobuf {
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-            return com.whalefall.learncases.netty.protobuf.MessageProtobuf.internal_static_Msg_fieldAccessorTable
+            return MessageProtobuf.internal_static_Msg_fieldAccessorTable
                     .ensureFieldAccessorsInitialized(
-                            com.whalefall.learncases.netty.protobuf.MessageProtobuf.Msg.class, com.whalefall.learncases.netty.protobuf.MessageProtobuf.Msg.Builder.class);
+                            MessageProtobuf.Msg.class, MessageProtobuf.Msg.Builder.class);
         }
 
         /**
@@ -473,8 +475,8 @@ public final class MessageProtobuf {
          * @return The head.
          */
         @java.lang.Override
-        public com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head getHead() {
-            return head_ == null ? com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head.getDefaultInstance() : head_;
+        public MessageProtobuf.Head getHead() {
+            return head_ == null ? MessageProtobuf.Head.getDefaultInstance() : head_;
         }
 
         /**
@@ -485,8 +487,8 @@ public final class MessageProtobuf {
          * <code>.Head head = 1;</code>
          */
         @java.lang.Override
-        public com.whalefall.learncases.netty.protobuf.MessageProtobuf.HeadOrBuilder getHeadOrBuilder() {
-            return head_ == null ? com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head.getDefaultInstance() : head_;
+        public MessageProtobuf.HeadOrBuilder getHeadOrBuilder() {
+            return head_ == null ? MessageProtobuf.Head.getDefaultInstance() : head_;
         }
 
         /**
@@ -501,8 +503,8 @@ public final class MessageProtobuf {
         @java.lang.Override
         public java.lang.String getBody() {
             java.lang.Object ref = body_;
-            if (ref instanceof java.lang.String) {
-                return (java.lang.String) ref;
+            if (ref instanceof java.lang.String refString) {
+                return refString;
             } else {
                 com.google.protobuf.ByteString bs =
                         (com.google.protobuf.ByteString) ref;
@@ -525,10 +527,9 @@ public final class MessageProtobuf {
         public com.google.protobuf.ByteString
         getBodyBytes() {
             java.lang.Object ref = body_;
-            if (ref instanceof java.lang.String) {
+            if (ref instanceof java.lang.String refString) {
                 com.google.protobuf.ByteString b =
-                        com.google.protobuf.ByteString.copyFromUtf8(
-                                (java.lang.String) ref);
+                        com.google.protobuf.ByteString.copyFromUtf8(refString);
                 body_ = b;
                 return b;
             } else {
@@ -581,20 +582,18 @@ public final class MessageProtobuf {
             if (obj == this) {
                 return true;
             }
-            if (!(obj instanceof com.whalefall.learncases.netty.protobuf.MessageProtobuf.Msg)) {
+            if (!(obj instanceof MessageProtobuf.Msg)) {
                 return super.equals(obj);
             }
-            com.whalefall.learncases.netty.protobuf.MessageProtobuf.Msg other = (com.whalefall.learncases.netty.protobuf.MessageProtobuf.Msg) obj;
+            MessageProtobuf.Msg other = (MessageProtobuf.Msg) obj;
 
             if (hasHead() != other.hasHead()) return false;
-            if (hasHead()) {
-                if (!getHead()
-                        .equals(other.getHead())) return false;
+            if (hasHead() && !getHead().equals(other.getHead())) {
+                return false;
             }
             if (!getBody()
                     .equals(other.getBody())) return false;
-            if (!getUnknownFields().equals(other.getUnknownFields())) return false;
-            return true;
+            return getUnknownFields().equals(other.getUnknownFields());
         }
 
         @java.lang.Override
@@ -628,9 +627,8 @@ public final class MessageProtobuf {
 
         @java.lang.Override
         protected Builder newBuilderForType(
-                com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-            Builder builder = new Builder(parent);
-            return builder;
+                AbstractMessage.BuilderParent parent) {
+            return new Builder(parent);
         }
 
         @java.lang.Override
@@ -639,7 +637,7 @@ public final class MessageProtobuf {
         }
 
         @java.lang.Override
-        public com.whalefall.learncases.netty.protobuf.MessageProtobuf.Msg getDefaultInstanceForType() {
+        public MessageProtobuf.Msg getDefaultInstanceForType() {
             return DEFAULT_INSTANCE;
         }
 
@@ -649,11 +647,11 @@ public final class MessageProtobuf {
         public static final class Builder extends
                 com.google.protobuf.GeneratedMessage.Builder<Builder> implements
                 // @@protoc_insertion_point(builder_implements:Msg)
-                com.whalefall.learncases.netty.protobuf.MessageProtobuf.MsgOrBuilder {
+                MessageProtobuf.MsgOrBuilder {
             private int bitField0_;
-            private com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head head_;
+            private MessageProtobuf.Head head_;
             private com.google.protobuf.SingleFieldBuilder<
-                    com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head, com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head.Builder, com.whalefall.learncases.netty.protobuf.MessageProtobuf.HeadOrBuilder> headBuilder_;
+                    MessageProtobuf.Head, MessageProtobuf.Head.Builder, MessageProtobuf.HeadOrBuilder> headBuilder_;
             private java.lang.Object body_ = "";
 
             // Construct using com.whalefall.learncases.netty.protobuf.MessageProtobuf.Msg.newBuilder()
@@ -662,22 +660,22 @@ public final class MessageProtobuf {
             }
 
             private Builder(
-                    com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+                    AbstractMessage.BuilderParent parent) {
                 super(parent);
                 maybeForceBuilderInitialization();
             }
 
             public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-                return com.whalefall.learncases.netty.protobuf.MessageProtobuf.internal_static_Msg_descriptor;
+                return MessageProtobuf.internal_static_Msg_descriptor;
             }
 
             @java.lang.Override
             protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
             internalGetFieldAccessorTable() {
-                return com.whalefall.learncases.netty.protobuf.MessageProtobuf.internal_static_Msg_fieldAccessorTable
+                return MessageProtobuf.internal_static_Msg_fieldAccessorTable
                         .ensureFieldAccessorsInitialized(
-                                com.whalefall.learncases.netty.protobuf.MessageProtobuf.Msg.class, com.whalefall.learncases.netty.protobuf.MessageProtobuf.Msg.Builder.class);
+                                MessageProtobuf.Msg.class, MessageProtobuf.Msg.Builder.class);
             }
 
             private void maybeForceBuilderInitialization() {
@@ -703,17 +701,17 @@ public final class MessageProtobuf {
             @java.lang.Override
             public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-                return com.whalefall.learncases.netty.protobuf.MessageProtobuf.internal_static_Msg_descriptor;
+                return MessageProtobuf.internal_static_Msg_descriptor;
             }
 
             @java.lang.Override
-            public com.whalefall.learncases.netty.protobuf.MessageProtobuf.Msg getDefaultInstanceForType() {
-                return com.whalefall.learncases.netty.protobuf.MessageProtobuf.Msg.getDefaultInstance();
+            public MessageProtobuf.Msg getDefaultInstanceForType() {
+                return MessageProtobuf.Msg.getDefaultInstance();
             }
 
             @java.lang.Override
-            public com.whalefall.learncases.netty.protobuf.MessageProtobuf.Msg build() {
-                com.whalefall.learncases.netty.protobuf.MessageProtobuf.Msg result = buildPartial();
+            public MessageProtobuf.Msg build() {
+                MessageProtobuf.Msg result = buildPartial();
                 if (!result.isInitialized()) {
                     throw newUninitializedMessageException(result);
                 }
@@ -721,8 +719,8 @@ public final class MessageProtobuf {
             }
 
             @java.lang.Override
-            public com.whalefall.learncases.netty.protobuf.MessageProtobuf.Msg buildPartial() {
-                com.whalefall.learncases.netty.protobuf.MessageProtobuf.Msg result = new com.whalefall.learncases.netty.protobuf.MessageProtobuf.Msg(this);
+            public MessageProtobuf.Msg buildPartial() {
+                MessageProtobuf.Msg result = new MessageProtobuf.Msg(this);
                 if (bitField0_ != 0) {
                     buildPartial0(result);
                 }
@@ -730,7 +728,7 @@ public final class MessageProtobuf {
                 return result;
             }
 
-            private void buildPartial0(com.whalefall.learncases.netty.protobuf.MessageProtobuf.Msg result) {
+            private void buildPartial0(MessageProtobuf.Msg result) {
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -747,16 +745,16 @@ public final class MessageProtobuf {
 
             @java.lang.Override
             public Builder mergeFrom(com.google.protobuf.Message other) {
-                if (other instanceof com.whalefall.learncases.netty.protobuf.MessageProtobuf.Msg) {
-                    return mergeFrom((com.whalefall.learncases.netty.protobuf.MessageProtobuf.Msg) other);
+                if (other instanceof MessageProtobuf.Msg msg) {
+                    return mergeFrom(msg);
                 } else {
                     super.mergeFrom(other);
                     return this;
                 }
             }
 
-            public Builder mergeFrom(com.whalefall.learncases.netty.protobuf.MessageProtobuf.Msg other) {
-                if (other == com.whalefall.learncases.netty.protobuf.MessageProtobuf.Msg.getDefaultInstance())
+            public Builder mergeFrom(MessageProtobuf.Msg other) {
+                if (other == MessageProtobuf.Msg.getDefaultInstance())
                     return this;
                 if (other.hasHead()) {
                     mergeHead(other.getHead());
@@ -810,8 +808,8 @@ public final class MessageProtobuf {
                                 }
                                 break;
                             } // default:
-                        } // switch (tag)
-                    } // while (!done)
+                        }
+                    }
                 } catch (com.google.protobuf.InvalidProtocolBufferException e) {
                     throw e.unwrapIOException();
                 } finally {
@@ -842,9 +840,9 @@ public final class MessageProtobuf {
              *
              * @return The head.
              */
-            public com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head getHead() {
+            public MessageProtobuf.Head getHead() {
                 if (headBuilder_ == null) {
-                    return head_ == null ? com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head.getDefaultInstance() : head_;
+                    return head_ == null ? MessageProtobuf.Head.getDefaultInstance() : head_;
                 } else {
                     return headBuilder_.getMessage();
                 }
@@ -857,7 +855,7 @@ public final class MessageProtobuf {
              *
              * <code>.Head head = 1;</code>
              */
-            public Builder setHead(com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head value) {
+            public Builder setHead(MessageProtobuf.Head value) {
                 if (headBuilder_ == null) {
                     if (value == null) {
                         throw new NullPointerException();
@@ -879,7 +877,7 @@ public final class MessageProtobuf {
              * <code>.Head head = 1;</code>
              */
             public Builder setHead(
-                    com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head.Builder builderForValue) {
+                    MessageProtobuf.Head.Builder builderForValue) {
                 if (headBuilder_ == null) {
                     head_ = builderForValue.build();
                 } else {
@@ -897,11 +895,11 @@ public final class MessageProtobuf {
              *
              * <code>.Head head = 1;</code>
              */
-            public Builder mergeHead(com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head value) {
+            public Builder mergeHead(MessageProtobuf.Head value) {
                 if (headBuilder_ == null) {
                     if (((bitField0_ & 0x00000001) != 0) &&
                             head_ != null &&
-                            head_ != com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head.getDefaultInstance()) {
+                            head_ != MessageProtobuf.Head.getDefaultInstance()) {
                         getHeadBuilder().mergeFrom(value);
                     } else {
                         head_ = value;
@@ -941,7 +939,7 @@ public final class MessageProtobuf {
              *
              * <code>.Head head = 1;</code>
              */
-            public com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head.Builder getHeadBuilder() {
+            public MessageProtobuf.Head.Builder getHeadBuilder() {
                 bitField0_ |= 0x00000001;
                 onChanged();
                 return getHeadFieldBuilder().getBuilder();
@@ -954,12 +952,12 @@ public final class MessageProtobuf {
              *
              * <code>.Head head = 1;</code>
              */
-            public com.whalefall.learncases.netty.protobuf.MessageProtobuf.HeadOrBuilder getHeadOrBuilder() {
+            public MessageProtobuf.HeadOrBuilder getHeadOrBuilder() {
                 if (headBuilder_ != null) {
                     return headBuilder_.getMessageOrBuilder();
                 } else {
                     return head_ == null ?
-                            com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head.getDefaultInstance() : head_;
+                            MessageProtobuf.Head.getDefaultInstance() : head_;
                 }
             }
 
@@ -971,11 +969,10 @@ public final class MessageProtobuf {
              * <code>.Head head = 1;</code>
              */
             private com.google.protobuf.SingleFieldBuilder<
-                    com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head, com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head.Builder, com.whalefall.learncases.netty.protobuf.MessageProtobuf.HeadOrBuilder>
+                    MessageProtobuf.Head, MessageProtobuf.Head.Builder, MessageProtobuf.HeadOrBuilder>
             getHeadFieldBuilder() {
                 if (headBuilder_ == null) {
-                    headBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-                            com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head, com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head.Builder, com.whalefall.learncases.netty.protobuf.MessageProtobuf.HeadOrBuilder>(
+                    headBuilder_ = new com.google.protobuf.SingleFieldBuilder<>(
                             getHead(),
                             getParentForChildren(),
                             isClean());
@@ -995,14 +992,14 @@ public final class MessageProtobuf {
              */
             public java.lang.String getBody() {
                 java.lang.Object ref = body_;
-                if (!(ref instanceof java.lang.String)) {
+                if (!(ref instanceof java.lang.String refString)) {
                     com.google.protobuf.ByteString bs =
                             (com.google.protobuf.ByteString) ref;
                     java.lang.String s = bs.toStringUtf8();
                     body_ = s;
                     return s;
                 } else {
-                    return (java.lang.String) ref;
+                    return refString;
                 }
             }
 
@@ -1039,10 +1036,9 @@ public final class MessageProtobuf {
             public com.google.protobuf.ByteString
             getBodyBytes() {
                 java.lang.Object ref = body_;
-                if (ref instanceof String) {
+                if (ref instanceof String refString) {
                     com.google.protobuf.ByteString b =
-                            com.google.protobuf.ByteString.copyFromUtf8(
-                                    (java.lang.String) ref);
+                            com.google.protobuf.ByteString.copyFromUtf8(refString);
                     body_ = b;
                     return b;
                 } else {
@@ -1110,7 +1106,7 @@ public final class MessageProtobuf {
         public static final int EXTEND_FIELD_NUMBER = 8;
         private static final long serialVersionUID = 0L;
         // @@protoc_insertion_point(class_scope:Head)
-        private static final com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head DEFAULT_INSTANCE;
+        private static final MessageProtobuf.Head DEFAULT_INSTANCE;
         private static final com.google.protobuf.Parser<Head>
                 PARSER = new com.google.protobuf.AbstractParser<Head>() {
             @java.lang.Override
@@ -1144,7 +1140,7 @@ public final class MessageProtobuf {
         }
 
         static {
-            DEFAULT_INSTANCE = new com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head();
+            DEFAULT_INSTANCE = new MessageProtobuf.Head();
         }
 
         @SuppressWarnings("serial")
@@ -1175,54 +1171,54 @@ public final class MessageProtobuf {
 
         public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-            return com.whalefall.learncases.netty.protobuf.MessageProtobuf.internal_static_Head_descriptor;
+            return MessageProtobuf.internal_static_Head_descriptor;
         }
 
-        public static com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head parseFrom(
+        public static MessageProtobuf.Head parseFrom(
                 java.nio.ByteBuffer data)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
 
-        public static com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head parseFrom(
+        public static MessageProtobuf.Head parseFrom(
                 java.nio.ByteBuffer data,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
 
-        public static com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head parseFrom(
+        public static MessageProtobuf.Head parseFrom(
                 com.google.protobuf.ByteString data)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
 
-        public static com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head parseFrom(
+        public static MessageProtobuf.Head parseFrom(
                 com.google.protobuf.ByteString data,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
 
-        public static com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head parseFrom(byte[] data)
+        public static MessageProtobuf.Head parseFrom(byte[] data)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
 
-        public static com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head parseFrom(
+        public static MessageProtobuf.Head parseFrom(
                 byte[] data,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
 
-        public static com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head parseFrom(java.io.InputStream input)
+        public static MessageProtobuf.Head parseFrom(java.io.InputStream input)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessage
                     .parseWithIOException(PARSER, input);
         }
 
-        public static com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head parseFrom(
+        public static MessageProtobuf.Head parseFrom(
                 java.io.InputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws java.io.IOException {
@@ -1230,13 +1226,13 @@ public final class MessageProtobuf {
                     .parseWithIOException(PARSER, input, extensionRegistry);
         }
 
-        public static com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head parseDelimitedFrom(java.io.InputStream input)
+        public static MessageProtobuf.Head parseDelimitedFrom(java.io.InputStream input)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessage
                     .parseDelimitedWithIOException(PARSER, input);
         }
 
-        public static com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head parseDelimitedFrom(
+        public static MessageProtobuf.Head parseDelimitedFrom(
                 java.io.InputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws java.io.IOException {
@@ -1244,14 +1240,14 @@ public final class MessageProtobuf {
                     .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
         }
 
-        public static com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head parseFrom(
+        public static MessageProtobuf.Head parseFrom(
                 com.google.protobuf.CodedInputStream input)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessage
                     .parseWithIOException(PARSER, input);
         }
 
-        public static com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head parseFrom(
+        public static MessageProtobuf.Head parseFrom(
                 com.google.protobuf.CodedInputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws java.io.IOException {
@@ -1263,11 +1259,11 @@ public final class MessageProtobuf {
             return DEFAULT_INSTANCE.toBuilder();
         }
 
-        public static Builder newBuilder(com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head prototype) {
+        public static Builder newBuilder(MessageProtobuf.Head prototype) {
             return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
         }
 
-        public static com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head getDefaultInstance() {
+        public static MessageProtobuf.Head getDefaultInstance() {
             return DEFAULT_INSTANCE;
         }
 
@@ -1278,9 +1274,9 @@ public final class MessageProtobuf {
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-            return com.whalefall.learncases.netty.protobuf.MessageProtobuf.internal_static_Head_fieldAccessorTable
+            return MessageProtobuf.internal_static_Head_fieldAccessorTable
                     .ensureFieldAccessorsInitialized(
-                            com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head.class, com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head.Builder.class);
+                            MessageProtobuf.Head.class, MessageProtobuf.Head.Builder.class);
         }
 
         /**
@@ -1295,8 +1291,8 @@ public final class MessageProtobuf {
         @java.lang.Override
         public java.lang.String getMsgId() {
             java.lang.Object ref = msgId_;
-            if (ref instanceof java.lang.String) {
-                return (java.lang.String) ref;
+            if (ref instanceof java.lang.String refString) {
+                return refString;
             } else {
                 com.google.protobuf.ByteString bs =
                         (com.google.protobuf.ByteString) ref;
@@ -1319,10 +1315,9 @@ public final class MessageProtobuf {
         public com.google.protobuf.ByteString
         getMsgIdBytes() {
             java.lang.Object ref = msgId_;
-            if (ref instanceof java.lang.String) {
+            if (ref instanceof java.lang.String refString) {
                 com.google.protobuf.ByteString b =
-                        com.google.protobuf.ByteString.copyFromUtf8(
-                                (java.lang.String) ref);
+                        com.google.protobuf.ByteString.copyFromUtf8(refString);
                 msgId_ = b;
                 return b;
             } else {
@@ -1370,8 +1365,8 @@ public final class MessageProtobuf {
         @java.lang.Override
         public java.lang.String getFromId() {
             java.lang.Object ref = fromId_;
-            if (ref instanceof java.lang.String) {
-                return (java.lang.String) ref;
+            if (ref instanceof java.lang.String refString) {
+                return refString;
             } else {
                 com.google.protobuf.ByteString bs =
                         (com.google.protobuf.ByteString) ref;
@@ -1394,10 +1389,9 @@ public final class MessageProtobuf {
         public com.google.protobuf.ByteString
         getFromIdBytes() {
             java.lang.Object ref = fromId_;
-            if (ref instanceof java.lang.String) {
+            if (ref instanceof java.lang.String refString) {
                 com.google.protobuf.ByteString b =
-                        com.google.protobuf.ByteString.copyFromUtf8(
-                                (java.lang.String) ref);
+                        com.google.protobuf.ByteString.copyFromUtf8(refString);
                 fromId_ = b;
                 return b;
             } else {
@@ -1417,8 +1411,8 @@ public final class MessageProtobuf {
         @java.lang.Override
         public java.lang.String getToId() {
             java.lang.Object ref = toId_;
-            if (ref instanceof java.lang.String) {
-                return (java.lang.String) ref;
+            if (ref instanceof java.lang.String refString) {
+                return refString;
             } else {
                 com.google.protobuf.ByteString bs =
                         (com.google.protobuf.ByteString) ref;
@@ -1441,10 +1435,9 @@ public final class MessageProtobuf {
         public com.google.protobuf.ByteString
         getToIdBytes() {
             java.lang.Object ref = toId_;
-            if (ref instanceof java.lang.String) {
+            if (ref instanceof java.lang.String refString) {
                 com.google.protobuf.ByteString b =
-                        com.google.protobuf.ByteString.copyFromUtf8(
-                                (java.lang.String) ref);
+                        com.google.protobuf.ByteString.copyFromUtf8(refString);
                 toId_ = b;
                 return b;
             } else {
@@ -1492,8 +1485,8 @@ public final class MessageProtobuf {
         @java.lang.Override
         public java.lang.String getExtend() {
             java.lang.Object ref = extend_;
-            if (ref instanceof java.lang.String) {
-                return (java.lang.String) ref;
+            if (ref instanceof java.lang.String refString) {
+                return refString;
             } else {
                 com.google.protobuf.ByteString bs =
                         (com.google.protobuf.ByteString) ref;
@@ -1516,10 +1509,9 @@ public final class MessageProtobuf {
         public com.google.protobuf.ByteString
         getExtendBytes() {
             java.lang.Object ref = extend_;
-            if (ref instanceof java.lang.String) {
+            if (ref instanceof java.lang.String refString) {
                 com.google.protobuf.ByteString b =
-                        com.google.protobuf.ByteString.copyFromUtf8(
-                                (java.lang.String) ref);
+                        com.google.protobuf.ByteString.copyFromUtf8(refString);
                 extend_ = b;
                 return b;
             } else {
@@ -1611,29 +1603,20 @@ public final class MessageProtobuf {
             if (obj == this) {
                 return true;
             }
-            if (!(obj instanceof com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head)) {
+            if (!(obj instanceof MessageProtobuf.Head)) {
                 return super.equals(obj);
             }
-            com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head other = (com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head) obj;
+            MessageProtobuf.Head other = (MessageProtobuf.Head) obj;
 
-            if (!getMsgId()
-                    .equals(other.getMsgId())) return false;
-            if (getMsgType()
-                    != other.getMsgType()) return false;
-            if (getMsgContentType()
-                    != other.getMsgContentType()) return false;
-            if (!getFromId()
-                    .equals(other.getFromId())) return false;
-            if (!getToId()
-                    .equals(other.getToId())) return false;
-            if (getTimestamp()
-                    != other.getTimestamp()) return false;
-            if (getStatusReport()
-                    != other.getStatusReport()) return false;
-            if (!getExtend()
-                    .equals(other.getExtend())) return false;
-            if (!getUnknownFields().equals(other.getUnknownFields())) return false;
-            return true;
+            if (!getMsgId().equals(other.getMsgId())) return false;
+            if (getMsgType() != other.getMsgType()) return false;
+            if (getMsgContentType() != other.getMsgContentType()) return false;
+            if (!getFromId().equals(other.getFromId())) return false;
+            if (!getToId().equals(other.getToId())) return false;
+            if (getTimestamp() != other.getTimestamp()) return false;
+            if (getStatusReport() != other.getStatusReport()) return false;
+            if (!getExtend().equals(other.getExtend())) return false;
+            return getUnknownFields().equals(other.getUnknownFields());
         }
 
         @java.lang.Override
@@ -1678,9 +1661,8 @@ public final class MessageProtobuf {
 
         @java.lang.Override
         protected Builder newBuilderForType(
-                com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-            Builder builder = new Builder(parent);
-            return builder;
+                AbstractMessage.BuilderParent parent) {
+            return new Builder(parent);
         }
 
         @java.lang.Override
@@ -1689,7 +1671,7 @@ public final class MessageProtobuf {
         }
 
         @java.lang.Override
-        public com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head getDefaultInstanceForType() {
+        public MessageProtobuf.Head getDefaultInstanceForType() {
             return DEFAULT_INSTANCE;
         }
 
@@ -1699,7 +1681,7 @@ public final class MessageProtobuf {
         public static final class Builder extends
                 com.google.protobuf.GeneratedMessage.Builder<Builder> implements
                 // @@protoc_insertion_point(builder_implements:Head)
-                com.whalefall.learncases.netty.protobuf.MessageProtobuf.HeadOrBuilder {
+                MessageProtobuf.HeadOrBuilder {
             private int bitField0_;
             private java.lang.Object msgId_ = "";
             private int msgType_;
@@ -1716,22 +1698,22 @@ public final class MessageProtobuf {
             }
 
             private Builder(
-                    com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+                    AbstractMessage.BuilderParent parent) {
                 super(parent);
 
             }
 
             public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-                return com.whalefall.learncases.netty.protobuf.MessageProtobuf.internal_static_Head_descriptor;
+                return MessageProtobuf.internal_static_Head_descriptor;
             }
 
             @java.lang.Override
             protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
             internalGetFieldAccessorTable() {
-                return com.whalefall.learncases.netty.protobuf.MessageProtobuf.internal_static_Head_fieldAccessorTable
+                return MessageProtobuf.internal_static_Head_fieldAccessorTable
                         .ensureFieldAccessorsInitialized(
-                                com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head.class, com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head.Builder.class);
+                                MessageProtobuf.Head.class, MessageProtobuf.Head.Builder.class);
             }
 
             @java.lang.Override
@@ -1752,17 +1734,17 @@ public final class MessageProtobuf {
             @java.lang.Override
             public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-                return com.whalefall.learncases.netty.protobuf.MessageProtobuf.internal_static_Head_descriptor;
+                return MessageProtobuf.internal_static_Head_descriptor;
             }
 
             @java.lang.Override
-            public com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head getDefaultInstanceForType() {
-                return com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head.getDefaultInstance();
+            public MessageProtobuf.Head getDefaultInstanceForType() {
+                return MessageProtobuf.Head.getDefaultInstance();
             }
 
             @java.lang.Override
-            public com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head build() {
-                com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head result = buildPartial();
+            public MessageProtobuf.Head build() {
+                MessageProtobuf.Head result = buildPartial();
                 if (!result.isInitialized()) {
                     throw newUninitializedMessageException(result);
                 }
@@ -1770,8 +1752,8 @@ public final class MessageProtobuf {
             }
 
             @java.lang.Override
-            public com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head buildPartial() {
-                com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head result = new com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head(this);
+            public MessageProtobuf.Head buildPartial() {
+                MessageProtobuf.Head result = new MessageProtobuf.Head(this);
                 if (bitField0_ != 0) {
                     buildPartial0(result);
                 }
@@ -1779,7 +1761,7 @@ public final class MessageProtobuf {
                 return result;
             }
 
-            private void buildPartial0(com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head result) {
+            private void buildPartial0(MessageProtobuf.Head result) {
                 int from_bitField0_ = bitField0_;
                 if (((from_bitField0_ & 0x00000001) != 0)) {
                     result.msgId_ = msgId_;
@@ -1809,16 +1791,16 @@ public final class MessageProtobuf {
 
             @java.lang.Override
             public Builder mergeFrom(com.google.protobuf.Message other) {
-                if (other instanceof com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head) {
-                    return mergeFrom((com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head) other);
+                if (other instanceof MessageProtobuf.Head head) {
+                    return mergeFrom(head);
                 } else {
                     super.mergeFrom(other);
                     return this;
                 }
             }
 
-            public Builder mergeFrom(com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head other) {
-                if (other == com.whalefall.learncases.netty.protobuf.MessageProtobuf.Head.getDefaultInstance())
+            public Builder mergeFrom(MessageProtobuf.Head other) {
+                if (other == MessageProtobuf.Head.getDefaultInstance())
                     return this;
                 if (!other.getMsgId().isEmpty()) {
                     msgId_ = other.msgId_;
@@ -1924,8 +1906,8 @@ public final class MessageProtobuf {
                                 }
                                 break;
                             } // default:
-                        } // switch (tag)
-                    } // while (!done)
+                        }
+                    }
                 } catch (com.google.protobuf.InvalidProtocolBufferException e) {
                     throw e.unwrapIOException();
                 } finally {
@@ -1945,14 +1927,14 @@ public final class MessageProtobuf {
              */
             public java.lang.String getMsgId() {
                 java.lang.Object ref = msgId_;
-                if (!(ref instanceof java.lang.String)) {
+                if (!(ref instanceof String refString)) {
                     com.google.protobuf.ByteString bs =
                             (com.google.protobuf.ByteString) ref;
                     java.lang.String s = bs.toStringUtf8();
                     msgId_ = s;
                     return s;
                 } else {
-                    return (java.lang.String) ref;
+                    return refString;
                 }
             }
 
@@ -1989,10 +1971,9 @@ public final class MessageProtobuf {
             public com.google.protobuf.ByteString
             getMsgIdBytes() {
                 java.lang.Object ref = msgId_;
-                if (ref instanceof String) {
+                if (ref instanceof String refString) {
                     com.google.protobuf.ByteString b =
-                            com.google.protobuf.ByteString.copyFromUtf8(
-                                    (java.lang.String) ref);
+                            com.google.protobuf.ByteString.copyFromUtf8(refString);
                     msgId_ = b;
                     return b;
                 } else {
@@ -2145,14 +2126,14 @@ public final class MessageProtobuf {
              */
             public java.lang.String getFromId() {
                 java.lang.Object ref = fromId_;
-                if (!(ref instanceof java.lang.String)) {
+                if (!(ref instanceof String refString)) {
                     com.google.protobuf.ByteString bs =
                             (com.google.protobuf.ByteString) ref;
                     java.lang.String s = bs.toStringUtf8();
                     fromId_ = s;
                     return s;
                 } else {
-                    return (java.lang.String) ref;
+                    return refString;
                 }
             }
 
@@ -2189,10 +2170,9 @@ public final class MessageProtobuf {
             public com.google.protobuf.ByteString
             getFromIdBytes() {
                 java.lang.Object ref = fromId_;
-                if (ref instanceof String) {
+                if (ref instanceof String refString) {
                     com.google.protobuf.ByteString b =
-                            com.google.protobuf.ByteString.copyFromUtf8(
-                                    (java.lang.String) ref);
+                            com.google.protobuf.ByteString.copyFromUtf8(refString);
                     fromId_ = b;
                     return b;
                 } else {
@@ -2249,14 +2229,14 @@ public final class MessageProtobuf {
              */
             public java.lang.String getToId() {
                 java.lang.Object ref = toId_;
-                if (!(ref instanceof java.lang.String)) {
+                if (!(ref instanceof String refString)) {
                     com.google.protobuf.ByteString bs =
                             (com.google.protobuf.ByteString) ref;
                     java.lang.String s = bs.toStringUtf8();
                     toId_ = s;
                     return s;
                 } else {
-                    return (java.lang.String) ref;
+                    return refString;
                 }
             }
 
@@ -2293,10 +2273,9 @@ public final class MessageProtobuf {
             public com.google.protobuf.ByteString
             getToIdBytes() {
                 java.lang.Object ref = toId_;
-                if (ref instanceof String) {
+                if (ref instanceof String refString) {
                     com.google.protobuf.ByteString b =
-                            com.google.protobuf.ByteString.copyFromUtf8(
-                                    (java.lang.String) ref);
+                            com.google.protobuf.ByteString.copyFromUtf8(refString);
                     toId_ = b;
                     return b;
                 } else {
@@ -2449,14 +2428,14 @@ public final class MessageProtobuf {
              */
             public java.lang.String getExtend() {
                 java.lang.Object ref = extend_;
-                if (!(ref instanceof java.lang.String)) {
+                if (!(ref instanceof String refString)) {
                     com.google.protobuf.ByteString bs =
                             (com.google.protobuf.ByteString) ref;
                     java.lang.String s = bs.toStringUtf8();
                     extend_ = s;
                     return s;
                 } else {
-                    return (java.lang.String) ref;
+                    return refString;
                 }
             }
 
@@ -2493,10 +2472,9 @@ public final class MessageProtobuf {
             public com.google.protobuf.ByteString
             getExtendBytes() {
                 java.lang.Object ref = extend_;
-                if (ref instanceof String) {
+                if (ref instanceof String refString) {
                     com.google.protobuf.ByteString b =
-                            com.google.protobuf.ByteString.copyFromUtf8(
-                                    (java.lang.String) ref);
+                            com.google.protobuf.ByteString.copyFromUtf8(refString);
                     extend_ = b;
                     return b;
                 } else {

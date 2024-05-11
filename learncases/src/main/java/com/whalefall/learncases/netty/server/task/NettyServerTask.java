@@ -1,4 +1,4 @@
-package com.whalefall.learncases.netty.task;
+package com.whalefall.learncases.netty.server.task;
 
 import com.whalefall.learncases.netty.server.NettyServer;
 import lombok.extern.slf4j.Slf4j;

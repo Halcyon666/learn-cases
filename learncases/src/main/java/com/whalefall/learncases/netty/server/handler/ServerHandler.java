@@ -1,8 +1,8 @@
-package com.whalefall.learncases.netty.handler;
+package com.whalefall.learncases.netty.server.handler;
 
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
-import com.whalefall.learncases.netty.protobuf.MessageProtobuf;
+import com.whalefall.learncases.netty.server.protobuf.MessageProtobuf;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
@@ -17,8 +17,6 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 @Slf4j
 public class ServerHandler extends ChannelInboundHandlerAdapter {
-
-    private static final String TAG = ServerHandler.class.getSimpleName();
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
@@ -47,7 +45,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     }
 
     @Override
-    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+    public void channelRead(ChannelHandlerContext ctx, Object msg) {
         MessageProtobuf.Msg message = (MessageProtobuf.Msg) msg;
         log.info("收到来自客户端的消息：{}", message);
         int msgType = message.getHead().getMsgType();
@@ -99,7 +97,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
             }
 
             case 3001: {
-                // todo 群聊，自己实现吧，toId可以是群id，根据群id查找所有在线用户的id，循环遍历channel发送即可。
+                // TODO 群聊，自己实现吧，toId可以是群id，根据群id查找所有在线用户的id，循环遍历channel发送即可。
                 break;
             }
 
@@ -111,7 +109,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     public static class ChannelContainer {
 
         private static final ServerHandler.ChannelContainer INSTANCE = new ServerHandler.ChannelContainer();
-        private final Map<String, ServerHandler.NettyChannel> CHANNELS = new ConcurrentHashMap<>();
+        private final Map<String, ServerHandler.NettyChannel> channels = new ConcurrentHashMap<>();
 
         private ChannelContainer() {
 
@@ -125,7 +123,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
             if (channel == null) {
                 return;
             }
-            CHANNELS.put(channel.getChannelId(), channel);
+            channels.put(channel.getChannelId(), channel);
         }
 
         public ServerHandler.NettyChannel removeChannelIfConnectNoActive(Channel channel) {
@@ -139,8 +137,8 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
         }
 
         public ServerHandler.NettyChannel removeChannelIfConnectNoActive(String channelId) {
-            if (CHANNELS.containsKey(channelId) && !CHANNELS.get(channelId).isActive()) {
-                return CHANNELS.remove(channelId);
+            if (channels.containsKey(channelId) && !channels.get(channelId).isActive()) {
+                return channels.remove(channelId);
             }
 
             return null;
@@ -151,15 +149,15 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
         }
 
         public String getUserIdByChannel(String channelId) {
-            if (CHANNELS.containsKey(channelId)) {
-                return CHANNELS.get(channelId).getUserId();
+            if (channels.containsKey(channelId)) {
+                return channels.get(channelId).getUserId();
             }
 
             return null;
         }
 
         public ServerHandler.NettyChannel getActiveChannelByUserId(String userId) {
-            for (Map.Entry<String, ServerHandler.NettyChannel> entry : CHANNELS.entrySet()) {
+            for (Map.Entry<String, ServerHandler.NettyChannel> entry : channels.entrySet()) {
                 if (entry.getValue().getUserId().equals(userId) && entry.getValue().isActive()) {
                     return entry.getValue();
                 }

@@ -1,7 +1,7 @@
 package whalefall;
 
 import com.whalefall.learncases.LearncasesApplication;
-import com.whalefall.learncases.netty.task.NettyServerTask;
+import com.whalefall.learncases.netty.server.task.NettyServerTask;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
