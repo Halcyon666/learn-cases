@@ -6,8 +6,6 @@ message Msg {
   Head head = 1;// 消息头
   string body = 2;// 消息体
 }
-///d/project/backend/learn-cases/learncases/src/main/java (main)
-//$ protoc --java_out=. com/whalefall/learncases/netty/protobuf/msg.proto
 
 message Head {
   string msgId = 1;// 消息id
