@@ -1,4 +1,4 @@
-package whalefall;
+package com.whalefall;
 
 import com.whalefall.learncases.LearncasesApplication;
 import com.whalefall.learncases.netty.server.task.NettyServerTask;

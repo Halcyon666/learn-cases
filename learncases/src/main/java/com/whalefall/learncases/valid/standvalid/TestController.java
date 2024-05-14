@@ -38,4 +38,8 @@ public class TestController {
         return userService.testValid(new UserAccount());
     }
 
+    @GetMapping("/")
+    public String helloWorld() {
+        return "Hello, World";
+    }
 }

@@ -1,4 +1,4 @@
-package whalefall.lambda;
+package com.whalefall.lambda;
 
 import com.whalefall.learncases.valid.standvalid.UserAccount;
 import lombok.extern.slf4j.Slf4j;

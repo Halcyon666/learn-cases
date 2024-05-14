@@ -1,10 +1,9 @@
-package whalefall.valid.standvalid;
+package com.whalefall.valid.standvalid;
 
-import org.junit.jupiter.api.Disabled;
+import com.whalefall.AbstractLearncasesApplicationTests;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import whalefall.AbstractLearncasesApplicationTests;
 
 import static org.hamcrest.core.StringContains.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -34,7 +33,7 @@ class TestStandardValid extends AbstractLearncasesApplicationTests {
     }
 
     @Test
-    @Disabled
+//    @Disabled
     void shouldReturnDefaultMessage() throws Exception {
         this.mockMvc.perform(get("/")).andDo(print()).andExpect(status().isOk())
                 .andExpect(content().string(containsString("Hello, World")));

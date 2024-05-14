@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-package whalefall.use.apt;
+package com.whalefall.use.apt;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.meta.SimpleSubscriberInfo;
-import org.greenrobot.eventbus.meta.SubscriberInfo;
 import org.greenrobot.eventbus.meta.SubscriberInfoIndex;
 import org.greenrobot.eventbus.meta.SubscriberMethodInfo;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 public class EventBusIndexTest {
     private String value;
@@ -58,6 +58,7 @@ public class EventBusIndexTest {
         eventBus.register(this);
         eventBus.post("Yepp");
         eventBus.unregister(this);
+        Assertions.assertNotNull(eventBus);
     }
 
     @Subscribe

@@ -1,9 +1,9 @@
-package whalefall.valid.customvalid;
+package com.whalefall.valid.customvalid;
 
+import com.whalefall.AbstractLearncasesApplicationTests;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import whalefall.AbstractLearncasesApplicationTests;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;

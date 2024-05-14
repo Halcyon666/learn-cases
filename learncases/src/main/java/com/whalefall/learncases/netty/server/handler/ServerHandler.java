@@ -6,7 +6,10 @@ import com.whalefall.learncases.netty.server.protobuf.MessageProtobuf;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import jakarta.annotation.Nullable;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.Assert;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -19,13 +22,15 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
-    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+    public void channelActive(@Nullable ChannelHandlerContext ctx) throws Exception {
+        Assert.notNull(ctx, "ctx is null");
         super.channelActive(ctx);
         log.info("ServerHandler channelActive{}", ctx.channel().remoteAddress());
     }
 
     @Override
-    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+    public void channelInactive(@Nullable ChannelHandlerContext ctx) throws Exception {
+        Assert.notNull(ctx, "ctx is null");
         super.channelInactive(ctx);
         log.info("ServerHandler channelInactive{}", ctx.channel().remoteAddress());
         // 用户断开连接后，移除channel
@@ -45,7 +50,9 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     }
 
     @Override
-    public void channelRead(ChannelHandlerContext ctx, Object msg) {
+    public void channelRead(@Nullable ChannelHandlerContext ctx, @Nullable Object msg) {
+        Assert.notNull(ctx, "ctx not null");
+        Assert.notNull(msg, "msg not null");
         MessageProtobuf.Msg message = (MessageProtobuf.Msg) msg;
         log.info("收到来自客户端的消息：{}", message);
         int msgType = message.getHead().getMsgType();
@@ -112,7 +119,6 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
         private final Map<String, ServerHandler.NettyChannel> channels = new ConcurrentHashMap<>();
 
         private ChannelContainer() {
-
         }
 
         public static ServerHandler.ChannelContainer getInstance() {
@@ -126,22 +132,19 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
             channels.put(channel.getChannelId(), channel);
         }
 
-        public ServerHandler.NettyChannel removeChannelIfConnectNoActive(Channel channel) {
+        public void removeChannelIfConnectNoActive(Channel channel) {
             if (channel == null) {
-                return null;
+                return;
             }
 
-            String channelId = channel.id().toString();
-
-            return removeChannelIfConnectNoActive(channelId);
+            removeChannelIfConnectNoActive(channel.id().toString());
         }
 
-        public ServerHandler.NettyChannel removeChannelIfConnectNoActive(String channelId) {
+        public void removeChannelIfConnectNoActive(String channelId) {
             if (channels.containsKey(channelId) && !channels.get(channelId).isActive()) {
-                return channels.remove(channelId);
+                channels.remove(channelId);
             }
 
-            return null;
         }
 
         public String getUserIdByChannel(Channel channel) {
@@ -166,7 +169,8 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
         }
     }
 
-    public class NettyChannel {
+    @Data
+    public static class NettyChannel {
 
         private String userId;
         private Channel channel;
@@ -180,21 +184,6 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
             return channel.id().toString();
         }
 
-        public String getUserId() {
-            return userId;
-        }
-
-        public void setUserId(String userId) {
-            this.userId = userId;
-        }
-
-        public Channel getChannel() {
-            return channel;
-        }
-
-        public void setChannel(Channel channel) {
-            this.channel = channel;
-        }
 
         public boolean isActive() {
             return channel.isActive();
