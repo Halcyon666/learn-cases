@@ -7,6 +7,8 @@ import java.util.concurrent.TimeoutException;
 import java.util.concurrent.locks.AbstractQueuedSynchronizer;
 
 /**
+ * Self implement AQS to notify across threads
+ *
  * @author Halcyon
  * @since 1.0.0
  */
@@ -40,7 +42,6 @@ public class SampleFuture implements Future<String> {
 
     @Override
     public String get() throws InterruptedException, ExecutionException {
-        // 阻塞但是可以中断  sync.acquireInterruptibly(1);
         // 一直阻塞
         sync.tryAcquire(1);
         return this.msg;
