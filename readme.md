@@ -2,7 +2,7 @@
 
 | tool or framework | version |
 |-------------------|---------|
-| spring boot       | 3.1.1   |
+| spring boot       | 3.2.4   |
 | JDK               | 17.0.7  |
 
 ## modules have
