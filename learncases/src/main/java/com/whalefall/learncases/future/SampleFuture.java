@@ -56,8 +56,8 @@ public class SampleFuture implements Future<String> {
     }
 
     static class Sync extends AbstractQueuedSynchronizer {
-        public static final int LOCKED = 0;
-        public static final int UNLOCKED = 1;
+        public static final int LOCKED = 1;
+        public static final int UNLOCKED = 0;
 
         Sync() {
             setState(LOCKED);
