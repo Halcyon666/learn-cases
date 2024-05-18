@@ -37,7 +37,7 @@ public class SampleFuture implements Future<String> {
 
     public void putMsgAndReleaseLock(String msg) {
         this.msg = msg;
-        sync.tryRelease(0);
+        sync.tryRelease(1);
     }
 
     @Override
