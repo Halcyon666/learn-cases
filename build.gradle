@@ -12,6 +12,12 @@ allprojects {
     repositories {
         mavenCentral()
         google()
+        maven {
+            url "https://repo.spring.io/release"
+        }
+        maven {
+            url "https://repository.jboss.org/maven2"
+        }
     }
 }
 
