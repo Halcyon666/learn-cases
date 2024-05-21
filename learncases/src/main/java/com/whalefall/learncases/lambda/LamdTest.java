@@ -3,24 +3,23 @@ package com.whalefall.learncases.lambda;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Slf4j
 public class LamdTest {
     public static List<Integer> getList() {
-        return Stream.of(new String[]{"1", "2"}).map(s -> Integer.parseInt(s) * 2).collect(Collectors.toList());
+        return Stream.of("12").map(s -> Integer.parseInt(s) * 2).toList();
     }
 
     public static void main(String[] args) {
 
-        getList().forEach(System.out::println);
+        getList().forEach(LamdTest::log);
         testFunction(false);
         testFunction(true);
     }
 
     private static void testFunction(boolean b) {
-        isTureOrFalse(b).trueOrFalseHandle(() -> log.info("{}", b), System.out::println);
+        isTureOrFalse(b).trueOrFalseHandle(() -> LamdTest.log(b), LamdTest::log);
     }
 
     /**
@@ -37,8 +36,12 @@ public class LamdTest {
             if (b) {
                 trueHandle.run();
             } else {
-                falseHandle.accept(b);
+                falseHandle.accept(false);
             }
         };
+    }
+
+    private static void log(Object s) {
+        log.info("result: {}", s);
     }
 }
