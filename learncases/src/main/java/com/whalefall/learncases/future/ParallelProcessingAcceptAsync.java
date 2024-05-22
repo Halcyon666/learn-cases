@@ -19,6 +19,12 @@ import java.util.concurrent.Executors;
 public class ParallelProcessingAcceptAsync {
 
     public static void main(String[] args) {
+        acceptAsync();
+        completableFutureWithException();
+        completableFutureHasNull();
+    }
+
+    private static void acceptAsync() {
         long startTime = System.nanoTime();
         ExecutorService executor = Executors.newFixedThreadPool(5);
         List<Integer> data = Arrays.asList(1, 2, 3, 4, 5);
@@ -43,5 +49,39 @@ public class ParallelProcessingAcceptAsync {
         long endTime = System.nanoTime();
         long duration = (endTime - startTime) / 1_000_000; // Convert to milliseconds
         log.info("Execution Time: {} ms", duration);
+    }
+
+    /**
+     * aim at {@link CompletableFuture#allOf(CompletableFuture[])}
+     * <p>
+     * with a CompletionException holding this exception as its cause.
+     */
+    @SuppressWarnings("all")
+    private static void completableFutureWithException() {
+        CompletableFuture<String> future1 = CompletableFuture.supplyAsync(() -> "Hello");
+        CompletableFuture<Integer> future2 = CompletableFuture.supplyAsync(() -> {
+            throw new RuntimeException("Oops!");
+        });
+
+        CompletableFuture<Void> allFutures = CompletableFuture.allOf(future1, future2)
+                .thenAccept(v -> log.info("All futures completed normally"))
+                .exceptionally(ex -> {
+                    log.info("Exception occurred: {}", ex.getCause().getMessage());
+                    return null;
+                });
+
+        allFutures.join();
+    }
+
+    /**
+     * aim at {@link CompletableFuture#allOf(CompletableFuture[])}
+     * <p>
+     * If no CompletableFutures are
+     * provided, returns a CompletableFuture completed with the value
+     * {@code null}.
+     */
+    private static void completableFutureHasNull() {
+        CompletableFuture<Void> allFutures = CompletableFuture.allOf();
+        allFutures.thenAcceptAsync(v -> log.info("Result: {}", v)).join();
     }
 }
