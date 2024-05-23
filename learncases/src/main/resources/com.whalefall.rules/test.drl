@@ -1,0 +1,21 @@
+package com.whalefall.rules
+
+import com.whalefall.learncases.drools.Person
+import com.whalefall.learncases.drools.Idcard
+import com.whalefall.learncases.drools.PersonService
+
+rule "two-insert name same"
+when
+    $person : Person($nameP : name, $identityP : identity)
+    $Idcard : Idcard($nameI : name, $identityI : identity)
+    eval($nameP !=  $nameI && $identityP == $identityI)
+then
+    throw new Exception(PersonService.ERROR_MSG);
+end
+
+//  // 匹配 Order 对象，并将 custId 属性值绑定到 $orderCustId 变量
+//    $order : Order($orderCustId : custId)
+//    // 匹配 Customer 对象，并将 custId 属性值绑定到 $customerCustId 变量
+//    $customer : Customer($customerCustId : custId)
+//    // 检查两个实体的 custId 属性是否相同
+//    eval($orderCustId == $customerCustId)
