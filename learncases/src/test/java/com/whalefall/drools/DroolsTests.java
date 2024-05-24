@@ -3,10 +3,8 @@ package com.whalefall.drools;
 import com.whalefall.AbstractLearncasesApplicationTests;
 import com.whalefall.learncases.drools.PersonService;
 import jakarta.annotation.Resource;
-import org.junit.jupiter.api.Assertions;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * @author Halcyon
@@ -19,9 +17,9 @@ class DroolsTests extends AbstractLearncasesApplicationTests {
 
     @Test
     void testInsertTwo() {
-        String message = assertThrows(Exception.class,
-                () -> personService.kieTwoInsert()).getMessage();
-        Assertions.assertTrue(message.contains(PersonService.ERROR_MSG));
+        Assertions.assertThatThrownBy(() -> personService.kieTwoInsert())
+                .hasCauseExactlyInstanceOf(Exception.class)
+                .hasMessageContaining(PersonService.ERROR_MSG);
 
     }
 
