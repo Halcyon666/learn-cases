@@ -4,7 +4,7 @@ import com.whalefall.learncases.drools.Person
 import com.whalefall.learncases.drools.Idcard
 import com.whalefall.learncases.drools.PersonService
 
-rule "two-insert name same"
+rule "two-insert name not same"
 when
     $person : Person($nameP : name, $identityP : identity)
     $Idcard : Idcard($nameI : name, $identityI : identity)
