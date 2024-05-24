@@ -5,8 +5,8 @@ package com.whalefall.learncases.upsert.entity.itf;
  * @date 2024/5/24 22:56
  * @since 1.0.0
  */
-public interface IEntity {
-    Insert convertToInsertEntity();
+public interface IEntity<I extends Insert, U extends Update> {
+    I convertToInsertEntity();
 
-    Update convertToUpdateEntity();
+    U convertToUpdateEntity();
 }

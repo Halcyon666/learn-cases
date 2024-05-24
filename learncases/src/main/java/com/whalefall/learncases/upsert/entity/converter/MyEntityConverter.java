@@ -1,8 +1,8 @@
 package com.whalefall.learncases.upsert.entity.converter;
 
-import com.whalefall.learncases.upsert.entity.InsertEntity;
 import com.whalefall.learncases.upsert.entity.MyEntity;
-import com.whalefall.learncases.upsert.entity.UpdateEntity;
+import com.whalefall.learncases.upsert.entity.MyInsertEntity;
+import com.whalefall.learncases.upsert.entity.MyUpdateEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -15,7 +15,7 @@ import org.mapstruct.factory.Mappers;
 public interface MyEntityConverter {
     MyEntityConverter INSTANCE = Mappers.getMapper(MyEntityConverter.class);
 
-    InsertEntity getInsertEntity(MyEntity myEntity, String name);
+    MyInsertEntity getInsertEntity(MyEntity myEntity, String name);
 
-    UpdateEntity getUpdateEntity(MyEntity myEntity, Integer age);
+    MyUpdateEntity getUpdateEntity(MyEntity myEntity, Integer age);
 }

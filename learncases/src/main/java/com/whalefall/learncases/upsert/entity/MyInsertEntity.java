@@ -1,6 +1,6 @@
 package com.whalefall.learncases.upsert.entity;
 
-import com.whalefall.learncases.upsert.entity.itf.Update;
+import com.whalefall.learncases.upsert.entity.itf.Insert;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
@@ -13,9 +13,8 @@ import lombok.ToString;
 @Builder
 @Getter
 @ToString
-public class UpdateEntity implements Update {
+public class MyInsertEntity implements Insert {
     private String id;
-    private String data;
-    private int age;
-
+    private boolean hasQueryResult;
+    private String name;
 }

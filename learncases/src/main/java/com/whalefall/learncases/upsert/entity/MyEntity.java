@@ -12,17 +12,17 @@ import lombok.Getter;
  */
 @Builder
 @Getter
-public class MyEntity implements IEntity { // Note: Use Object as a placeholder for now
+public class MyEntity implements IEntity<MyInsertEntity, MyUpdateEntity> { // Note: Use Object as a placeholder for now
     private String id;
-    private String data;
+    private boolean hasQueryResult;
 
     @Override
-    public InsertEntity convertToInsertEntity() {
+    public MyInsertEntity convertToInsertEntity() {
         return MyEntityConverter.INSTANCE.getInsertEntity(this, "Halcyon");
     }
 
     @Override
-    public UpdateEntity convertToUpdateEntity() {
+    public MyUpdateEntity convertToUpdateEntity() {
         return MyEntityConverter.INSTANCE.getUpdateEntity(this, 18);
     }
 

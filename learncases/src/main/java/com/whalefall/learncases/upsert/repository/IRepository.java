@@ -11,10 +11,10 @@ import java.util.Optional;
  * @date 2024/5/24 23:00
  * @since 1.0.0
  */
-public interface IRepository {
-    Optional<Boolean> query(IEntity entity);
+public interface IRepository<E extends IEntity<I, U>, I extends Insert, U extends Update> {
+    Optional<Boolean> query(E e);
 
-    void insert(Insert entity);
+    void insert(I i);
 
-    void update(Update entity);
+    void update(U u);
 }

@@ -1,22 +1,23 @@
 package com.whalefall.learncases.upsert;
 
 import com.whalefall.learncases.upsert.entity.MyEntity;
+import com.whalefall.learncases.upsert.entity.MyInsertEntity;
+import com.whalefall.learncases.upsert.entity.MyUpdateEntity;
 import com.whalefall.learncases.upsert.repository.Repository;
-import com.whalefall.learncases.upsert.service.AppService;
+import com.whalefall.learncases.upsert.service.CommonUpsertService;
 
 public class Main {
     public static void main(String[] args) {
 
-        // 创建 Repository 和 AppService 实例
         Repository myEntityRepository = new Repository();
-        AppService appService = new AppService();
-
-        // 创建一个具体的实体对象
-        MyEntity entity = MyEntity.builder().id("123").data("ads").build();
+        CommonUpsertService<MyEntity, MyInsertEntity, MyUpdateEntity> commonUpsertService = new CommonUpsertService<>();
 
         // 调用 upsert 方法
-        appService.upsert(entity, myEntityRepository);
-
+        commonUpsertService.upsert(MyEntity.builder().id("123").hasQueryResult(true).build(), myEntityRepository);
+        commonUpsertService.upsert(MyEntity.builder().id("123").hasQueryResult(false).build(), myEntityRepository);
+        // output
+        // Updating entity: MyUpdateEntity(id=123, data=abc, age=18)
+        // Inserting entity: MyInsertEntity(id=123, data=1abc, name=Halcyon)
 
     }
 }
