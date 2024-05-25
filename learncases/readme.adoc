@@ -1,0 +1,28 @@
+== Learncase 模块包结构
+
+[cols="1,2",options="header"]
+.模块包结构
+|===
+| Task | Description
+| [x] `com.whalefall.learncases.bytes` | 生僻字问题
+| [x] `com.whalefall.learncases.design` | 模板设计模式
+| [x] `com.whalefall.learncases.drools` | drools规则引擎简单使用
+| [x] `com.whalefall.learncases.exception` | 为全局异常处理
+| [x] `com.whalefall.learncases.filter` | 过滤器
+| [ ] `com.whalefall.learncases.future` | Future CompletableFuture使用
+| [x] `com.whalefall.learncases.generic` | 泛型使用
+| [x] `com.whalefall.learncases.interceptor` | 拦截器
+| [x] `com.whalefall.learncases.lambda` | lambda用法
+| [x] `com.whalefall.learncases.mojibake` | RestTemplate MVC请求中文乱码问题
+| [ ] `com.whalefall.learncases.netty` | ProtoBuf协议使用Netty
+| [x] `com.whalefall.learncases.override` | static方法可以重载隐藏final方法可重载不可重写
+| [x] `com.whalefall.learncases.spel` | SPEL方法注解简单使用
+| [x] `com.whalefall.learncases.springspi` | spring SPI用法
+| [x] `com.whalefall.learncases.testsingleton` | 单例设计模式下非static对象也会只有一份
+| [x] `com.whalefall.learncases.threadlocal` | threadlocal使用
+| [x] `com.whalefall.learncases.upsert` | upsert通用逻辑实现
+| [x] `com.whalefall.learncases.valid` | 为标准校验或者自定义校验相关的内容
+
+| [ ] `com.whalefall.use.apt` | java APT 使用
+
+|===

@@ -13,7 +13,7 @@ public class Main {
         CommonUpsertService<MyEntity, MyInsertEntity, MyUpdateEntity> commonUpsertService = new CommonUpsertService<>();
 
         // 调用 upsert 方法
-        commonUpsertService.upsert(MyEntity.builder().id("123").hasQueryResult(true).build(), myEntityRepository);
+        commonUpsertService.upsertNoUsed(MyEntity.builder().id("123").hasQueryResult(true).build(), myEntityRepository);
         commonUpsertService.upsert(MyEntity.builder().id("123").hasQueryResult(false).build(), myEntityRepository);
         // output
         // Updating entity: MyUpdateEntity(id=123, data=abc, age=18)

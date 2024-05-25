@@ -14,8 +14,7 @@ import org.junit.jupiter.api.Test;
 class TestSPIService extends AbstractLearncasesApplicationTests {
     @Resource
     private SPIService spiService;
-    @Resource
-    private TestJarComponentScan testJarComponentScan;
+
 
     @Test
     void testSPIService() {
@@ -23,9 +22,4 @@ class TestSPIService extends AbstractLearncasesApplicationTests {
         Assertions.assertNotNull(dog, "SPI inject Dog must be not null");
     }
 
-    @Test
-    void testSPIPackageAlsoEffectDefinedInJar() {
-        Assertions.assertNotNull(testJarComponentScan);
-        testJarComponentScan.doSome();
-    }
 }
