@@ -1,4 +1,4 @@
-# implement of Animal
-com.whalefall.Animal=\
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.whalefall.spi.ScanPackageConfig
+com.whalefall.spi.Animal=\
 com.whalefall.spi.Dog
-
