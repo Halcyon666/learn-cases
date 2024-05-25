@@ -6,7 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
-//@ComponentScan({"com.whalefall.spi", "com.whalefall.learncases"})
 @SpringBootApplication
 @EnableScheduling
 @Import(ScanPackageConfig.class)
