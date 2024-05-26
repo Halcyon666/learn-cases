@@ -1,19 +1,19 @@
-## the module of annotation-processor
+== The Module of Annotation-Processor
 
-JAVA APT base annotation processor, in this project, just print some message in the processors
+JAVA APT base annotation processor, in this project, just print some message in the processors.
 
-## Write a processor 
+== Write a Processor
 
-[example file](https://github.com/Halcyon666/learn-cases/blob/main/annotation-processor/src/main/java/com/whalefall/apt/MyAnnotationProcessor.java)
+link:https://github.com/Halcyon666/learn-cases/blob/main/annotation-processor/src/main/java/com/whalefall/apt/MyAnnotationProcessor.java[Example file]
 
-If you want to know more about program a processor, you can refer the book of Core-Java-Vol.-II-Advanced-Features-12th-Edition-Cay-S.-Horstmann.
+If you want to know more about programming a processor, you can refer to the book of _Core Java, Volume II--Advanced Features, 12th Edition_ by Cay S. Horstmann.
 
-## how to use the processor jar in other project
+== How to Use the Processor Jar in Other Project
 
-### maven
+=== Maven
 
-```xml
-
+[source,xml]
+----
 <!--...-->
 <plugin>
     <groupId>org.apache.maven.plugins</groupId>
@@ -37,21 +37,22 @@ If you want to know more about program a processor, you can refer the book of Co
         <showWarnings>true</showWarnings>
     </configuration>
 </plugin>
-        <!--...-->
-```
+<!--...-->
+----
 
-Here are include lombok, thus I use the plugin.
+Here are included Lombok, thus I use the plugin.
 
-### gradle
+=== Gradle
 
-```groovy
+[source,groovy]
+----
 dependencies {
-    //    ...
+    // ...
     annotationProcessor 'com.whalefall:annotation-processor:0.0.1-SNAPSHOT'
     testAnnotationProcessor 'com.whalefall:annotation-processor:0.0.1-SNAPSHOT'
     // if you are using processor in test code
-    
-    // if you use this in other module of the aggregation project 
+
+    // if you use this in other module of the aggregation project
     annotationProcessor project(':annotation-processor')
 }
-```
+----

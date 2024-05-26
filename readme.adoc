@@ -1,0 +1,24 @@
+image::https://github.com/Halcyon666/learn-cases/actions/workflows/gradle.yml/badge.svg[learn cases workflows,link=https://github.com/Halcyon666/learn-cases/actions/workflows/gradle.yml]
+
+== Java Learn
+
+[cols="1,1",options="header"]
+|===
+| Tool or Framework | Version
+| Spring Boot       | 3.2.4
+| JDK               | 17.0.7
+|===
+
+== Modules Have
+
+- learn-cases
+* annotation-processor
+* learncases
+* spring-spi
+* docs
+
+The `annotation-processor` module is the APT annotation processor
+
+the `spring-spi` module is Spring SPI
+
+`learncases` module is all learn cases

@@ -1,0 +1,86 @@
+"main@1" prio=5 tid=0x1 nid=NA runnable
+  java.lang.Thread.State: RUNNABLE
+	  at org.springframework.core.io.support.SpringFactoriesLoader.loadFactories(SpringFactoriesLoader.java:254)
+	  at org.springframework.beans.CachedIntrospectionResults.<clinit>(CachedIntrospectionResults.java:79)
+	  at org.springframework.beans.BeanWrapperImpl.getCachedIntrospectionResults(BeanWrapperImpl.java:165)
+	  at org.springframework.beans.BeanWrapperImpl.getPropertyDescriptor(BeanWrapperImpl.java:221)
+	  at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.isConvertibleProperty(AbstractAutowireCapableBeanFactory.java:1730)
+	  at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1687)
+	  at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1434)
+	  at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+	  at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	  at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	  at org.springframework.beans.factory.support.AbstractBeanFactory$$Lambda$269/0x0000000800dd6a58.getObject(Unknown Source:-1)
+	  at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	  - locked <0xd60> (a java.util.concurrent.ConcurrentHashMap)
+	  at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	  at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	  at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:112)
+	  at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:788)
+	  at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:606)
+	  at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	  at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	  at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	  at org.springframework.boot.SpringApplication.run(SpringApplication.java:334)
+	  at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	  at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343)
+	  at com.whalefall.learncases.LearncasesApplication.main(LearncasesApplication.java:25)
+
+"background-preinit@2315" prio=5 tid=0x14 nid=NA runnable
+  java.lang.Thread.State: RUNNABLE
+	  at java.util.zip.Inflater.inflateBytesBytes(Inflater.java:-1)
+	  at java.util.zip.Inflater.inflate(Inflater.java:401)
+	  - locked <0xd80> (a java.util.zip.Inflater$InflaterZStreamRef)
+	  at java.util.zip.InflaterInputStream.read(InflaterInputStream.java:152)
+	  at jdk.internal.loader.Resource.getBytes(Resource.java:126)
+	  at jdk.internal.loader.URLClassPath$JarLoader$2.getBytes(URLClassPath.java:893)
+	  at jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:859)
+	  at jdk.internal.loader.BuiltinClassLoader.findClassOnClassPathOrNull(BuiltinClassLoader.java:760)
+	  at jdk.internal.loader.BuiltinClassLoader.loadClassOrNull(BuiltinClassLoader.java:681)
+	  - locked <0xd81> (a java.lang.Object)
+	  at jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:639)
+	  at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	  at java.lang.ClassLoader.loadClass(ClassLoader.java:520)
+	  at com.fasterxml.jackson.databind.ObjectMapper.<init>(ObjectMapper.java:685)
+	  at com.fasterxml.jackson.databind.ObjectMapper.<init>(ObjectMapper.java:576)
+	  at org.springframework.http.converter.json.Jackson2ObjectMapperBuilder.build(Jackson2ObjectMapperBuilder.java:702)
+	  at org.springframework.http.converter.json.MappingJackson2HttpMessageConverter.<init>(MappingJackson2HttpMessageConverter.java:63)
+	  at org.springframework.http.converter.support.AllEncompassingFormHttpMessageConverter.<init>(AllEncompassingFormHttpMessageConverter.java:85)
+	  at org.springframework.boot.autoconfigure.BackgroundPreinitializer$MessageConverterInitializer.run(BackgroundPreinitializer.java:146)
+	  at org.springframework.boot.autoconfigure.BackgroundPreinitializer$1.runSafely(BackgroundPreinitializer.java:120)
+	  at org.springframework.boot.autoconfigure.BackgroundPreinitializer$1.run(BackgroundPreinitializer.java:106)
+	  at java.lang.Thread.run(Thread.java:833)
+
+"Common-Cleaner@456" daemon prio=8 tid=0x11 nid=NA waiting
+  java.lang.Thread.State: WAITING
+	  at java.lang.Object.wait(Object.java:-1)
+	  at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:155)
+	  at jdk.internal.ref.CleanerImpl.run(CleanerImpl.java:140)
+	  at java.lang.Thread.run(Thread.java:833)
+	  at jdk.internal.misc.InnocuousThread.run(InnocuousThread.java:162)
+
+"Reference Handler@3132" daemon prio=10 tid=0x2 nid=NA runnable
+  java.lang.Thread.State: RUNNABLE
+	  at java.lang.ref.Reference.waitForReferencePendingList(Reference.java:-1)
+	  at java.lang.ref.Reference.processPendingReferences(Reference.java:253)
+	  at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:215)
+
+"Finalizer@3133" daemon prio=8 tid=0x3 nid=NA waiting
+  java.lang.Thread.State: WAITING
+	  at java.lang.Object.wait(Object.java:-1)
+	  at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:155)
+	  at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:176)
+	  at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:172)
+
+"Signal Dispatcher@3134" daemon prio=9 tid=0x4 nid=NA runnable
+  java.lang.Thread.State: RUNNABLE
+
+"Attach Listener@3135" daemon prio=5 tid=0x5 nid=NA runnable
+  java.lang.Thread.State: RUNNABLE
+
+"Notification Thread@419" daemon prio=9 tid=0x10 nid=NA runnable
+  java.lang.Thread.State: RUNNABLE
+
+思考：
+SPI 包如果不在扫描路径下，会不会被SPI加载
+如果配置了，扫描的时候是如何处理的

@@ -1,4 +1,4 @@
-== Learncase 模块包结构
+== Learn case 模块包结构
 
 [cols="1,2",options="header"]
 .模块包结构
@@ -24,5 +24,6 @@
 | [x] `com.whalefall.learncases.valid` | 为标准校验或者自定义校验相关的内容
 
 | [ ] `com.whalefall.use.apt` | java APT 使用
+| [ ] `threads_report.txt` | thoughtful spring problems
 
 |===
