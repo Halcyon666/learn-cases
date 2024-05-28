@@ -1,0 +1,61 @@
+== How to write mapstruct convert name
+
+If class field begin like `xAxxx`、`xAbxxXxx` both in source class and target class, the first alphabet is lower one, and the second is upper one, althought write the same field in same class, but also need map this field.
+
+`xAdress`
+`aAdress`
+`sMsgHello`
+`sMSG`
+
+[source,java]
+.MapStructEntity1
+----
+@Data
+@Builder
+public class MapStructEntity1 {
+    private String xAdress;
+    private String aAdress;
+    private String sMSG;
+    private String sMsgHello;
+    private String smSgHello1;
+    private String name;
+    private int age;
+    private String sSr;
+}
+----
+
+and the same field class `MapStructEntity2`, only class name is differrent.
+
+[source,java]
+----
+@Data
+@Builder
+public class MapStructEntity2 {
+    private String xAdress;
+    private String aAdress;
+    private String sMSG;
+    private String sMsgHello;
+    private String smSgHello1;
+    private String name;
+    private String ssr;
+}
+----
+
+Here is a right converter to handle all the field mapping.
+
+[source,java]
+.MyConverter it's a pitfall target name must keep the original, and the source must be keep the first alphabet is upper `@Mapping(target = "xAdress", source = "XAdress")`
+----
+@Mapper
+public interface MyConverter {
+    MyConverter INSTANCE = Mappers.getMapper(MyConverter.class);
+
+    @Mapping(target = "xAdress", source = "XAdress")
+    @Mapping(target = "aAdress", source = "AAdress")
+    @Mapping(target = "sMsgHello", source = "SMsgHello")
+    @Mapping(target = "sMSG", source = "SMSG")
+    @Mapping(target = "ssr", source = "SSr")
+    @Mapping(target = "smSgHello1", source = "smSgHello1")
+    MapStructEntity2 entity2ToEntity1(MapStructEntity1 entity1);
+}
+----

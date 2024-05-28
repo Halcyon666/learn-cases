@@ -84,3 +84,6 @@
 思考：
 SPI 包如果不在扫描路径下，会不会被SPI加载
 如果配置了，扫描的时候是如何处理的
+
+
+org.springframework.context.support.AbstractApplicationContext.refresh
