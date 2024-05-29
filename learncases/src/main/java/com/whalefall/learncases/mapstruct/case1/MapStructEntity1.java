@@ -1,4 +1,4 @@
-package com.whalefall.learncases.mapstruct;
+package com.whalefall.learncases.mapstruct.case1;
 
 import lombok.Builder;
 import lombok.Data;

@@ -1,45 +1,12 @@
 == How to write mapstruct convert name
 
+=== case1
 If class field begin like `xAxxx`、`xAbxxXxx` both in source class and target class, the first alphabet is lower one, and the second is upper one, althought write the same field in same class, but also need map this field.
 
-`xAdress`
-`aAdress`
-`sMsgHello`
-`sMSG`
-
-[source,java]
-.MapStructEntity1
-----
-@Data
-@Builder
-public class MapStructEntity1 {
-    private String xAdress;
-    private String aAdress;
-    private String sMSG;
-    private String sMsgHello;
-    private String smSgHello1;
-    private String name;
-    private int age;
-    private String sSr;
-}
-----
-
-and the same field class `MapStructEntity2`, only class name is differrent.
-
-[source,java]
-----
-@Data
-@Builder
-public class MapStructEntity2 {
-    private String xAdress;
-    private String aAdress;
-    private String sMSG;
-    private String sMsgHello;
-    private String smSgHello1;
-    private String name;
-    private String ssr;
-}
-----
+* `xAdress`
+* `aAdress`
+* `sMsgHello`
+* `sMSG`
 
 Here is a right converter to handle all the field mapping.
 
@@ -58,4 +25,129 @@ public interface MyConverter {
     @Mapping(target = "smSgHello1", source = "smSgHello1")
     MapStructEntity2 entity2ToEntity1(MapStructEntity1 entity1);
 }
+----
+
+=== case2
+
+wrong way to use the converter, most of the fields are missing from the converter.
+
+[source,java]
+.Copy the case1 converter just modified the type to List, instead of the original type.
+----
+@SuppressWarnings("unused")
+@Mapper
+public interface MyConverter1 {
+    MyConverter1 INSTANCE = Mappers.getMapper(MyConverter1.class);
+
+    @Mapping(target = "ssr", source = "SSr")
+    @Mapping(target = "xAdress", source = "XAdress")
+    @Mapping(target = "aAdress", source = "AAdress")
+    @Mapping(target = "sMsgHello", source = "SMsgHello")
+    @Mapping(target = "smSgHello1", source = "smSgHello1")
+    @Mapping(target = "sMSG", source = "SMSG")
+    List<MapStructEntity2> entity2ToEntity1(List<MapStructEntity1> entity1);
+}
+----
+
+* generate code below
+
+[source,java]
+----
+@Generated(
+    value = "org.mapstruct.ap.MappingProcessor",
+    date = "2024-05-29T20:32:16+0800",
+    comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.7.jar, environment: Java 17.0.7 (Oracle Corporation)"
+)
+public class MyConverter1Impl implements MyConverter1 {
+
+    @Override
+    public List<MapStructEntity2> entity2ToEntity1(List<MapStructEntity1> entity1) {
+        if ( entity1 == null ) {
+            return null;
+        }
+
+        List<MapStructEntity2> list = new ArrayList<MapStructEntity2>( entity1.size() );
+        for ( MapStructEntity1 mapStructEntity1 : entity1 ) {
+            list.add( mapStructEntity1ToMapStructEntity2( mapStructEntity1 ) );
+        }
+
+        return list;
+    }
+
+    protected MapStructEntity2 mapStructEntity1ToMapStructEntity2(MapStructEntity1 mapStructEntity1) {
+        if ( mapStructEntity1 == null ) {
+            return null;
+        }
+
+        MapStructEntity2.MapStructEntity2Builder mapStructEntity2 = MapStructEntity2.builder();
+
+        mapStructEntity2.smSgHello1( mapStructEntity1.getSmSgHello1() );
+        mapStructEntity2.name( mapStructEntity1.getName() );
+
+        return mapStructEntity2.build();
+    }
+}
+----
+
+=== case3
+
+qualifiedByName use in single bean conversion need the method annotation with @Name("xxx");When using in List<Xxx> the method must no marked with @Named.
+
+[source,java]
+.use list, need not marked with @Named
+----
+@SuppressWarnings("unused")
+@Mapper
+public interface MyConverter2 {
+    MyConverter2 INSTANCE = Mappers.getMapper(MyConverter2.class);
+
+    @Mapping(target = "ssr", source = "SSr", qualifiedByName = "ssr")
+    List<MapStructEntity2> entity2ToEntity1(List<MapStructEntity1> entity1);
+
+    default String ssr(String str) {
+        return "hello srr";
+    }
+}
+----
+
+[source,java]
+----
+@SuppressWarnings("unused")
+@Mapper
+public interface MyConverter3 {
+    MyConverter3 INSTANCE = Mappers.getMapper(MyConverter3.class);
+
+    @Mapping(target = "ssr", source = "SSr", qualifiedByName = "ssr")
+    MapStructEntity2 entity2ToEntity1(MapStructEntity1 entity1);
+
+    @Named("ssr")
+    default String ssr(String str) {
+        return "hello srr";
+    }
+}
+----
+
+==== case4
+
+declare function in enum class, call the method through the `@Named` method
+
+[source,java]
+.method in converter
+----
+    @Named("getStatus")
+    static Status getStatus(String status) {
+        return Status.getStatus(status);
+    }
+----
+
+[source,java]
+.method in Status enum
+----
+    public static Status getStatus(String status) {
+        return switch (status) {
+            case "active" -> Status.A;
+            case "closed" -> Status.C;
+            default -> null;
+        };
+    }
 ----
