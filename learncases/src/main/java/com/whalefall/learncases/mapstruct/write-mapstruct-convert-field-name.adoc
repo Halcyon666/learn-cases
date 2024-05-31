@@ -1,7 +1,20 @@
-== How to write mapstruct convert name
+:project-version: 0.0.1
+:toc:
+:toc-title:
+:toc-placement!:
+:toclevels: 4
 
-=== case1
-If class field begin like `xAxxx`、`xAbxxXxx` both in source class and target class, the first alphabet is lower one, and the second is upper one, althought write the same field in same class, but also need map this field.
+====
+[discrete]
+== Table of Contents --- toc::[]
+====
+
+== cases in mapstruct
+
+=== Case 1 How to Write MapStruct Convert Name
+
+If class fields begin like `xAxxx`, `xAbxxXxx` both in source class and target class, the first alphabet is lower one, and the second is upper one.
+Although they represent the same field in the same class, you still need to map this field.
 
 * `xAdress`
 * `aAdress`
@@ -11,7 +24,7 @@ If class field begin like `xAxxx`、`xAbxxXxx` both in source class and target c
 Here is a right converter to handle all the field mapping.
 
 [source,java]
-.MyConverter it's a pitfall target name must keep the original, and the source must be keep the first alphabet is upper `@Mapping(target = "xAdress", source = "XAdress")`
+.MyConverter - it's a pitfall: target name must keep the original, and the source must keep the first alphabet as upper `@Mapping(target = "xAdress", source = "XAdress")`
 ----
 @Mapper
 public interface MyConverter {
@@ -27,9 +40,9 @@ public interface MyConverter {
 }
 ----
 
-=== case2
+=== Case 2 Wrong way to convert List
 
-wrong way to use the converter, most of the fields are missing from the converter.
+Wrong way to use the converter, most of the fields are missing from the converter.
 
 [source,java]
 .Copy the case1 converter just modified the type to List, instead of the original type.
@@ -49,9 +62,10 @@ public interface MyConverter1 {
 }
 ----
 
-* generate code below
+* Generate code below
 
 [source,java]
+.There are just two fields mapping, losing many fields
 ----
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
@@ -89,12 +103,34 @@ public class MyConverter1Impl implements MyConverter1 {
 }
 ----
 
-=== case3
+[source,java]
+.You can write a single converter function first.
+----
+@SuppressWarnings("unused")
+@Mapper
+public interface MyConverter11 {
+    MyConverter11 INSTANCE = Mappers.getMapper(MyConverter11.class);
 
-qualifiedByName use in single bean conversion need the method annotation with @Name("xxx");When using in List<Xxx> the method must no marked with @Named.
+
+    List<MapStructEntity2> listEntity2ToEntity1(List<MapStructEntity1> entity1);
+
+    @Mapping(target = "ssr", source = "SSr")
+    @Mapping(target = "xAdress", source = "XAdress")
+    @Mapping(target = "aAdress", source = "AAdress")
+    @Mapping(target = "sMsgHello", source = "SMsgHello")
+    @Mapping(target = "smSgHello1", source = "smSgHello1")
+    @Mapping(target = "sMSG", source = "SMSG")
+    MapStructEntity2 entity2ToEntity1(MapStructEntity1 entity1);
+}
+----
+
+=== Case 3 How to use qualifiedByName
+
+`qualifiedByName` use in single bean conversion need the method annotation with `@Name("xxx")`.
+When using in `List<Xxx>`, the method must not be marked with `@Named`.
 
 [source,java]
-.use list, need not marked with @Named
+.Use list, need not be marked with @Named
 ----
 @SuppressWarnings("unused")
 @Mapper
@@ -127,37 +163,42 @@ public interface MyConverter3 {
 }
 ----
 
-==== case4
+=== Case 4 where to put the static enum convert method
 
-declare function in enum class, call the method through the `@Named` method
-
-[source,java]
-.method in converter
-----
-    @Named("getStatus")
-    static Status getStatus(String status) {
-        return Status.getStatus(status);
-    }
-----
+Declare function in enum class, call the method through the `@Named` method.
 
 [source,java]
-.method in Status enum
+.Method in converter
 ----
-    public static Status getStatus(String status) {
-        return switch (status) {
-            case "active" -> Status.A;
-            case "closed" -> Status.C;
-            default -> null;
-        };
-    }
+@Named("getStatus")
+static Status getStatus(String status) {
+    return Status.getStatus(status);
+}
 ----
-
-==== case5
-
-`@BeforeMapping` `@AfterMapping`
 
 [source,java]
-.Only can indicate one @MappingTarget Target, and the @MappingTarget parameter must the converted target type. Another warning is that The declaration of the target class must have all getters and setters. Any point missed will generate the implementation not call the `@BeforeMapping` `@AfterMapping` annotation method.
+.Method in Status enum
+----
+public static Status getStatus(String status) {
+    return switch (status) {
+        case "active" -> Status.A;
+        case "closed" -> Status.C;
+        default -> null;
+    };
+}
+----
+
+=== Case 5 @BeforeMapping and @AfterMapping usage
+
+`@BeforeMapping` and `@AfterMapping`
+
+Only can indicate one `@MappingTarget` Target, and the `@MappingTarget` parameter must be the converted target type.
+
+Another warning is that the declaration of the target class must have all getters and setters.
+
+Any point missed will generate the implementation not calling the `@BeforeMapping` and `@AfterMapping` annotation methods.
+
+[source,java]
 ----
 @SuppressWarnings("all")
 @Mapper(unmappedTargetPolicy = ReportingPolicy.ERROR)
