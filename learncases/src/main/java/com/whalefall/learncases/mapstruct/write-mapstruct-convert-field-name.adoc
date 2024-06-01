@@ -192,11 +192,11 @@ public static Status getStatus(String status) {
 
 === Case 5 @BeforeMapping and @AfterMapping usage
 
-`@BeforeMapping` and `@AfterMapping`
+==== `@Data` `@BeforeMapping` and `@AfterMapping` Usage
 
 Only can indicate one `@MappingTarget` Target, and the `@MappingTarget` parameter must be the converted target type.
 
-Another warning is that the declaration of the target class must have all getters and setters.
+Another warning is that the declaration of the target class must have all getters and setters.Or else use the Builder target type, but can not judge the target type whether it has value or not. Such as `StringUtils.isEmpty(entity4.getName())`
 
 Any point missed will generate the implementation not calling the `@BeforeMapping` and `@AfterMapping` annotation methods.
 
@@ -235,6 +235,43 @@ public interface MyConverter5 {
         if (entity4.getStatus() == null) {
             entity4.setStatus(Status.A);
         }
+    }
+}
+----
+
+==== Builder `@BeforeMapping` and `@AfterMapping` Usage
+
+[source,java]
+----
+@SuppressWarnings("all")
+@Mapper(unmappedTargetPolicy = ReportingPolicy.ERROR)
+public interface MyConverter6 {
+    MyConverter6 INSTANCE = org.mapstruct.factory.Mappers.getMapper(MyConverter6.class);
+
+    @Named("getStatus")
+    static Status getStatus(String status) {
+        return Status.getStatus(status);
+    }
+
+    @SuppressWarnings("unused")
+    @Mapping(target = "status", source = "entity3.status", qualifiedByName = "getStatus")
+    MapStructEntity4 convert(MapStructEntity3 entity3, String haha);
+
+    @BeforeMapping
+    default void beforeMapping(@MappingTarget MapStructEntity4.MapStructEntity4Builder entity4, MapStructEntity3 entity3) {
+        if (entity3 == null) {
+            return;
+        }
+
+        // if entity3 is null, then fill it with default value A
+        if (StringUtils.isEmpty(entity3.getStatus())) {
+            entity3.setStatus("active");
+        }
+    }
+
+    @AfterMapping
+    default void afterMapping(@MappingTarget MapStructEntity4.MapStructEntity4Builder entity4) {
+        // nothing here
     }
 }
 ----
