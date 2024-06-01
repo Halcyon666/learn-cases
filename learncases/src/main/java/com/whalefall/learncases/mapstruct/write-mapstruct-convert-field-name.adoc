@@ -242,6 +242,7 @@ public interface MyConverter5 {
 ==== Builder `@BeforeMapping` and `@AfterMapping` Usage
 
 [source,java]
+.can not use both `@Data` and `@Builder`, the builder will be created, and above before and after method will not be called.
 ----
 @SuppressWarnings("all")
 @Mapper(unmappedTargetPolicy = ReportingPolicy.ERROR)
@@ -272,6 +273,37 @@ public interface MyConverter6 {
     @AfterMapping
     default void afterMapping(@MappingTarget MapStructEntity4.MapStructEntity4Builder entity4) {
         // nothing here
+    }
+}
+----
+
+[source,java]
+----
+@Generated(
+    value = "org.mapstruct.ap.MappingProcessor",
+    date = "2024-06-02T00:25:21+0800",
+    comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.7.jar, environment: Java 17.0.7 (Oracle Corporation)"
+)
+public class MyConverter6Impl implements MyConverter6 {
+
+    @Override
+    public MapStructEntity4 convert(MapStructEntity3 entity3, String haha) {
+        if ( entity3 == null && haha == null ) {
+            return null;
+        }
+
+        MapStructEntity4.MapStructEntity4Builder mapStructEntity4 = MapStructEntity4.builder();
+
+        beforeMapping( mapStructEntity4, entity3 );
+
+        if ( entity3 != null ) {
+            mapStructEntity4.status( MyConverter6.getStatus( entity3.getStatus() ) );
+            mapStructEntity4.name( entity3.getName() );
+        }
+
+        afterMapping( mapStructEntity4 );
+
+        return mapStructEntity4.build();
     }
 }
 ----

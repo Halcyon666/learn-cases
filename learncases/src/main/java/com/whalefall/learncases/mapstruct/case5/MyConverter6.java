@@ -3,8 +3,10 @@ package com.whalefall.learncases.mapstruct.case5;
 import com.whalefall.learncases.mapstruct.case4.MapStructEntity3;
 import com.whalefall.learncases.mapstruct.case4.MapStructEntity4;
 import com.whalefall.learncases.mapstruct.case4.Status;
-import org.mapstruct.*;
-import org.springframework.util.StringUtils;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Named;
+import org.mapstruct.ReportingPolicy;
 
 /**
  * @author Halcyon
@@ -20,12 +22,16 @@ public interface MyConverter6 {
     static Status getStatus(String status) {
         return Status.getStatus(status);
     }
-
-    @SuppressWarnings("unused")
+    /**
+     *   because guard MyConvert5, so comment these methods, and  {@code @Builder} methods
+     * {@link MapStructEntity4}
+//     */
     @Mapping(target = "status", source = "entity3.status", qualifiedByName = "getStatus")
     MapStructEntity4 convert(MapStructEntity3 entity3, String haha);
 
-    @BeforeMapping
+
+
+    /*@BeforeMapping
     default void beforeMapping(@MappingTarget MapStructEntity4.MapStructEntity4Builder entity4, MapStructEntity3 entity3) {
         if (entity3 == null) {
             return;
@@ -35,10 +41,10 @@ public interface MyConverter6 {
         if (StringUtils.isEmpty(entity3.getStatus())) {
             entity3.setStatus("active");
         }
-    }
+    }*/
 
-    @AfterMapping
+    /*@AfterMapping
     default void afterMapping(@MappingTarget MapStructEntity4.MapStructEntity4Builder entity4) {
         // nothing here
-    }
+    }*/
 }

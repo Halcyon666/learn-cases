@@ -1,6 +1,5 @@
 package com.whalefall.learncases.mapstruct.case4;
 
-import lombok.Builder;
 import lombok.Data;
 
 /**
@@ -9,7 +8,7 @@ import lombok.Data;
  * @since 1.0.0
  */
 @Data
-@Builder
+//@Builder
 public class MapStructEntity4 {
     private Status status;
     private String name;
