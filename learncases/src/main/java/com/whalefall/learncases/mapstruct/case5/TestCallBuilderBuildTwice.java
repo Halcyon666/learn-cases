@@ -1,8 +1,5 @@
 package com.whalefall.learncases.mapstruct.case5;
 
-import com.whalefall.learncases.mapstruct.case4.MapStructEntity4;
-import com.whalefall.learncases.mapstruct.case4.Status;
-
 /**
  * @author Halcyon
  * @date 2024/6/1 23:27
@@ -10,7 +7,7 @@ import com.whalefall.learncases.mapstruct.case4.Status;
  */
 @SuppressWarnings("all")
 public class TestCallBuilderBuildTwice {
-    public static void main(String[] args) {
+  /*  public static void main(String[] args) {
         MapStructEntity4.MapStructEntity4Builder mapStructEntity4 = MapStructEntity4.builder();
         mapStructEntity4.name("aa");
         MapStructEntity4 build = getBuild(mapStructEntity4);
@@ -23,5 +20,5 @@ public class TestCallBuilderBuildTwice {
 
     private static MapStructEntity4 getBuild(MapStructEntity4.MapStructEntity4Builder mapStructEntity4) {
         return mapStructEntity4.build();
-    }
+    }*/
 }
