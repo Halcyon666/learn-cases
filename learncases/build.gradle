@@ -14,12 +14,16 @@ test {
 jacocoTestReport {
     // tests are required to run before generating the report
     dependsOn test
+    reports {
+        xml.required = true
+        html.required = true
+    }
 }
 
 jacoco {
     toolVersion = "0.8.11"
     // config layout directory
-    reportsDirectory = layout.buildDirectory.dir("jacoco/reports")
+    reportsDirectory = layout.buildDirectory.dir("jacoco/reports/jacocoTestReport/")
 }
 
 dependencies {

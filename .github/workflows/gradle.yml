@@ -1,6 +1,6 @@
 name: learn cases workflows
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build:
@@ -17,3 +17,14 @@ jobs:
         uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
       - name: Build with Gradle
         run: chmod +x gradlew && ./gradlew build && ./gradlew test --daemon
+
+      - name: Generate coverage badge
+        uses: romeovs/jacoco-badge-generator@v1.0.0
+        with:
+          path: build/jacoco/reports/jacocoTestReport/test/jacocoTestReport.xml
+
+      - name: Upload coverage badge
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage-badge
+          path: jacoco.svg

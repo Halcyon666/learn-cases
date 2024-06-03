@@ -1,5 +1,7 @@
 image::https://github.com/Halcyon666/learn-cases/actions/workflows/gradle.yml/badge.svg[learn cases workflows,link=https://github.com/Halcyon666/learn-cases/actions/workflows/gradle.yml]
 
+image::jacoco.svg[Coverage]
+
 == Java Learn
 
 [cols="1,1",options="header"]
