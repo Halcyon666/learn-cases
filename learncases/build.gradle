@@ -23,7 +23,7 @@ jacocoTestReport {
 jacoco {
     toolVersion = "0.8.11"
     // config layout directory
-    reportsDirectory = layout.buildDirectory.dir("jacoco/reports/jacocoTestReport/")
+    reportsDirectory = layout.buildDirectory.dir("jacoco/")
 }
 
 dependencies {

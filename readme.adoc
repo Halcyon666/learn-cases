@@ -1,6 +1,6 @@
 image::https://github.com/Halcyon666/learn-cases/actions/workflows/gradle.yml/badge.svg[learn cases workflows,link=https://github.com/Halcyon666/learn-cases/actions/workflows/gradle.yml]
 
-image::jacoco.svg[Coverage]
+image:https://codecov.io/gh/Halcyon666/learn-cases/branch/main/graph/badge.svg?token=3J6PSD42B4[Codecov Coverage,link=https://codecov.io/gh/Halcyon666/learn-cases]
 
 == Java Learn
 
