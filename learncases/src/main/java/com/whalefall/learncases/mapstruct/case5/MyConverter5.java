@@ -30,14 +30,14 @@ public interface MyConverter5 {
             return;
         }
         // if entity3 is null, then fill it with default value A
-        if (StringUtils.hasText(entity3.getStatus())) {
+        if (!StringUtils.hasText(entity3.getStatus())) {
             entity3.setStatus("active");
         }
     }
 
     @AfterMapping
     default void afterMapping(@MappingTarget MapStructEntity4 entity4) {
-        if (StringUtils.hasText(entity4.getName())) {
+        if (!StringUtils.hasText(entity4.getName())) {
             entity4.setName("whalefall");
         }
         if (entity4.getStatus() == null) {
