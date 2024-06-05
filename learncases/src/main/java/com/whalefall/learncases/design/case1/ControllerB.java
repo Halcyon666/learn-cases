@@ -1,4 +1,4 @@
-package com.whalefall.learncases.design;
+package com.whalefall.learncases.design.case1;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +29,7 @@ public class ControllerB implements IService {
         return "testb";
     }
 
+    @SuppressWarnings("all")
     @Override
     public boolean doService() {
         log.info("do B service");
@@ -37,6 +38,7 @@ public class ControllerB implements IService {
         return true;
     }
 
+    @SuppressWarnings("all")
     @Override
     public void doLog() {
         if (1 == 1)

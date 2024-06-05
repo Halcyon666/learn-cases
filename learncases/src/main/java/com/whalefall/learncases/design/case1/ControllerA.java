@@ -1,4 +1,4 @@
-package com.whalefall.learncases.design;
+package com.whalefall.learncases.design.case1;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;

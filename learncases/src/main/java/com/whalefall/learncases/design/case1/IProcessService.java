@@ -1,4 +1,4 @@
-package com.whalefall.learncases.design;
+package com.whalefall.learncases.design.case1;
 
 import java.util.function.Consumer;
 
