@@ -74,7 +74,7 @@ public class AspectMyAnnotation {
             assert paramNames != null;
             context.setVariable(paramNames[i], args[i]);
         }
-        // 表达式从上下文中计算出实际参数值 那么就可以解析出方法形参的某属性值，return “xiaoming”;
+
         /*如:
             @annotation(key="#student.name")
              method(Student student)

@@ -6,9 +6,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
@@ -36,18 +36,21 @@ public class StabilityApiExample {
         String apiKey = System.getenv("STABILITY_API_KEY");
 
         if (apiKey == null) {
-            throw new RuntimeException("Missing Stability API key.");
+            throw new ImageException("Missing Stability API key.");
+        }
+        HttpResponse response;
+        try (CloseableHttpClient httpClient = HttpClients.createDefault()){
+            HttpPost httpPost = getHttpPost(apiHost, engineId, apiKey);
+
+            // Execute HTTP request
+            response = httpClient.execute(httpPost);
+        } catch (Exception e) {
+            throw new ImageException(e);
         }
 
-        HttpClient httpClient = HttpClients.createDefault();
-
-        HttpPost httpPost = getHttpPost(apiHost, engineId, apiKey);
-
-        // Execute HTTP request
-        HttpResponse response = httpClient.execute(httpPost);
 
         if (response.getStatusLine().getStatusCode() != 200) {
-            throw new RuntimeException("Non-200 response: " + response.getStatusLine().getReasonPhrase());
+            throw new ImageException("Non-200 response: " + response.getStatusLine().getReasonPhrase());
         }
 
         // Process response
@@ -55,7 +58,7 @@ public class StabilityApiExample {
 
         for (String base64Image : artifacts) {
             LocalDateTime now = LocalDateTime.now();
-            String randomUuidStr = now.toString().replaceAll(":", "");
+            String randomUuidStr = now.toString().replace(":", "");
 
             // Decode and save the image
             byte[] imageBytes = Base64.decodeBase64(base64Image);
@@ -119,10 +122,10 @@ public class StabilityApiExample {
     private static List<String> parseJsonResponse(Object obj) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode rootNode;
-        if (obj instanceof String) {
-            rootNode = objectMapper.readTree((String) obj);
-        } else if (obj instanceof InputStream) {
-            rootNode = objectMapper.readTree((InputStream) obj);
+        if (obj instanceof String str) {
+            rootNode = objectMapper.readTree(str);
+        } else if (obj instanceof InputStream stream) {
+            rootNode = objectMapper.readTree(stream);
         } else {
             throw new IllegalArgumentException();
         }

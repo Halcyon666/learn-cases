@@ -20,7 +20,7 @@ public class FilterConfig {
     @Bean
     public FilterRegistrationBean<Filter> registFilter() {
         FilterRegistrationBean<Filter> registration = new FilterRegistrationBean<>();
-        registration.setFilter((Filter) new LogFilter());
+        registration.setFilter(new LogFilter());
         registration.addUrlPatterns("/*");
         registration.setName("LogFilter");
         registration.setOrder(1);
