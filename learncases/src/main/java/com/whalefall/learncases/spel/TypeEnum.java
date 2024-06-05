@@ -1,15 +1,15 @@
 package com.whalefall.learncases.spel;
 
+import lombok.Getter;
+
+@Getter
 public enum TypeEnum {
     TYPE1("SPRING"),
     TYPE2("WINNER");
-    private final String type;
+    private final String season;
 
-    TypeEnum(String type) {
-        this.type = type;
+    TypeEnum(String season) {
+        this.season = season;
     }
 
-    public String getType() {
-        return type;
-    }
 }

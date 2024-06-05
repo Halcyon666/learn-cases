@@ -52,19 +52,18 @@ public class AspectMyAnnotation {
             log.info("{} Type2", this.getClass().getSimpleName());
         }
         String spel = myAnnotation.spel();
-        String s = generateKeyBySpEL(spel, p);
-        log.info("spel {} {}", s, myAnnotation.value());
-        return p.proceed();
+
+        return String.format("Season:%s- UpperWorld:%s", value.getSeason(), generateKeyBySpEL(spel, p));
     }
 
-    public String generateKeyBySpEL(String spELString, ProceedingJoinPoint joinPoint) {
+    public String generateKeyBySpEL(String spelString, ProceedingJoinPoint joinPoint) {
         // 通过joinPoint获取被注解方法
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
         Method method = methodSignature.getMethod();
         // 使用spring的DefaultParameterNameDiscoverer获取方法形参名数组
         String[] paramNames = nameDiscoverer.getParameterNames(method);
         // 解析过后的Spring表达式对象
-        Expression expression = parser.parseExpression(spELString);
+        Expression expression = parser.parseExpression(spelString);
         // spring的表达式上下文对象
         EvaluationContext context = new StandardEvaluationContext();
         // 通过joinPoint获取被注解方法的形参
