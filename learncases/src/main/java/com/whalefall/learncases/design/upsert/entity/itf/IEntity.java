@@ -1,4 +1,4 @@
-package com.whalefall.learncases.upsert.entity.itf;
+package com.whalefall.learncases.design.upsert.entity.itf;
 
 /**
  * @author Halcyon

@@ -1,7 +1,7 @@
-package com.whalefall.learncases.upsert.entity;
+package com.whalefall.learncases.design.upsert.entity;
 
-import com.whalefall.learncases.upsert.entity.converter.MyEntityConverter;
-import com.whalefall.learncases.upsert.entity.itf.IEntity;
+import com.whalefall.learncases.design.upsert.entity.converter.MyEntityConverter;
+import com.whalefall.learncases.design.upsert.entity.itf.IEntity;
 import lombok.Builder;
 import lombok.Getter;
 

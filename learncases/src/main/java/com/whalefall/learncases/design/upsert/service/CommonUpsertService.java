@@ -1,10 +1,10 @@
-package com.whalefall.learncases.upsert.service;
+package com.whalefall.learncases.design.upsert.service;
 
 
-import com.whalefall.learncases.upsert.entity.itf.IEntity;
-import com.whalefall.learncases.upsert.entity.itf.Insert;
-import com.whalefall.learncases.upsert.entity.itf.Update;
-import com.whalefall.learncases.upsert.repository.IRepository;
+import com.whalefall.learncases.design.upsert.entity.itf.IEntity;
+import com.whalefall.learncases.design.upsert.entity.itf.Insert;
+import com.whalefall.learncases.design.upsert.entity.itf.Update;
+import com.whalefall.learncases.design.upsert.repository.IRepository;
 
 /**
  * This is common used class, so type is generic type

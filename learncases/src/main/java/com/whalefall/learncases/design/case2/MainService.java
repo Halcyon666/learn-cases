@@ -11,6 +11,21 @@ public class MainService {
         abstractClazz.setAddress("Beijing");
         abstractClazz.setPostcode("518116");
         abstractClazz.setPhone("12321321231");
+        if (abstractClazz instanceof ConcreteImpl concrete) {
+            concrete.setAge(25);
+        }
+        return abstractClazz;
+    }
+
+
+    public AbstractClazz doSomethingUseAbstract(AbstractClazz abstractClazz) {
+        abstractClazz.setName("Halcyon");
+        abstractClazz.setAddress("Beijing");
+        abstractClazz.setPostcode("518116");
+        abstractClazz.setPhone("12321321231");
+        if (abstractClazz instanceof ConcreteImpl concrete) {
+            concrete.setAge(25);
+        }
         return abstractClazz;
     }
 }

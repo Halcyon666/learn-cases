@@ -1,8 +1,8 @@
-package com.whalefall.learncases.upsert.repository;
+package com.whalefall.learncases.design.upsert.repository;
 
-import com.whalefall.learncases.upsert.entity.itf.IEntity;
-import com.whalefall.learncases.upsert.entity.itf.Insert;
-import com.whalefall.learncases.upsert.entity.itf.Update;
+import com.whalefall.learncases.design.upsert.entity.itf.IEntity;
+import com.whalefall.learncases.design.upsert.entity.itf.Insert;
+import com.whalefall.learncases.design.upsert.entity.itf.Update;
 
 import java.util.Optional;
 

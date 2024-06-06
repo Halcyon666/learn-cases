@@ -1,0 +1,19 @@
+== display abstract usage
+
+all decorations can be used in abstract class
+[source, java]
+----
+public String address;
+@SuppressWarnings("all")
+protected String name;
+String phone;
+private String postcode;
+----
+
+and can see all the fields in the abstract class.
+
+you can down-casting the abstract class to the abstract class, and then use.
+
+but the generic method is better, you can directly use the concrete class without down-casting, and if define in the class level, you can define the type of the concrete class.
+
+but the generic method is more complicated.

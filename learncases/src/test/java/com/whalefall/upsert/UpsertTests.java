@@ -1,10 +1,10 @@
 package com.whalefall.upsert;
 
-import com.whalefall.learncases.upsert.entity.MyEntity;
-import com.whalefall.learncases.upsert.entity.MyInsertEntity;
-import com.whalefall.learncases.upsert.entity.MyUpdateEntity;
-import com.whalefall.learncases.upsert.repository.Repository;
-import com.whalefall.learncases.upsert.service.CommonUpsertService;
+import com.whalefall.learncases.design.upsert.entity.MyEntity;
+import com.whalefall.learncases.design.upsert.entity.MyInsertEntity;
+import com.whalefall.learncases.design.upsert.entity.MyUpdateEntity;
+import com.whalefall.learncases.design.upsert.repository.Repository;
+import com.whalefall.learncases.design.upsert.service.CommonUpsertService;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;

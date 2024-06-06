@@ -1,6 +1,6 @@
-package com.whalefall.learncases.upsert.entity;
+package com.whalefall.learncases.design.upsert.entity;
 
-import com.whalefall.learncases.upsert.entity.itf.Insert;
+import com.whalefall.learncases.design.upsert.entity.itf.Insert;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;

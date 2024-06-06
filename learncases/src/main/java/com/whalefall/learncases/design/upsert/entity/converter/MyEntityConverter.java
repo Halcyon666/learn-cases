@@ -1,8 +1,8 @@
-package com.whalefall.learncases.upsert.entity.converter;
+package com.whalefall.learncases.design.upsert.entity.converter;
 
-import com.whalefall.learncases.upsert.entity.MyEntity;
-import com.whalefall.learncases.upsert.entity.MyInsertEntity;
-import com.whalefall.learncases.upsert.entity.MyUpdateEntity;
+import com.whalefall.learncases.design.upsert.entity.MyEntity;
+import com.whalefall.learncases.design.upsert.entity.MyInsertEntity;
+import com.whalefall.learncases.design.upsert.entity.MyUpdateEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

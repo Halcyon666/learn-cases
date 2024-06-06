@@ -1,8 +1,8 @@
-package com.whalefall.learncases.upsert.repository;
+package com.whalefall.learncases.design.upsert.repository;
 
-import com.whalefall.learncases.upsert.entity.MyEntity;
-import com.whalefall.learncases.upsert.entity.MyInsertEntity;
-import com.whalefall.learncases.upsert.entity.MyUpdateEntity;
+import com.whalefall.learncases.design.upsert.entity.MyEntity;
+import com.whalefall.learncases.design.upsert.entity.MyInsertEntity;
+import com.whalefall.learncases.design.upsert.entity.MyUpdateEntity;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Optional;
