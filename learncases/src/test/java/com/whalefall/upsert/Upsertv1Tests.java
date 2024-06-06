@@ -1,10 +1,10 @@
 package com.whalefall.upsert;
 
-import com.whalefall.learncases.design.upsert.entity.MyEntity;
-import com.whalefall.learncases.design.upsert.entity.MyInsertEntity;
-import com.whalefall.learncases.design.upsert.entity.MyUpdateEntity;
-import com.whalefall.learncases.design.upsert.repository.Repository;
-import com.whalefall.learncases.design.upsert.service.CommonUpsertService;
+import com.whalefall.learncases.design.upsert.v1.entity.MyEntity;
+import com.whalefall.learncases.design.upsert.v1.entity.MyInsertEntity;
+import com.whalefall.learncases.design.upsert.v1.entity.MyUpdateEntity;
+import com.whalefall.learncases.design.upsert.v1.repository.Repository;
+import com.whalefall.learncases.design.upsert.v1.service.CommonUpsertService;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -15,7 +15,8 @@ import java.util.stream.Stream;
 
 import static org.mockito.Mockito.*;
 
-class UpsertTests {
+class UpsertV1Tests {
+
 
     private static Stream<Arguments> provideEntities() {
         return Stream.of(

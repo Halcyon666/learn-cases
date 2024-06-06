@@ -1,16 +1,14 @@
-package com.whalefall.learncases.design.upsert;
+package com.whalefall.learncases.design.upsert.v2;
 
-import com.whalefall.learncases.design.upsert.entity.MyEntity;
-import com.whalefall.learncases.design.upsert.entity.MyInsertEntity;
-import com.whalefall.learncases.design.upsert.entity.MyUpdateEntity;
-import com.whalefall.learncases.design.upsert.repository.Repository;
-import com.whalefall.learncases.design.upsert.service.CommonUpsertService;
+import com.whalefall.learncases.design.upsert.v2.entity.MyEntity;
+import com.whalefall.learncases.design.upsert.v2.repository.Repository;
+import com.whalefall.learncases.design.upsert.v2.service.CommonUpsertService;
 
 public class Main {
     public static void main(String[] args) {
 
         Repository myEntityRepository = new Repository();
-        CommonUpsertService<MyEntity, MyInsertEntity, MyUpdateEntity> commonUpsertService = new CommonUpsertService<>();
+        CommonUpsertService commonUpsertService = new CommonUpsertService();
 
         // 调用 upsert 方法
         commonUpsertService.upsertNoUsed(MyEntity.builder().id("123").hasQueryResult(true).build(), myEntityRepository);

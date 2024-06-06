@@ -1,7 +1,7 @@
-package com.whalefall.learncases.design.upsert.entity;
+package com.whalefall.learncases.design.upsert.v2.entity;
 
-import com.whalefall.learncases.design.upsert.entity.converter.MyEntityConverter;
-import com.whalefall.learncases.design.upsert.entity.itf.IEntity;
+import com.whalefall.learncases.design.upsert.v2.entity.converter.MyEntityConverter;
+import com.whalefall.learncases.design.upsert.v2.entity.itf.IEntity;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -12,7 +12,7 @@ import lombok.Getter;
  */
 @Builder
 @Getter
-public class MyEntity implements IEntity<MyInsertEntity, MyUpdateEntity> { // Note: Use Object as a placeholder for now
+public class MyEntity implements IEntity { // Note: Use Object as a placeholder for now
     private String id;
     private boolean hasQueryResult;
 

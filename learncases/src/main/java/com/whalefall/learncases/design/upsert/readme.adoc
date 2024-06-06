@@ -1,37 +1,6 @@
-== upsert 通用逻辑实现
+===
 
-本设计使用泛型和Optional实现相应逻辑
+compare using generic interface with interface
 
-image::https://s2.loli.net/2024/05/25/cVOMKZuHvI4RfiQ.png[design picture]
-
-== the core code
-
-First I have two types I U, `I extends Insert`, `U extends Update`, I is Insert object, U is Update object.
-
-E is the DomainEntity, and this class has two convert method to I, U, so the `E extends IEntity<I, U>`,
-
-[source,java]
-.Core service to achieve upsert, if Optional not hold null, the `repository::update` call, otherwise call the `repository.insert(xxx)`, and both `upsertNoUsed`, `upsert` are same logical
-----
-public class CommonUpsertService<E extends IEntity<I, U>, I extends Insert, U extends Update> {
-
-    public void upsertNoUsed(E entity, IRepository<E, I, U> repository) {
-        repository.query(entity).ifPresentOrElse(
-                hasQueryResult -> repository.update(entity.convertToUpdateEntity()),
-                () -> repository.insert(entity.convertToInsertEntity())
-        );
-    }
-
-    public void upsert(E entity, IRepository<E, I, U> repository) {
-        repository.query(entity)
-                .map(hasQueryResult -> entity.convertToUpdateEntity())
-                .ifPresentOrElse(
-                        repository::update,
-                        () -> repository.insert(entity.convertToInsertEntity())
-                );
-    }
-}
-----
-
-
-
+* v1 used
+* v2 not used

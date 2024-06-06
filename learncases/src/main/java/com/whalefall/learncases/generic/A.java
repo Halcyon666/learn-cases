@@ -14,6 +14,8 @@ import java.util.Collection;
 @SuppressWarnings("all")
 @Slf4j
 public class A<T> {
+
+    @SuppressWarnings("unchecked")
     public static <F> Collection<F> testWild1(Collection<F> c) {
 //         c.add((F) new Integer("1"));
         c.add((F) "1231");
