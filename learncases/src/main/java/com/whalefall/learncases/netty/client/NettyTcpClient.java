@@ -537,17 +537,21 @@ public class NettyTcpClient implements IMSClientInterface {
                     } catch (Exception ex) {
                         log.error(ex.getMessage(), ex);
                     }
-                    try {
-                        channel.eventLoop().shutdownGracefully();
-                    } catch (Exception ex) {
-                        log.error(ex.getMessage(), ex);
-                    }
+                    shutdown();
 
                     channel = null;
                 }
             }
         } catch (Exception ex) {
             log.error("关闭channel出错，reason:{}", ex.getMessage());
+        }
+    }
+
+    private void shutdown() {
+        try {
+            channel.eventLoop().shutdownGracefully();
+        } catch (Exception ex) {
+            log.error(ex.getMessage(), ex);
         }
     }
 

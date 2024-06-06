@@ -16,6 +16,7 @@ class ReentrantLockFutureTests {
     static final String MSG = "hello world from SampleFutureTests";
 
     @Test
+    @SuppressWarnings("all")
     void testFutureNotTimeOut() throws ExecutionException, InterruptedException, TimeoutException {
         final ReentrantLockFuture future = new ReentrantLockFuture();
         new Thread(() -> {

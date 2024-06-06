@@ -6,6 +6,7 @@ package com.whalefall.learncases.netty.server.protobuf;
 
 import com.google.protobuf.AbstractMessage;
 
+@SuppressWarnings("all")
 public final class MessageProtobuf {
     private static final com.google.protobuf.Descriptors.Descriptor
             internal_static_Msg_descriptor;

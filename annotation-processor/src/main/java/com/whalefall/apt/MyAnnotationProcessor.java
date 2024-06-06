@@ -21,6 +21,7 @@ import java.util.Set;
 @SupportedSourceVersion(SourceVersion.RELEASE_17)
 public class MyAnnotationProcessor extends AbstractProcessor {
 
+    @SuppressWarnings("unused")
     private Messager messager;
 
     @Override
@@ -31,6 +32,7 @@ public class MyAnnotationProcessor extends AbstractProcessor {
     }
 
     @Override
+    @SuppressWarnings("all")
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
         for (TypeElement t : annotations) {
             Map<String, Property> props = new LinkedHashMap<>();
@@ -49,7 +51,7 @@ public class MyAnnotationProcessor extends AbstractProcessor {
 
                 if (!found)
                     processingEnv.getMessager().printMessage(Diagnostic.Kind.ERROR, "@Property must be applied to getXxx, setXxx, or isXxx method", e);
-                else if (beanClassName == null)
+                else if (null == beanClassName)
                     beanClassName = ((TypeElement) e.getEnclosingElement()).getQualifiedName()
                             .toString();
             }
@@ -68,6 +70,7 @@ public class MyAnnotationProcessor extends AbstractProcessor {
      * @param beanClassName the name of the bean class
      * @param props         a map of property names and their annotations
      */
+    @SuppressWarnings("unused")
     private void writeBeanInfoFile(String beanClassName, Map<String, Property> props)
             throws IOException {
         JavaFileObject sourceFile = processingEnv.getFiler().createSourceFile(

@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
  * @date 2022-06-29 21:54
  */
 @Slf4j
+@SuppressWarnings("all")
 public class Son extends Father {
 //    @Override
 //    public final void work() {

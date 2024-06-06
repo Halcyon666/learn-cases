@@ -21,6 +21,7 @@ class LatchFutureTests {
     }
 
     @Test
+    @SuppressWarnings("all")
     void testFutureTimeOut() {
         final LatchFuture latchFuture = new LatchFuture();
         new Thread(() -> {

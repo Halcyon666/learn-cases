@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ValidatedPhoneController {
 
     @PostMapping("/addValidatePhone")
+    @SuppressWarnings("all")
     public String submitForm(@Valid ValidatedPhone validatedPhone/*, BindingResult result*/) {
        /* if (result.hasErrors()) {
             return result.getFieldError().getDefaultMessage();

@@ -1,5 +1,6 @@
 package com.whalefall.use.apt;
 
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.greenrobot.eventbus.Subscribe;
 
@@ -10,6 +11,7 @@ import org.greenrobot.eventbus.Subscribe;
  * @date 2023/7/1
  * @since 1.0.0
  */
+@Getter
 @Slf4j
 public class Person {
 
@@ -18,6 +20,7 @@ public class Person {
     private String name;
 
     @BuilderProperty
+    @SuppressWarnings("unused")
     public void setAge(int age) {
         this.age = age;
     }
@@ -28,7 +31,8 @@ public class Person {
     }
 
     @Subscribe
+    @SuppressWarnings("unused")
     public void onEvent(Person p) {
-        log.info("p = " + p);
+        log.info("p = {}", p);
     }
 }

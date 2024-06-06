@@ -16,6 +16,7 @@ class MyCompletableFutureTests {
     static final String MSG = "hello world from SampleFutureTests";
 
     @Test
+    @SuppressWarnings("all")
     void testFutureNotTimeOut() throws ExecutionException, InterruptedException, TimeoutException {
         final MyCompletableFuture completableFuture = new MyCompletableFuture();
         new Thread(() -> {

@@ -37,6 +37,7 @@ class SampleFutureTests {
     }
 
     @Test
+    @SuppressWarnings("all")
     void testFutureTimeOut() {
         final SampleFuture sampleFuture = new SampleFuture();
         new Thread(() -> {

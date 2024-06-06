@@ -13,6 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 @Validated
 public class UserService {
     public String testValid(@Valid @RequestBody UserAccount userAccount) {
-        return "ok";
+        return "ok"+userAccount;
     }
 }

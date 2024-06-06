@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 @Slf4j
+@SuppressWarnings("all")
 public class RestTemplateExample {
 
     public static void main(String[] args) {

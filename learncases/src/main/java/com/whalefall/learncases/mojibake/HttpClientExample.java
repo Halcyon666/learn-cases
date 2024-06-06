@@ -26,15 +26,7 @@ public class HttpClientExample {
         // 创建HttpClient
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
             // 创建HttpPost请求
-            HttpPost httpPost = new HttpPost(url);
-
-            // 设置请求体
-            StringEntity stringEntity = new StringEntity(requestBody, StandardCharsets.UTF_8);
-            httpPost.setEntity(stringEntity);
-//            httpPost.setHeader("Content-Type", "text/plain; charset=UTF-8");
-            // both this and above is work
-            httpPost.setHeader("Content-Type", "text/plain");
-            httpPost.setHeader("Accept-Charset", StandardCharsets.UTF_8.name());
+            HttpPost httpPost = getHttpPost(url, requestBody);
             // 发送请求并获取响应
             try (CloseableHttpResponse response = httpClient.execute(httpPost)) {
                 // 处理响应
@@ -49,5 +41,20 @@ public class HttpClientExample {
                 }
             }
         }
+    }
+
+    @SuppressWarnings("all")
+    private static HttpPost getHttpPost(String url, String requestBody) {
+        HttpPost httpPost = new HttpPost(url);
+
+        // 设置请求体
+        StringEntity stringEntity = new StringEntity(requestBody, StandardCharsets.UTF_8);
+        httpPost.setEntity(stringEntity);
+        // this worked
+        // httpPost.setHeader("Content-Type", "text/plain; charset=UTF-8");
+        // both this and above is work
+        httpPost.setHeader("Content-Type", "text/plain");
+        httpPost.setHeader("Accept-Charset", StandardCharsets.UTF_8.name());
+        return httpPost;
     }
 }

@@ -1,7 +1,7 @@
 package com.whalefall.learncases.future;
 
 
-import org.springframework.lang.Nullable;
+import jakarta.annotation.Nullable;
 import org.springframework.util.Assert;
 
 import java.util.concurrent.ExecutionException;

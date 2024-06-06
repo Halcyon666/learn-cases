@@ -17,8 +17,9 @@ public class NettyServerTask {
         // 执行定时任务的逻辑
         try {
             NettyServer.start(5555);
-        } catch (Exception e) {
+        } catch (InterruptedException e) {
             log.error("launch netty server occurs exception {} ", e.getMessage(), e);
+            Thread.currentThread().interrupt();
         }
     }
 }
