@@ -16,6 +16,7 @@ import io.netty.handler.timeout.IdleStateHandler;
 import io.netty.util.internal.StringUtil;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
@@ -33,8 +34,6 @@ import java.util.concurrent.TimeUnit;
  */
 @Slf4j
 public class NettyTcpClient implements IMSClientInterface {
-
-    private static volatile NettyTcpClient instance;
 
     private Bootstrap bootstrap;
     private Channel channel;
@@ -78,17 +77,20 @@ public class NettyTcpClient implements IMSClientInterface {
     private NettyTcpClient() {
     }
 
+    @SuppressWarnings("all")
+    private static volatile NettyTcpClient instance;
+
     public static NettyTcpClient getInstance() {
-        if (null == instance) {
+        if (instance == null) {
             synchronized (NettyTcpClient.class) {
-                if (null == instance) {
+                if (instance == null) {
                     instance = new NettyTcpClient();
                 }
             }
         }
-
         return instance;
     }
+
 
     @Override
     public void init(ArrayList<String> serverUrlList, OnEventListener listener, IMSConnectStatusCallback callback) {
@@ -414,22 +416,7 @@ public class NettyTcpClient implements IMSClientInterface {
         return msgTimeoutTimerManager;
     }
 
-    /**
-     * 初始化bootstrap
-     */
-    private void initBootstrap() {
-        EventLoopGroup loopGroup = new NioEventLoopGroup(4);
-        bootstrap = new Bootstrap();
-        bootstrap.group(loopGroup).channel(NioSocketChannel.class);
-        // 设置该选项以后，如果在两小时内没有数据的通信时，TCP会自动发送一个活动探测数据报文
-        bootstrap.option(ChannelOption.SO_KEEPALIVE, true);
-        // 设置禁用nagle算法
-        bootstrap.option(ChannelOption.TCP_NODELAY, true);
-        // 设置连接超时时长
-        bootstrap.option(ChannelOption.CONNECT_TIMEOUT_MILLIS, getConnectTimeout());
-        // 设置初始化Channel
-        bootstrap.handler(new TCPChannelInitializerHandler(this));
-    }
+
 
     /**
      * 回调ims连接状态
@@ -532,19 +519,23 @@ public class NettyTcpClient implements IMSClientInterface {
                     removeHandler(TCPReadHandler.class.getSimpleName());
                     removeHandler(IdleStateHandler.class.getSimpleName());
                 } finally {
-                    try {
-                        channel.close();
-                    } catch (Exception ex) {
-                        log.error(ex.getMessage(), ex);
-                    }
-                    shutdown();
-
-                    channel = null;
+                    closeAndShutdown();
                 }
             }
         } catch (Exception ex) {
             log.error("关闭channel出错，reason:{}", ex.getMessage());
         }
+    }
+
+    private void closeAndShutdown() {
+        try {
+            channel.close();
+        } catch (Exception ex) {
+            log.error(ex.getMessage(), ex);
+        }
+        shutdown();
+
+        channel = null;
     }
 
     private void shutdown() {
@@ -555,37 +546,9 @@ public class NettyTcpClient implements IMSClientInterface {
         }
     }
 
-    /**
-     * 从应用层获取网络是否可用
-     *
-     * @return
-     */
-    private boolean isNetworkAvailable() {
-        if (mOnEventListener != null) {
-            return mOnEventListener.isNetworkAvailable();
-        }
 
-        return false;
-    }
 
-    /**
-     * 真正连接服务器的地方
-     */
-    private void toServer() {
-        try {
-            channel = bootstrap.connect(currentHost, currentPort).sync().channel();
-        } catch (Exception e) {
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e1) {
-                log.error(e1.getMessage(), e1);
-                Thread.currentThread().interrupt();
-            }
-            log.error(String.format("连接Server(ip[%s], port[%s])失败", currentHost, currentPort));
-            channel = null;
-            Thread.currentThread().interrupt();
-        }
-    }
+
 
     /**
      * 重连任务
@@ -596,6 +559,55 @@ public class NettyTcpClient implements IMSClientInterface {
 
         public ResetConnectRunnable(boolean isFirst) {
             this.isFirst = isFirst;
+        }
+
+        /**
+         * 真正连接服务器的地方
+         */
+        private void toServer() {
+            try {
+                channel = bootstrap.connect(currentHost, currentPort).sync().channel();
+            } catch (Exception e) {
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e1) {
+                    log.error(e1.getMessage(), e1);
+                    Thread.currentThread().interrupt();
+                }
+                log.error(String.format("连接Server(ip[%s], port[%s])失败", currentHost, currentPort));
+                channel = null;
+                Thread.currentThread().interrupt();
+            }
+        }
+
+        /**
+         * 从应用层获取网络是否可用
+         *
+         * @return
+         */
+        private boolean isNetworkAvailable() {
+            if (mOnEventListener != null) {
+                return !mOnEventListener.isNetworkAvailable();
+            }
+
+            return true;
+        }
+
+        /**
+         * 初始化bootstrap
+         */
+        private void initBootstrap() {
+            EventLoopGroup loopGroup1 = new NioEventLoopGroup(4);
+            bootstrap = new Bootstrap();
+            bootstrap.group(loopGroup1).channel(NioSocketChannel.class);
+            // 设置该选项以后，如果在两小时内没有数据的通信时，TCP会自动发送一个活动探测数据报文
+            bootstrap.option(ChannelOption.SO_KEEPALIVE, true);
+            // 设置禁用nagle算法
+            bootstrap.option(ChannelOption.TCP_NODELAY, true);
+            // 设置连接超时时长
+            bootstrap.option(ChannelOption.CONNECT_TIMEOUT_MILLIS, getConnectTimeout());
+            // 设置初始化Channel
+            bootstrap.handler(new TCPChannelInitializerHandler(NettyTcpClient.this));
         }
 
         @Override
@@ -610,7 +622,7 @@ public class NettyTcpClient implements IMSClientInterface {
                 loopGroup.destroyWorkLoopGroup();
 
                 while (!isClosed) {
-                    if (!isNetworkAvailable()) {
+                    if (isNetworkAvailable()) {
                         try {
                             Thread.sleep(2000);
                         } catch (InterruptedException e) {
@@ -678,7 +690,7 @@ public class NettyTcpClient implements IMSClientInterface {
         private int connectServer() {
             // 如果服务器地址无效，直接回调连接状态，不再进行连接
             // 有效的服务器地址示例：127.0.0.1 8860
-            if (serverUrlList == null || serverUrlList.isEmpty()) {
+            if (!CollectionUtils.isEmpty(serverUrlList)) {
                 return IMSConfig.CONNECT_STATE_FAILURE;
             }
 
@@ -692,14 +704,11 @@ public class NettyTcpClient implements IMSClientInterface {
                 String[] address = serverUrl.split(" ");
                 for (int j = 1; j <= IMSConfig.DEFAULT_RECONNECT_COUNT; j++) {
                     // 如果ims已关闭，或网络不可用，直接回调连接状态，不再进行连接
-                    if (isClosed || !isNetworkAvailable()) {
+                    if (isClosed || isNetworkAvailable()) {
                         return IMSConfig.CONNECT_STATE_FAILURE;
                     }
 
-                    // 回调连接状态
-                    if (connectStatus != IMSConfig.CONNECT_STATE_CONNECTING) {
-                        onConnectStatusCallback(IMSConfig.CONNECT_STATE_CONNECTING);
-                    }
+                    callbackConnect();
                     log.info(String.format("正在进行『%s』的第『%d』次连接，当前重连延时时长为『%dms』", serverUrl, j, j * getReconnectInterval()));
 
                     try {
@@ -707,12 +716,9 @@ public class NettyTcpClient implements IMSClientInterface {
                         currentPort = Integer.parseInt(address[1]);// 获取port
                         toServer();// 连接服务器
 
-                        // channel不为空，即认为连接已成功
-                        if (channel != null) {
-                            return IMSConfig.CONNECT_STATE_SUCCESSFUL;
-                        } else {
-                            // 连接失败，则线程休眠n * 重连间隔时长
-                            Thread.sleep((long) j * getReconnectInterval());
+                        Integer connectStateSuccessful = getInteger(j);
+                        if (connectStateSuccessful != null) {
+                            return connectStateSuccessful;
                         }
                     } catch (InterruptedException e) {
                         close();
@@ -724,6 +730,24 @@ public class NettyTcpClient implements IMSClientInterface {
 
             // 执行到这里，代表连接失败
             return IMSConfig.CONNECT_STATE_FAILURE;
+        }
+
+        private void callbackConnect() {
+            // 回调连接状态
+            if (connectStatus != IMSConfig.CONNECT_STATE_CONNECTING) {
+                onConnectStatusCallback(IMSConfig.CONNECT_STATE_CONNECTING);
+            }
+        }
+
+        private Integer getInteger(long j) throws InterruptedException {
+            // channel不为空，即认为连接已成功
+            if (channel != null) {
+                return IMSConfig.CONNECT_STATE_SUCCESSFUL;
+            } else {
+                // 连接失败，则线程休眠n * 重连间隔时长
+                Thread.sleep(j * getReconnectInterval());
+            }
+            return null;
         }
     }
 }
