@@ -85,6 +85,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
                 break;
             }
 
+
             case 2001: {
                 // 收到2001或3001消息，返回给客户端消息发送状态报告
                 String fromId = message.getHead().getFromId();
@@ -104,7 +105,6 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
             }
 
             case 3001: {
-                // TODO 群聊，自己实现吧，toId可以是群id，根据群id查找所有在线用户的id，循环遍历channel发送即可。
                 break;
             }
 
@@ -113,6 +113,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
         }
     }
 
+    @SuppressWarnings("all")
     public static class ChannelContainer {
 
         private static final ServerHandler.ChannelContainer INSTANCE = new ServerHandler.ChannelContainer();
