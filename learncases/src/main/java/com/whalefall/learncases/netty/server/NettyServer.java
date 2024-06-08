@@ -64,7 +64,8 @@ public class NettyServer {
                     pipeline.addLast("frameEncoder", new LengthFieldPrepender(2))
                             .addLast(new ProtobufEncoder())
                             .addLast(new IdleStateHandler(30, 15, 0))
-                            .addLast("frameDecoder", new LengthFieldBasedFrameDecoder(65535, 0, 2, 0, 2))
+                            .addLast("frameDecoder",
+                                    new LengthFieldBasedFrameDecoder(65535, 0, 2, 0, 2))
                             .addLast(new ProtobufDecoder(MessageProtobuf.Msg.getDefaultInstance()))
                             .addLast(new ServerHandler());
                 }

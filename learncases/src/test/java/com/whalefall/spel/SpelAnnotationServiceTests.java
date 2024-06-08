@@ -1,6 +1,7 @@
-package com.whalefall.learncases.spel;
+package com.whalefall.spel;
 
 import com.whalefall.AbstractLearncasesApplicationTests;
+import com.whalefall.learncases.spel.SpelAnnotationService;
 import jakarta.annotation.Resource;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;

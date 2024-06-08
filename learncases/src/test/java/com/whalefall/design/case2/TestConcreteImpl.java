@@ -1,4 +1,4 @@
-package com.whalefall.com.whalefall.learncases.design.case2;
+package com.whalefall.design.case2;
 
 import com.whalefall.learncases.design.case2.AbstractClazz;
 import com.whalefall.learncases.design.case2.ConcreteImpl;

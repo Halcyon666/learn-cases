@@ -1,5 +1,6 @@
-package com.whalefall.learncases.future;
+package com.whalefall.future;
 
+import com.whalefall.learncases.future.LatchFuture;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

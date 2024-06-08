@@ -1,5 +1,6 @@
-package com.whalefall.learncases.future;
+package com.whalefall.future;
 
+import com.whalefall.learncases.future.MyCompletableFuture;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -11,29 +12,28 @@ import java.util.concurrent.TimeoutException;
  * @author Halcyon
  * @since 1.0.0
  */
-class ReentrantLockFutureTests {
+class MyCompletableFutureTests {
 
     static final String MSG = "hello world from SampleFutureTests";
 
     @Test
     @SuppressWarnings("all")
     void testFutureNotTimeOut() throws ExecutionException, InterruptedException, TimeoutException {
-        final ReentrantLockFuture future = new ReentrantLockFuture();
+        final MyCompletableFuture completableFuture = new MyCompletableFuture();
         new Thread(() -> {
             try {
                 Thread.sleep(500); // Simulate some delay
-                future.putMsgAndReleaseLock(MSG);
+                completableFuture.putMsgAndReleaseLock(MSG);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
         }).start();
-        Assertions.assertEquals(MSG, future.get(1, TimeUnit.SECONDS));
+        Assertions.assertEquals(MSG, completableFuture.get(1, TimeUnit.SECONDS));
     }
 
     @Test
     void testFutureTimeOut() {
-        final ReentrantLockFuture future = new ReentrantLockFuture();
-        Assertions.assertThrows(TimeoutException.class, () -> future.get(1, TimeUnit.SECONDS));
+        final MyCompletableFuture completableFuture = new MyCompletableFuture();
+        Assertions.assertThrows(TimeoutException.class, () -> completableFuture.get(1, TimeUnit.SECONDS));
     }
 }
-
