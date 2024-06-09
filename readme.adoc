@@ -11,7 +11,7 @@ image:https://codecov.io/gh/Halcyon666/learn-cases/branch/main/graph/badge.svg?t
 | JDK               | 17.0.7
 |===
 
-== Modules Have
+== Modules
 
 - learn-cases
 * annotation-processor
