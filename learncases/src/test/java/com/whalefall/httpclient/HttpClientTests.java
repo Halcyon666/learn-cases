@@ -22,7 +22,7 @@ import java.util.List;
 /**
  * Controller  {@code @PostMapping(value = "/processTextPlain", produces = "text/plain; charset=UTF-8")}
  *
- * <p>1. {@link this#getHttpPost1(String, String)}
+ * <p>1. {@link HttpClientTests#getHttpPost1(String, String)}
  * <pre>
  *   {@code
  *   HttpPost httpPost = new HttpPost(url);
@@ -30,14 +30,14 @@ import java.util.List;
  *   httpPost.setHeader("Accept-Charset", StandardCharsets.UTF_8.name());
  *   }
  * </pre>
- * <p>2. {@link this#getHttpPost2(String, String)}
+ * <p>2. {@link HttpClientTests#getHttpPost2(String, String)}
  * <pre>
  *   {@code
  *   HttpPost httpPost = new HttpPost(url);
  *   httpPost.setHeader("Content-Type", "text/plain; charset=UTF-8");
  *   }
  * </pre>
- * <p>3. {@link this#getHttpPost3(String, String)}
+ * <p>3. {@link HttpClientTests#getHttpPost3(String, String)}
  * <pre>
  *   {@code
  *   HttpPost httpPost = new HttpPost(url);
@@ -111,7 +111,6 @@ class HttpClientTests extends AbstractTest {
     }
 
     String doHttpPost(HttpPost httpPost) throws IOException {
-
 
         // 创建HttpClient
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
