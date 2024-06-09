@@ -1,6 +1,6 @@
 package com.whalefall.drools;
 
-import com.whalefall.AbstractLearncasesApplicationTests;
+import com.whalefall.AbstractTest;
 import com.whalefall.learncases.drools.PersonService;
 import jakarta.annotation.Resource;
 import org.assertj.core.api.Assertions;
@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
  * @date 2024/5/24 1:06
  * @since 1.0.0
  */
-class DroolsTests extends AbstractLearncasesApplicationTests {
+class DroolsTests extends AbstractTest {
     @Resource
     private PersonService personService;
 

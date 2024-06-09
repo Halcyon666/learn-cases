@@ -1,6 +1,6 @@
 package com.whalefall.spel;
 
-import com.whalefall.AbstractLearncasesApplicationTests;
+import com.whalefall.AbstractTest;
 import com.whalefall.learncases.spel.SpelAnnotationService;
 import jakarta.annotation.Resource;
 import org.assertj.core.api.Assertions;
@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
  * @date 2024/6/5 23:10
  * @since 1.0.0
  */
-class SpelAnnotationServiceTests extends AbstractLearncasesApplicationTests {
+class SpelAnnotationServiceTests extends AbstractTest {
     @Resource
     private SpelAnnotationService spelAnnotationService;
     @Test

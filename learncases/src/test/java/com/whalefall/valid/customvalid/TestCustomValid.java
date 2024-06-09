@@ -1,6 +1,6 @@
 package com.whalefall.valid.customvalid;
 
-import com.whalefall.AbstractLearncasesApplicationTests;
+import com.whalefall.AbstractTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -14,7 +14,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @date 2022-05-22 21:44
  */
 
-class TestCustomValid extends AbstractLearncasesApplicationTests {
+class TestCustomValid extends AbstractTest {
 
     @Test
     void testCustomValid() throws Exception {

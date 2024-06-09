@@ -19,6 +19,6 @@ public class MojibakeController {
         log.info("requestBody: {}, content-type: {}", requestBody, contentType);
 
         // 返回响应
-        return new ResponseEntity<>("Message processed successfully", HttpStatus.OK);
+        return new ResponseEntity<>("Message processed successfully, origin request is %s".formatted(requestBody), HttpStatus.OK);
     }
 }

@@ -1,6 +1,6 @@
 package com.whalefall.spi;
 
-import com.whalefall.AbstractLearncasesApplicationTests;
+import com.whalefall.AbstractTest;
 import com.whalefall.learncases.springspi.SPIService;
 import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Assertions;
@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
  * @date 2024/5/19
  * @since 1.0.0
  */
-class TestSPIService extends AbstractLearncasesApplicationTests {
+class TestSPIService extends AbstractTest {
     @Resource
     private SPIService spiService;
 

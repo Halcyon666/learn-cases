@@ -10,7 +10,8 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @SpringBootTest(classes = LearncasesApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-public abstract class AbstractLearncasesApplicationTests {
+
+public abstract class AbstractTest {
     @Autowired
     public MockMvc mockMvc;
 

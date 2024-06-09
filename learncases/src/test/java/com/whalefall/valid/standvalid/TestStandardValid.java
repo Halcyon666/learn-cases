@@ -1,6 +1,6 @@
 package com.whalefall.valid.standvalid;
 
-import com.whalefall.AbstractLearncasesApplicationTests;
+import com.whalefall.AbstractTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -17,7 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @date 2022-05-22 21:44
  */
 
-class TestStandardValid extends AbstractLearncasesApplicationTests {
+class TestStandardValid extends AbstractTest {
 
 
     @Test
