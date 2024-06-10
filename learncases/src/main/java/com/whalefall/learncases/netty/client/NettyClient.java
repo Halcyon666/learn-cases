@@ -1,10 +1,5 @@
 package com.whalefall.learncases.netty.client;
 
-/**
- * @author Halcyon
- * @date 2024/6/8 9:45
- * @since 1.0.0
- */
 
 import com.whalefall.learncases.netty.server.protobuf.MessageProtobuf;
 import io.netty.bootstrap.Bootstrap;
@@ -23,9 +18,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.Assert;
 
 @Slf4j
+@SuppressWarnings("unused")
 public class NettyClient {
+    private NettyClient() {
+    }
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void start() throws InterruptedException {
         EventLoopGroup group = new NioEventLoopGroup();
         try {
             Bootstrap bootstrap = new Bootstrap();
