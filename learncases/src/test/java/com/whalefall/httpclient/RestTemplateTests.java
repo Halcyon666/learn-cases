@@ -34,7 +34,7 @@ class RestTemplateTests extends AbstractTest {
         headers.setContentType(MediaType.valueOf("text/plain;charset=UTF-8"));
         return headers;
     };
-    // this will failed
+    // this will fail
     private final Supplier<HttpHeaders> consumer3 = () -> {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.TEXT_PLAIN);

@@ -1,9 +1,9 @@
 package com.whalefall.design.case2;
 
 import com.whalefall.learncases.design.case2.AbstractClazz;
+import com.whalefall.learncases.design.case2.AbstractClazzService;
+import com.whalefall.learncases.design.case2.AbstractClazzService2;
 import com.whalefall.learncases.design.case2.ConcreteImpl;
-import com.whalefall.learncases.design.case2.MainService;
-import com.whalefall.learncases.design.case2.MainService2;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -14,16 +14,16 @@ import org.junit.jupiter.api.Test;
  */
 class TestConcreteImpl {
     /**
-     * {@link MainService#doSomething(AbstractClazz)}
+     * {@link AbstractClazzService#doSomething(AbstractClazz)}
      * better than
-     * {@link MainService#doSomethingUseAbstract(AbstractClazz)}
+     * {@link AbstractClazzService#doSomethingUseAbstract(AbstractClazz)}
      */
     @Test
     void test() {
-        MainService mainService = new MainService();
+        AbstractClazzService abstractClazzService = new AbstractClazzService();
         ConcreteImpl concrete = new ConcreteImpl();
         concrete.setAge(18);
-        concrete = mainService.doSomething(concrete);
+        concrete = abstractClazzService.doSomething(concrete);
 
 
         Assertions.assertThat(concrete).isNotNull();
@@ -36,10 +36,10 @@ class TestConcreteImpl {
 
     @Test
     void test2() {
-        MainService2<ConcreteImpl> mainService2 = new MainService2<>();
+        AbstractClazzService2<ConcreteImpl> abstractClazzService2 = new AbstractClazzService2<>();
         ConcreteImpl concrete = new ConcreteImpl();
         concrete.setAge(18);
-        concrete = mainService2.doSomething(concrete);
+        concrete = abstractClazzService2.doSomething(concrete);
 
         Assertions.assertThat(concrete).isNotNull();
         Assertions.assertThat(concrete.getAge()).isEqualTo(25);
@@ -51,10 +51,10 @@ class TestConcreteImpl {
 
     @Test
     void test1() {
-        MainService mainService = new MainService();
+        AbstractClazzService abstractClazzService = new AbstractClazzService();
         ConcreteImpl concrete = new ConcreteImpl();
         concrete.setAge(18);
-       AbstractClazz abstractClazz = mainService.doSomethingUseAbstract(concrete);
+       AbstractClazz abstractClazz = abstractClazzService.doSomethingUseAbstract(concrete);
         System.out.println("abstractClazz = " + abstractClazz);
         if (abstractClazz instanceof ConcreteImpl concrete1) {
             Assertions.assertThat(concrete1.getAge()).isEqualTo(25);

@@ -30,7 +30,7 @@ public class SProcessService {
         service.doServiceBefore();
     }
 
-    // Executes the main service actions
+    // Executes the service actions
     private void service(@NotNull IService service) {
         service.doService();
     }

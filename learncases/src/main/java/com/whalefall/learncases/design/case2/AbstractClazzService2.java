@@ -5,7 +5,7 @@ package com.whalefall.learncases.design.case2;
  * @date 2024/6/5 19:38
  * @since 1.0.0
  */
-public class MainService2<S extends AbstractClazz> {
+public class AbstractClazzService2<S extends AbstractClazz> {
     public  S doSomething(S abstractClazz) {
         abstractClazz.setName("Halcyon");
         abstractClazz.setAddress("Beijing");

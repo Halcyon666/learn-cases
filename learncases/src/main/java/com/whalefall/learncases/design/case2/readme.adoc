@@ -1,10 +1,11 @@
 == compare using generic abstract class with abstract
+
 [source,java]
 ----
 /**
-*  Generic usage in method level {@link com.whalefall.learncases.design.case2.MainService#doSomething(com.whalefall.learncases.design.case2.AbstractClazz)}
-*  Generic usage in class level {@link com.whalefall.learncases.design.case2.MainService2#doSomething(com.whalefall.learncases.design.case2.AbstractClazz)}
-* Abstract class {@link com.whalefall.learncases.design.case2.MainService#doSomethingUseAbstract(com.whalefall.learncases.design.case2.AbstractClazz)}
+*  Generic usage in method level {@link com.whalefall.learncases.design.case2.AbstractClazzService#doSomething(com.whalefall.learncases.design.case2.AbstractClazz)}
+*  Generic usage in class level {@link com.whalefall.learncases.design.case2.AbstractClazzService2#doSomething(com.whalefall.learncases.design.case2.AbstractClazz)}
+* Abstract class {@link com.whalefall.learncases.design.case2.AbstractClazzService#doSomethingUseAbstract(com.whalefall.learncases.design.case2.AbstractClazz)}
 */
 ----
 

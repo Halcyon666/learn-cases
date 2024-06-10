@@ -1,6 +1,9 @@
-package com.whalefall.learncases.future;
+package com.whalefall.future;
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Arrays;
 import java.util.List;
@@ -8,23 +11,15 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-/**
- * code from <a href="https://medium.com/@vikas.taank_40391/java-advanced-concurrency-interview-questions-69449655ba9b">...</a>
- *
- * @author Vikas Taank
- * @date 2024/1/7 23:09
- * @since 1.0.0
- */
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
 @Slf4j
-public class ParallelProcessingAcceptAsync {
+@ExtendWith(MockitoExtension.class)
+class ParallelProcessingAcceptAsyncTests {
 
-    public static void main(String[] args) {
-        acceptAsync();
-        completableFutureWithException();
-        completableFutureHasNull();
-    }
-
-    private static void acceptAsync() {
+    @Test
+    void testAcceptAsync() {
         long startTime = System.nanoTime();
         ExecutorService executor = Executors.newFixedThreadPool(5);
         List<Integer> data = Arrays.asList(1, 2, 3, 4, 5);
@@ -42,6 +37,7 @@ public class ParallelProcessingAcceptAsync {
                             .map(CompletableFuture::join)
                             .mapToInt(Integer::intValue).sum();
                     log.info("Sum of squared numbers: {}", sum);
+                    assertEquals(55, sum, "Sum of squared numbers should be 55");
                 }, executor);
 
         allFutures.join(); // Wait for all futures including the result processing to complete
@@ -51,13 +47,8 @@ public class ParallelProcessingAcceptAsync {
         log.info("Execution Time: {} ms", duration);
     }
 
-    /**
-     * aim at {@link CompletableFuture#allOf(CompletableFuture[])}
-     * <p>
-     * with a CompletionException holding this exception as its cause.
-     */
-    @SuppressWarnings("all")
-    private static void completableFutureWithException() {
+    @Test
+    void testCompletableFutureWithException() {
         CompletableFuture<String> future1 = CompletableFuture.supplyAsync(() -> "Hello");
         CompletableFuture<Integer> future2 = CompletableFuture.supplyAsync(() -> {
             throw new RuntimeException("Oops!");
@@ -67,21 +58,20 @@ public class ParallelProcessingAcceptAsync {
                 .thenAccept(v -> log.info("All futures completed normally"))
                 .exceptionally(ex -> {
                     log.info("Exception occurred: {}", ex.getCause().getMessage());
+                    assertEquals("Oops!", ex.getCause().getMessage(), "Exception message should be 'Oops!'");
                     return null;
                 });
 
         allFutures.join();
     }
 
-    /**
-     * aim at {@link CompletableFuture#allOf(CompletableFuture[])}
-     * <p>
-     * If no CompletableFutures are
-     * provided, returns a CompletableFuture completed with the value
-     * {@code null}.
-     */
-    private static void completableFutureHasNull() {
+    @Test
+    void testCompletableFutureHasNull() {
         CompletableFuture<Void> allFutures = CompletableFuture.allOf();
-        allFutures.thenAcceptAsync(v -> log.info("Result: {}", v)).join();
+        allFutures.thenAcceptAsync(v -> {
+            log.info("Result: {}", v);
+            assertNull(v, "Result should be null");
+        }).join();
     }
 }
+
