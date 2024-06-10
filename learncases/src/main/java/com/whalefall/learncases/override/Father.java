@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @SuppressWarnings("unused")
 @Slf4j
-public class Father {
+public class Father extends Grandfather{
     public static void work1() {
         extracted();
     }
@@ -46,6 +46,7 @@ public class Father {
     }
 
     @SuppressWarnings("all")
+    @Override
     public void print(final String s) {
         log.info("father print {}", s);
     }
