@@ -4,7 +4,7 @@
 .模块包结构
 |===
 | Task | Description
-| [x] `com.whalefall.learncases.bytes` | 生僻字问题
+| [x] `callc` | 生僻字问题
 | [x] `com.whalefall.learncases.design` | 模板设计模式
 | [x] `com.whalefall.learncases.drools` | drools规则引擎简单使用
 | [x] `com.whalefall.learncases.exception` | 为全局异常处理

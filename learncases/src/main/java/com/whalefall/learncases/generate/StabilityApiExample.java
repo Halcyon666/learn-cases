@@ -30,6 +30,7 @@ import java.util.zip.GZIPInputStream;
  */
 public class StabilityApiExample {
 
+    // only this extra main method defined in this project
     public static void main(String[] args) throws IOException {
         String engineId = "stable-diffusion-v1-6";
         String apiHost = "https://api.stability.ai";
