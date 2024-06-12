@@ -1,0 +1,4 @@
+=== dll生成说明
+
+https://github.com/Halcyon666/HelloJNI[compile share lib gihub repo]
+
