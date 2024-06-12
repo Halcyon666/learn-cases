@@ -3,9 +3,9 @@ package com.whalefall.callc;
 
 import com.whalefall.learncases.callc.HelloJNI;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
 
 /**
  * @author Halcyon
@@ -23,7 +23,7 @@ public class HelloJNITest {
     }
 
     @Test
-    @Disabled
+    @Ignore
     // need a so file
     public void testSayHello() {
         HelloJNI helloJNI = new HelloJNI();
