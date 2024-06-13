@@ -3,9 +3,8 @@ package com.whalefall.callc;
 
 import com.whalefall.learncases.callc.HelloJNI;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Ignore;
-import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author Halcyon
@@ -14,21 +13,30 @@ import org.junit.jupiter.api.Assertions;
  */
 
 @Slf4j
-public class HelloJNITest {
+class HelloJNITest {
     static {
         String projectRoot = System.getProperty("user.dir");
-        String libPath = projectRoot + "/lib/libhello.dll";
+        String osName = System.getProperty("os.name").toLowerCase();
+        String libPath;
+
+        if (osName.contains("win")) {
+            libPath = projectRoot + "/lib/libhello.dll";
+        } else if (osName.contains("nix") || osName.contains("nux") || osName.contains("mac")) {
+            libPath = projectRoot + "/lib/libhello.so";
+        } else {
+            throw new UnsupportedOperationException("Unsupported operating system: " + osName);
+        }
+
         System.load(libPath);
-        log.info("successfully loaded {}", libPath);
+        log.info("Successfully loaded {}", libPath);
     }
 
     @Test
-    @Ignore
-    // need a so file
-    public void testSayHello() {
+    void testSayHello() {
         HelloJNI helloJNI = new HelloJNI();
         String s = helloJNI.sayHello();
         Assertions.assertEquals("Hello from C!", s);
     }
 }
+
 
