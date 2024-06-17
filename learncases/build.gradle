@@ -36,7 +36,7 @@ dependencies {
     implementation 'org.greenrobot:eventbus-java:3.3.1'
     implementation 'org.apache.httpcomponents:httpclient:4.5.14' exclude group: 'commons-logging'
     // https://mvnrepository.com/artifact/io.netty/netty-all
-    implementation 'io.netty:netty-all:4.1.110.Final'
+    implementation 'io.netty:netty-all:4.1.111.Final'
     // https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java
     implementation 'com.google.protobuf:protobuf-java:4.27.1'
     // https://mvnrepository.com/artifact/com.alibaba.fastjson2/fastjson2
