@@ -15,7 +15,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework:spring-context:6.1.9'
+    implementation 'org.springframework:spring-context:6.1.10'
 }
 
 group = rootProject.group
