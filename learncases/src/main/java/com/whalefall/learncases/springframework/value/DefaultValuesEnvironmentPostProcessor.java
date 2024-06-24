@@ -38,6 +38,7 @@ public class DefaultValuesEnvironmentPostProcessor implements EnvironmentPostPro
             MapPropertySource defaultPropertySource = new MapPropertySource("defaultValues", defaultValues);
             MutablePropertySources propertySources = environment.getPropertySources();
 
+            // 这段代码的目的是确保 defaultPropertySource 的插入位置合理，使其既能作为默认值的提供者，又不会覆盖已有的系统属性
             // 添加默认值源到第一位，确保它有最高优先级
             if (propertySources.contains("systemProperties")) {
                 propertySources.addAfter("systemProperties", defaultPropertySource);

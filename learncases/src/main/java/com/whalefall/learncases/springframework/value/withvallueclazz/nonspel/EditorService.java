@@ -1,4 +1,4 @@
-package com.whalefall.learncases.springframework.value.withvallueclazz;
+package com.whalefall.learncases.springframework.value.withvallueclazz.nonspel;
 
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;

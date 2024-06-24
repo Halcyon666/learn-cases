@@ -56,36 +56,5 @@ public class MethodParameterInjectionService {
 
 ```
 
-```java
-@Component
-@Slf4j
-public class NestedObjectService {
-
-    private final DatabaseProperties databaseProperties;
-
-    public NestedObjectService(DatabaseProperties databaseProperties) {
-        this.databaseProperties = databaseProperties;
-    }
-
-    @PostConstruct
-    public void printDatabaseUrl() {
-        log.info(databaseProperties.getUrl());
-    }
-}
-
-@Setter
-@Getter
-@Component
-@ConfigurationProperties(prefix = "database")
-class DatabaseProperties {
-
-    private String url;
-    private String username;
-    private String password;
-
-    // Getters and Setters
-
-}
-```
 
 > 目前还不支持`SPEL` 表达式

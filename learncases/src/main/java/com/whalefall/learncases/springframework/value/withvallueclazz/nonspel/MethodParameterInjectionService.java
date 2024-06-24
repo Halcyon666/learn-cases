@@ -1,4 +1,4 @@
-package com.whalefall.learncases.springframework.value.withvallueclazz;
+package com.whalefall.learncases.springframework.value.withvallueclazz.nonspel;
 
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -16,14 +16,13 @@ public class MethodParameterInjectionService {
         this.appName = appName;
     }
 
+    @SuppressWarnings("all")
     @Value("${app.version}")
     public void setAppVersion(String appVersion) {
-        log.info("App Version: {}", appVersion);
     }
 
 
-    @SuppressWarnings("unused")
+    @SuppressWarnings("all")
     public void setAppVersion(@Value("${app.version1}") String appVersion1, String hh, @Value("${app.flagA}") Boolean flagA) {
-        log.info("App Version1: {}", appVersion1);
     }
 }
