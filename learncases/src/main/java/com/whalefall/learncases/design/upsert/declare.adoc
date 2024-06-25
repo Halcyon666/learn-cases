@@ -1,3 +1,8 @@
+compare using generic interface with interface
+
+* v1 used
+* v2 not used
+
 == upsert 通用逻辑实现
 
 本设计使用泛型和Optional实现相应逻辑
@@ -32,6 +37,3 @@ public class CommonUpsertService<E extends IEntity<I, U>, I extends Insert, U ex
     }
 }
 ----
-
-
-

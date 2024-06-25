@@ -31,10 +31,10 @@ public class AspectMyAnnotation {
     private final DefaultParameterNameDiscoverer nameDiscoverer = new DefaultParameterNameDiscoverer();
 
     @Pointcut("@annotation(com.whalefall.learncases.spel.MyAnnotation)")
-    public void mypointcut() {
+    public void pointcut() {
     }
 
-    @Around(value = "mypointcut()")
+    @Around(value = "pointcut()")
     public Object aspectA(ProceedingJoinPoint p) throws Throwable {
         MethodSignature sign = (MethodSignature) p.getSignature();
         Method method = sign.getMethod();

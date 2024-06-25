@@ -4,24 +4,29 @@
 .模块包结构
 |===
 | Task | Description
-| [x] `callc` | 生僻字问题
-| [x] `com.whalefall.learncases.design` | 模板设计模式
+| [x] `com.whalefall.learncases.bytes` | 生僻字长度问题
+| [x] `com.whalefall.learncases.callc` | Java调用C
+| [x] `com.whalefall.learncases.design` | 模板设计模式 泛型VS接口、抽象类使用的差别
+| [x] `com.whalefall.learncases.design.generic` | 泛型使用
 | [x] `com.whalefall.learncases.drools` | drools规则引擎简单使用
-| [x] `com.whalefall.learncases.exception` | 为全局异常处理
+| [x] `com.whalefall.learncases.exception` | 全局异常处理
 | [x] `com.whalefall.learncases.filter` | 过滤器
-| [ ] `com.whalefall.learncases.future` | Future CompletableFuture使用
-| [x] `com.whalefall.learncases.generic` | 泛型使用
+| [x] `com.whalefall.learncases.future` | 使用四种方法实现异步任务跨线程通信
+| [x] `com.whalefall.learncases.generate` | MybatisPlus代码生成工具
 | [x] `com.whalefall.learncases.interceptor` | 拦截器
 | [x] `com.whalefall.learncases.lambda` | lambda用法
+| [x] `com.whalefall.learncases.mapstruct` | mapstruct使用
 | [x] `com.whalefall.learncases.mojibake` | RestTemplate MVC请求中文乱码问题
-| [ ] `com.whalefall.learncases.netty` | ProtoBuf协议使用Netty
+| [x] `com.whalefall.learncases.netty` | ProtoBuf协议使用Netty
 | [x] `com.whalefall.learncases.override` | static方法可以重载隐藏final方法可重载不可重写
 | [x] `com.whalefall.learncases.spel` | SPEL方法注解简单使用
+| [x] `com.whalefall.learncases.springframework.value` | SPEL方法注解简单使用
+| [x] `com.whalefall.staticmock.MyServiceTest` | 单元测试静态Mock
 | [x] `com.whalefall.learncases.springspi` | spring SPI用法
-| [x] `com.whalefall.learncases.testsingleton` | 单例设计模式下非static对象也会只有一份
-| [x] `com.whalefall.learncases.threadlocal` | threadlocal使用
-| [x] `com.whalefall.learncases.upsert` | upsert通用逻辑实现
+| [x] `com.whalefall.learncases.testsingleton.Singleton` | 单例设计模式下非static对象也会只有一份
+| [x] `com.whalefall.threadlocal.ThreadLocalTests` | threadlocal使用
 | [x] `com.whalefall.learncases.valid` | 为标准校验或者自定义校验相关的内容
+| [x] `com.whalefall.use.apt.EventBusIndexTest` | 为标准校验或者自定义校验相关的内容
 
 | [ ] `com.whalefall.use.apt` | java APT 使用
 | [ ] `threads_report.txt` | thoughtful spring problems

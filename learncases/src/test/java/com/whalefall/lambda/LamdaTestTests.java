@@ -1,7 +1,7 @@
 package com.whalefall.lambda;
 
 
-import com.whalefall.learncases.lambda.LamdTest;
+import com.whalefall.learncases.lambda.LamdaTest;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -13,11 +13,11 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @SuppressWarnings("unchecked")
-class LamdTestTests {
+class LamdaTestTests {
 
     @Test
     void testGetList() {
-        List<Integer> list = LamdTest.getList();
+        List<Integer> list = LamdaTest.getList();
         assertEquals(1, list.size(), "List size should be 1");
         assertEquals(24, list.get(0), "List element should be 24");
     }
@@ -27,7 +27,7 @@ class LamdTestTests {
         Consumer<Boolean> falseConsumer = mock(Consumer.class);
         Runnable trueRunnable = mock(Runnable.class);
 
-        LamdTest.isTureOrFalse(false).trueOrFalseHandle(trueRunnable, falseConsumer);
+        LamdaTest.isTureOrFalse(false).trueOrFalseHandle(trueRunnable, falseConsumer);
         verify(falseConsumer, times(1)).accept(false);
         verify(trueRunnable, never()).run();
     }
@@ -37,7 +37,7 @@ class LamdTestTests {
         Consumer<Boolean> falseConsumer = mock(Consumer.class);
         Runnable trueRunnable = mock(Runnable.class);
 
-        LamdTest.isTureOrFalse(true).trueOrFalseHandle(trueRunnable, falseConsumer);
+        LamdaTest.isTureOrFalse(true).trueOrFalseHandle(trueRunnable, falseConsumer);
         verify(trueRunnable, times(1)).run();
         verify(falseConsumer, never()).accept(any());
     }
@@ -45,7 +45,7 @@ class LamdTestTests {
     @Test
     void testLog() {
         // This is a simple example to verify that the log method works
-        Assertions.assertThatNoException().isThrownBy(() -> LamdTest.log(null));
+        Assertions.assertThatNoException().isThrownBy(() -> LamdaTest.log(null));
     }
 }
 

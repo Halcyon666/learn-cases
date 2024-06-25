@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Slf4j
 @RestController
-public class ControllerB implements IService {
+public class ServiceB implements IService {
     /**
      * 构造方法注入时，变量名会首先默认匹配类名；
      * 如果不如任何类名相符则会报错；
      */
     private final IProcessService newProcessService;
 
-    public ControllerB(IProcessService newProcessService) {
+    public ServiceB(IProcessService newProcessService) {
         this.newProcessService = newProcessService;
     }
 

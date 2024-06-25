@@ -7,18 +7,18 @@ import java.util.function.Consumer;
 
 /**
  * 定义一个封装processService 实现IService的对象 进行复用
- *
+ * {@link this#handle(Consumer)}
  * @author WhaleFall
  * @date 2022-07-24 6:34
  */
 @Slf4j
 @Component
-public class AService implements IService {
+public class ServiceA implements IService {
 
     //    @Resource(name="processService")
     private final IProcessService processService;
 
-    public AService(IProcessService processService) {
+    public ServiceA(IProcessService processService) {
         this.processService = processService;
     }
 

@@ -32,8 +32,9 @@ public class ExceptionHandlingController {
     // Total control - set up a model and return the view name yourself. Or
     // consider subclassing ExceptionHandlerExceptionResolver (see below).
     @ExceptionHandler(Exception.class)
+    @SuppressWarnings("all")
     public ModelAndView handleError(HttpServletRequest req, Exception ex) {
-        log.error("Request: " + req.getRequestURL() + " raised " + ex);
+        log.error("Request: {} raised", req.getRequestURL(), ex);
 
         ModelAndView mav = new ModelAndView();
         mav.addObject("exception", ex);

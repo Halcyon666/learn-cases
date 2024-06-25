@@ -1,6 +1,6 @@
 package com.whalefall.design.generic;
 
-import com.whalefall.learncases.generic.Impl;
+import com.whalefall.learncases.design.generic.Impl;
 import com.whalefall.learncases.override.Father;
 import com.whalefall.learncases.override.Son;
 import lombok.extern.slf4j.Slf4j;

@@ -1,6 +1,6 @@
 package com.whalefall.design.generic;
 
-import com.whalefall.learncases.generic.A;
+import com.whalefall.learncases.design.generic.A;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 

@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.stream.Stream;
 
 @Slf4j
-public class LamdTest {
-    private LamdTest() {
+public class LamdaTest {
+    private LamdaTest() {
     }
 
     public static List<Integer> getList() {

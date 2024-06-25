@@ -1,6 +1,0 @@
-===
-
-compare using generic interface with interface
-
-* v1 used
-* v2 not used

@@ -17,7 +17,7 @@ public class LogFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         long start = System.currentTimeMillis();
         filterChain.doFilter(servletRequest, servletResponse);
-        log.info("Log Filter1 Execute cost=" + (System.currentTimeMillis() - start));
+        log.info("Log Filter1 Execute cost={}", System.currentTimeMillis() - start);
     }
 
 }

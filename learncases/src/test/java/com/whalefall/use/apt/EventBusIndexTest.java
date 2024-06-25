@@ -21,20 +21,19 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.meta.SimpleSubscriberInfo;
 import org.greenrobot.eventbus.meta.SubscriberInfoIndex;
 import org.greenrobot.eventbus.meta.SubscriberMethodInfo;
-import org.junit.Assert;
-import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
-public class EventBusIndexTest {
+class EventBusIndexTest {
     private String value;
 
     /**
      * Ensures the index is actually used and no reflection fall-back kicks in.
      */
     @Test
-    public void testManualIndexWithoutAnnotation() {
+    void testManualIndexWithoutAnnotation() {
         SubscriberInfoIndex index = subscriberClass -> {
-            Assert.assertEquals(EventBusIndexTest.class, subscriberClass);
+            Assertions.assertEquals(EventBusIndexTest.class, subscriberClass);
             SubscriberMethodInfo[] methodInfos = {
                     new SubscriberMethodInfo("someMethodWithoutAnnotation", String.class)
             };
@@ -45,7 +44,7 @@ public class EventBusIndexTest {
         eventBus.register(this);
         eventBus.post("Yepp");
         eventBus.unregister(this);
-        Assert.assertEquals("Yepp", value);
+        Assertions.assertEquals("Yepp", value);
     }
 
     public void someMethodWithoutAnnotation(String value) {
@@ -53,7 +52,7 @@ public class EventBusIndexTest {
     }
 
     @Test
-    public void testReflect() {
+    void testReflect() {
         EventBus eventBus = EventBus.getDefault();
         eventBus.register(this);
         eventBus.post("Yepp");
@@ -63,6 +62,6 @@ public class EventBusIndexTest {
 
     @Subscribe
     public void onEvent(String event) {
-        Assert.assertEquals("Yepp1", event);
+        Assertions.assertEquals("Yepp1", event);
     }
 }

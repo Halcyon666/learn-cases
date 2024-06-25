@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @Slf4j
 public class ControllerA {
-    private final AService aService;
+    private final ServiceA serviceA;
 
-    public ControllerA(AService aService) {
-        this.aService = aService;
+    public ControllerA(ServiceA serviceA) {
+        this.serviceA = serviceA;
     }
 
     @GetMapping("/testA")
     public boolean getA() {
-        return aService.handle(e -> log.error(e.getMessage(), e));
+        return serviceA.handle(e -> log.error(e.getMessage(), e));
     }
 }

@@ -1,4 +1,4 @@
-package com.whalefall.learncases.generic;
+package com.whalefall.learncases.design.generic;
 
 /**
  * @author WhaleFall

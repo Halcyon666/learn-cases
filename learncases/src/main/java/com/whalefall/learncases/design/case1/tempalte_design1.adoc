@@ -1,0 +1,18 @@
+=== case1 介绍
+
+[cols="1,2", options="header"]
+|===
+| 类名 | 作用
+| `IService`| 业务类实现接口
+| `ServiceA`| 业务类实现接口
+| `ServiceB`| 业务类实现接口
+| `IProcessService`| 模板类接口
+| `NewProcessService`| 模板类实现1
+| `ProcessService`| 模板类实现2
+|===
+
+==== 使用
+
+1. 在目标类 `ServiceA` 中注入 `IProcessService`
+2. 在目标类 `ServiceA` 中调用 `handle(Consumer)`
+
