@@ -8,6 +8,6 @@ import java.util.List;
 @Component
 public class ListService {
     @SuppressWarnings("all")
-    @Value("#{'${app.supported.languages:en,ch}'.split(',')}")
+    @Value("#'{${app.supported.languages: en,sh}'.split(',')}")
     private List<String> supportedLanguages;
 }

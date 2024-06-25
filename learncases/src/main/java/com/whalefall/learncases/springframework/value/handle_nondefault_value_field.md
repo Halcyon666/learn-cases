@@ -9,52 +9,32 @@
 * double `Double` 
 * float Float
 * byte Byte
+* List
+* Map
+* Array
+* Queue
+* Set
 
-## 属性上的
+## 支持注解位置
 
 ```java
-    @Value("${org.xxx}")
-    private String org;
+// 1. 属性上面
+@Value("${org.xxx2:}")
+private String org2;
 
-    @Value("${org.number}")
-    private int number;
-
-    @Value("${org.flag}")
-    private boolean flag;
-
-    @Value("${org.b}")
-    private byte b;
-
-    @Value("${org.xxx1:}")
-    private String org1;
-
-    @Value("${org.xxx2:}")
-    private String org2;
-```
-
-## 方法上面
-```java
-@Component
-public class MethodParameterInjectionService {
-
-    private final String appName;
-
-    public MethodParameterInjectionService(@Value("${app.name}") String appName) {
-        this.appName = appName;
-    }
-
-    @Value("${app.version}")
-    public void setAppVersion(String appVersion) {
-        System.out.println("App Version: " + appVersion);
-    }
-
-
-    public void setAppVersion( @Value("${app.version1}")String appVersion1, String hh) {
-        System.out.println("App Version: " + appVersion1);
-    }
+// 2. 方法上面
+@Value("${app.version}")
+public void setAppVersion(String appVersion) {
 }
 
+// 3. 方法参数上面
+public void setAppVersion(@Value("${app.version1}") String appVersion1, String hh, @Value("${app.flagA}") Boolean flagA) {
+}
+
+// 4.构造方法参数上面
+public MethodParameterInjectionService(@Value("${app.name}") String appName) {
+    this.appName = appName;
+}
 ```
 
-
-> 目前还不支持`SPEL` 表达式
+> 不支持`SPEL` 表达式

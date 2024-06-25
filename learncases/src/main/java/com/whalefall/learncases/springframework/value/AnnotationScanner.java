@@ -16,6 +16,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -93,20 +95,11 @@ public class AnnotationScanner {
     }
 
     private static void extractPlaceholders(String value, Class<?> type, Map<String, PropertyInfo> properties) {
-        String placeholder = null;
-        // todo support SPEL
-        if (value.startsWith("#{") && value.endsWith("}")) {
-            String innerValue = value.substring(2, value.length() - 1);
-            if (innerValue.startsWith("${") && innerValue.endsWith("}")) {
-                placeholder = innerValue.substring(2, innerValue.length() - 1);
-            }
-        } else if (value.startsWith("${") && value.contains(":")) {
-            placeholder = value.substring(2, value.indexOf(':'));
-        } else if (value.startsWith("${") && value.endsWith("}")) {
-            placeholder = value.substring(2, value.length() - 1);
-        }
+        Pattern pattern = Pattern.compile("\\$\\{([^:}]+)");
+        Matcher matcher = pattern.matcher(value);
 
-        if (placeholder != null) {
+        while (matcher.find()) {
+            String placeholder = matcher.group(1);
             properties.put(placeholder, new PropertyInfo(placeholder, type));
         }
     }

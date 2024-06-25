@@ -7,7 +7,10 @@ import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.MapPropertySource;
 import org.springframework.core.env.MutablePropertySources;
 
+import java.lang.reflect.Array;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 
 @Slf4j
@@ -33,7 +36,6 @@ public class DefaultValuesEnvironmentPostProcessor implements EnvironmentPostPro
             }
         });
 
-
         if (!defaultValues.isEmpty()) {
             MapPropertySource defaultPropertySource = new MapPropertySource("defaultValues", defaultValues);
             MutablePropertySources propertySources = environment.getPropertySources();
@@ -53,19 +55,26 @@ public class DefaultValuesEnvironmentPostProcessor implements EnvironmentPostPro
     private Object getDefaultValueForType(Class<?> type) {
         if (type == String.class) {
             return "defaultString";
-        } else if (type == int.class || type == Integer.class) {
-            return 0;
-        } else if (type == boolean.class || type == Boolean.class) {
-            return false;
-        } else if (type == long.class || type == Long.class) {
-            return 0L;
-        } else if (type == double.class || type == Double.class) {
-            return 0.0;
-        } else if (type == float.class || type == Float.class) {
-            return 0.0f;
-        } else if (type == byte.class || type == Byte.class) {
-            return 0;
         }
-        return null;
+
+        return switch (type.getSimpleName()) {
+            case "int", "Integer" -> 0;
+            case "boolean", "Boolean" -> false;
+            case "long", "Long" -> 0L;
+            case "double", "Double" -> 0.0;
+            case "float", "Float" -> 0.0f;
+            case "byte", "Byte" -> (byte) 0;
+            case "List" -> Collections.emptyList();
+            case "Map" -> Collections.emptyMap();
+            case "Set" -> Collections.emptySet();
+            case "Queue" -> Collections.asLifoQueue(new LinkedList<>());
+            default -> {
+                if (type.isArray()) {
+                    yield Array.newInstance(type.getComponentType(), 0);
+                } else {
+                    yield null;
+                }
+            }
+        };
     }
 }

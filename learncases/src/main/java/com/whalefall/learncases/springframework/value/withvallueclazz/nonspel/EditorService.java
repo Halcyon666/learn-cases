@@ -4,6 +4,8 @@ import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * @author Halcyon
  * @date 2024/6/24 19:01
@@ -30,4 +32,9 @@ public class EditorService {
     @Value("${org.xxx2:}")
     private String org2;
 
+    @Value("${org.list:}")
+    private List<String> list;
+
+    @Value("${org.bytes:}")
+    private byte[] bytes;
 }
