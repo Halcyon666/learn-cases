@@ -23,3 +23,9 @@ The `annotation-processor` module is the APT annotation processor
 the `spring-spi` module is Spring SPI
 
 `learncases` module is all learn cases
+
+=== learn cases
+include::learncases/readme.adoc[]
+
+=== annotation-processorannotation-processor
+include::annotation-processor/readme.adoc[]
