@@ -1,8 +1,10 @@
 = Document Title
 Author Name <author@email.org>; Another Author <a.author@email.org>
 v2.0, 2019-03-22
-:toc:
+:toc: right
 :checkedbox: pass:normal[{startsb}&#10004;{endsb}]
+// some styles lose so do not use this
+// :stylesheet: style.css
 
 == 描点使用
 [source, asciidoc]
@@ -32,11 +34,11 @@ See <<paragraphs>> to learn how to write paragraphs.
 
 这里是关于段落的内容...
 
-[#paragraphs]
+[#paragraphs2]
 .关于段落
 这里是关于如何在 AsciiDoc 中写段落的说明...
 
-[[paragraphs]]
+[[paragraphs1]]
 === 段落
 
 ==== 苛
@@ -48,12 +50,13 @@ See <<paragraphs>> to learn how to write paragraphs.
 </details>
 ++++
 
+== 换行
+
 '''
->>>
 
-[#id-name.role-name]`monospace text`
+// pdf换页
+// >>>
 
-[#free-world.goals]*free the world*
 
 == todo list 使用
 
@@ -75,12 +78,16 @@ See <<paragraphs>> to learn how to write paragraphs.
 include::src/main/java/com/whalefall/learncases/LearncasesApplication.java[lines=25]
 
 使用**listing**全部引入
-
+++++
+<details>
+++++
 [source,java, linenumbers]
 ----
 include::src/main/java/com/whalefall/learncases/LearncasesApplication.java[]
 ----
-
+++++
+</details>
+++++
 == 图片
 
 image::https://asciidoctor.org/images/octocat.jpg[Sunset]
@@ -97,6 +104,9 @@ NOTE: An admonition draws the reader's attention to auxiliary information.
 Here are the other built-in admonition types:
 
 IMPORTANT: Don't forget the children!
+
+[IMPORTANT]
+确保你的系统中已安装了 Java Development Kit (JDK)。
 
 TIP: Look for the warp zone under the bridge.
 
@@ -126,3 +136,17 @@ or it can masquerade as any other block.
 ^|8
 |9 2+>|10
 |===
+
+++++
+<style>
+.userinput {
+  font-family: monospace;
+  font-size: 1.1em;
+  line-height: calc(1 / 1.1);
+  color: aqua;
+}
+</style>
+++++
+Type the word [.userinput]#asciidoctor# into the search bar.
+
+Type the word [.user]#asciidoctor# into the search bar.

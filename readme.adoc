@@ -1,3 +1,7 @@
+:pdf-theme: custom-theme.yml
+:pdf-themesdir: ./
+:pdf-fontsdir: C:/Windows/Fonts
+
 image:https://github.com/Halcyon666/learn-cases/actions/workflows/gradle.yml/badge.svg[Workflows,link=https://github.com/Halcyon666/learn-cases/actions/workflows/gradle.yml]
 
 image:https://codecov.io/gh/Halcyon666/learn-cases/branch/main/graph/badge.svg?token=3J6PSD42B4[Coverage,link=https://codecov.io/gh/Halcyon666/learn-cases]

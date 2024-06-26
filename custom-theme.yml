@@ -1,0 +1,11 @@
+extends: default
+font:
+  catalog:
+    merge: true
+    Microsoft YaHei:
+      normal: msyh.ttc
+      bold: msyhbd.ttc
+      italic: msyh.ttc
+      bold_italic: msyhbd.ttc
+base:
+  font_family: Microsoft YaHei
