@@ -4,6 +4,9 @@ image:https://codecov.io/gh/Halcyon666/learn-cases/branch/main/graph/badge.svg?t
 
 == Java Learn
 
+[.lead]
+learn_case in java
+
 [cols="1,1",options="header"]
 |===
 | Tool or Framework | Version

@@ -6,11 +6,13 @@ JAVA APT base annotation processor, in this project, just print some message in 
 
 link:https://github.com/Halcyon666/learn-cases/blob/main/annotation-processor/src/main/java/com/whalefall/apt/MyAnnotationProcessor.java[Example file]
 
-If you want to know more about programming a processor, you can refer to the book of _Core Java, Volume II--Advanced Features, 12th Edition_ by Cay S. Horstmann.
+If you want to know more about programming a processor, you can refer to the book of, +
+Core Java, Volume II--Advanced Features, 12th Edition_ by Cay S. Horstmann.
+
 
 ==== How to Use the Processor Jar in Other Project
 
-===== Maven
+===== *_Maven_*
 
 [source,xml]
 ----
@@ -42,7 +44,7 @@ If you want to know more about programming a processor, you can refer to the boo
 
 Here are included Lombok, thus I use the plugin.
 
-===== Gradle
+===== *_Gradle_*
 
 [source,groovy]
 ----
@@ -56,3 +58,5 @@ dependencies {
     annotationProcessor project(':annotation-processor')
 }
 ----
+
+

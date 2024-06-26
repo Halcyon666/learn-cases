@@ -1,0 +1,128 @@
+= Document Title
+Author Name <author@email.org>; Another Author <a.author@email.org>
+v2.0, 2019-03-22
+:toc:
+:checkedbox: pass:normal[{startsb}&#10004;{endsb}]
+
+== 描点使用
+[source, asciidoc]
+----
+[#paragraphs]
+=== 如何写段落
+
+这里是关于段落的内容...
+
+[#paragraphs]
+.关于段落
+这里是关于如何在 AsciiDoc 中写段落的说明...
+
+[[paragraphs]]
+=== 段落
+
+这里是关于段落的内容...
+
+See <<paragraphs>> to learn how to write paragraphs.
+----
+
+++++
+<details>
+++++
+[#paragraphs]
+=== 如何写段落
+
+这里是关于段落的内容...
+
+[#paragraphs]
+.关于段落
+这里是关于如何在 AsciiDoc 中写段落的说明...
+
+[[paragraphs]]
+=== 段落
+
+==== 苛
+
+这里是关于段落的内容...
+
+See <<paragraphs>> to learn how to write paragraphs.
+++++
+</details>
+++++
+
+'''
+>>>
+
+[#id-name.role-name]`monospace text`
+
+[#free-world.goals]*free the world*
+
+== todo list 使用
+
+* [*] checked
+* [x] also checked
+* [ ] not checked
+* normal list item
+
+{checkedbox} That's done!
+
+
+== 引入java 文件
+
+
+部分引入::
+
+引入部分代码
+
+include::src/main/java/com/whalefall/learncases/LearncasesApplication.java[lines=25]
+
+使用**listing**全部引入
+
+[source,java, linenumbers]
+----
+include::src/main/java/com/whalefall/learncases/LearncasesApplication.java[]
+----
+
+== 图片
+
+image::https://asciidoctor.org/images/octocat.jpg[Sunset]
+
+.A mountain sunset
+[#img-sunset,caption="Figure 1: ",link=https://asciidoctor.org/images/octocat.jpg]
+image::https://asciidoctor.org/images/octocat.jpg[Sunset,200,200]
+
+
+== 提示符号
+
+NOTE: An admonition draws the reader's attention to auxiliary information.
+
+Here are the other built-in admonition types:
+
+IMPORTANT: Don't forget the children!
+
+TIP: Look for the warp zone under the bridge.
+
+CAUTION: Slippery when wet.
+
+WARNING: The software you're about to use is untested.
+
+IMPORTANT: Sign off before stepping away from your computer.
+
+== 引用
+
+[quote,Albert Einstein]
+A person who never made a mistake never tried anything new.
+
+
+--
+An open block can be an anonymous container,
+or it can masquerade as any other block.
+--
+
+== Table with formatted, aligned and merged cells
+
+[cols="e,m,^,>s",width="25%"]
+|===
+|1 >s|2 |3 |4
+^|5 2.2+^.^|6 .3+<.>m|7
+^|8
+|9 2+>|10
+|===
