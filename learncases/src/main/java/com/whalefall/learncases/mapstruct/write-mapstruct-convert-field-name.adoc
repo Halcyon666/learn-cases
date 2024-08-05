@@ -307,3 +307,23 @@ public class MyConverter6Impl implements MyConverter6 {
     }
 }
 ----
+
+==== case6
+
+be careful of convert PO to Entity in DDD project, meaning you query something from somewhere, +
+
+field like below (database field has one alphabet and following one underline) must delare mapping, otherwise will loset some values
+
+[,java]
+----
+@SuppressWarnings("unused")
+@Mapper
+public interface MyConverter11 {
+    MyConverter11 INSTANCE = Mappers.getMapper(MyConverter11.class);
+    List<MapStructEntity2> listEntity2ToEntity1(List<MapStructEntity1> entity1);
+
+    @Mapping(target = "xAdress", source = "XAdress")
+    @Mapping(target = "aAdress", source = "AAdress")
+    MapStructEntity2 entity2ToEntity1(MapStructEntity1 entity1);
+}
+----
