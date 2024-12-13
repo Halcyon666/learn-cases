@@ -34,11 +34,12 @@ public class VfsService {
         MANAGER = new StandardFileSystemManager();
     }
 
-    VfsService(FtpConfigProperty ftpConfigProperty) {
+    @SuppressWarnings("all")
+    VfsService(Vfs2Configuration vfs2Configuration) {
         String canonicalName = this.getClass().getCanonicalName();
         try {
             MANAGER.init();
-            if (ftpConfigProperty.getBaseUrls().stream().anyMatch(url -> {
+            /*if (vfs2Configuration.getBaseUrls().stream().anyMatch(url -> {
                 Optional<FileObject> optional = VfsService.doResolveFile(url);
                 optional.ifPresent(MANAGER::setBaseFile);
                 return optional.isPresent();
@@ -46,7 +47,7 @@ public class VfsService {
                 log.info("init ftp basefile successfully {}", MANAGER.getBaseFile().getPublicURIString());
             } else {
                 log.info("init ftp failed");
-            }
+            }*/
         } catch (FileSystemException e) {
             log.error("{} init StandardFileSystemManager failed", canonicalName, e);
         }
@@ -101,6 +102,7 @@ public class VfsService {
     @PreDestroy
     public void destroy() {
         MANAGER.close();
+        log.info("destroy finished");
     }
 
 }

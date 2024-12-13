@@ -18,7 +18,7 @@ import java.util.Set;
 @Data
 @ConfigurationProperties("ftp")
 @Component
-public class FtpConfigProperty {
+public class Vfs2Configuration {
     /**
      * url may be like "ftp://user:password@ftp.example.com/"
      * and the password may be need {@link URLEncoder#encode(String, String)}
