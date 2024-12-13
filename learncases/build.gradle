@@ -48,6 +48,11 @@ dependencies {
     implementation 'org.drools:drools-compiler:9.44.0.Final'
     implementation 'org.drools:drools-xml-support:9.44.0.Final'
     implementation 'org.drools:drools-mvel:9.44.0.Final'
+    // https://mvnrepository.com/artifact/commons-io/commons-io
+    implementation 'commons-io:commons-io:2.18.0'
+// https://mvnrepository.com/artifact/org.apache.commons/commons-vfs2
+    implementation 'org.apache.commons:commons-vfs2:2.9.0'
+
     // 只是在 Spring 环境下提供了一些额外的集成支持
     // implementation 'org.kie:kie-spring:7.9.0.Final'
 
