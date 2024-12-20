@@ -47,7 +47,7 @@ dependencies {
     implementation 'org.drools:drools-core:9.44.0.Final'
     implementation 'org.drools:drools-compiler:10.0.0'
     implementation 'org.drools:drools-xml-support:10.0.0'
-    implementation 'org.drools:drools-mvel:10.0.0'
+    implementation 'org.drools:drools-mvel:9.44.0.Final'
     // https://mvnrepository.com/artifact/commons-io/commons-io
     implementation 'commons-io:commons-io:2.18.0'
     // https://mvnrepository.com/artifact/org.apache.commons/commons-vfs2
