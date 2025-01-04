@@ -1,6 +1,5 @@
 package com.whalefall.learncases.ftp;
 
-import jakarta.annotation.PreDestroy;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.vfs2.FileObject;
@@ -15,13 +14,16 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.Optional;
 
 @Slf4j
 @Component
+@SuppressWarnings("unused")
 public class VfsService {
     public static final FileSystemOptions FILE_SYSTEM_OPTS;
     public static final int TEN_SECONDS = 10;
+    private final Vfs2Configuration vfs2Configuration;
     private static final StandardFileSystemManager MANAGER;
 
     static {
@@ -36,73 +38,80 @@ public class VfsService {
 
     @SuppressWarnings("all")
     VfsService(Vfs2Configuration vfs2Configuration) {
-        String canonicalName = this.getClass().getCanonicalName();
-        try {
-            MANAGER.init();
-            /*if (vfs2Configuration.getBaseUrls().stream().anyMatch(url -> {
-                Optional<FileObject> optional = VfsService.doResolveFile(url);
-                optional.ifPresent(MANAGER::setBaseFile);
-                return optional.isPresent();
-            })) {
-                log.info("init ftp basefile successfully {}", MANAGER.getBaseFile().getPublicURIString());
-            } else {
-                log.info("init ftp failed");
-            }*/
-        } catch (FileSystemException e) {
-            log.error("{} init StandardFileSystemManager failed", canonicalName, e);
-        }
+        this.vfs2Configuration = vfs2Configuration;
     }
 
-    public static Optional<FileObject> doResolveFile(final String url) {
+    public static Optional<FileObject> doResolveFile(final String absoluteUri) {
         try {
-            return Optional.of(MANAGER.resolveFile(url, FILE_SYSTEM_OPTS));
+            return Optional.of(MANAGER.resolveFile(absoluteUri, FILE_SYSTEM_OPTS));
         } catch (FileSystemException e) {
             log.error("connect to ftp failed", e);
             return Optional.empty();
         }
     }
 
+    private static void doCloseAllResources(FileObject... fileObject) {
+        MANAGER.close();
+        if (fileObject != null) {
+            Arrays.stream(fileObject).forEach(VfsService::close);
+        }
+    }
+
+    private static void close(FileObject fileObject) {
+        try {
+            fileObject.close();
+        } catch (FileSystemException e) {
+            log.error("close fileObject failed", e);
+        }
+    }
+
     @SuppressWarnings("unused")
     public String getRemoteFileContentAsGb2312(String uri) {
+        FileObject fileObject = null;
         try {
-
-            Optional<FileObject> optional = doResolveFile(uri);
-            if (optional.isPresent()) {
-                InputStream in = optional.get().getContent().getInputStream();
-                if (in != null) {
-                    return IOUtils.toString(in, "gb2312");
+            MANAGER.init();
+            for (String baseUrl : vfs2Configuration.getBaseUrls()) {
+                Optional<FileObject> optional = doResolveFile(vfs2Configuration.getBaseUrl1() + uri);
+                if (optional.isPresent()) {
+                    fileObject = optional.get();
+                    InputStream in = fileObject.getContent().getInputStream();
+                    if (in != null) {
+                        return IOUtils.toString(in, "gb2312");
+                    }
                 }
             }
-
         } catch (IOException e) {
             log.error(e.getMessage(), e);
+        } finally {
+            doCloseAllResources(fileObject);
         }
         throw new UnsupportedOperationException("操作失败");
     }
 
     @SuppressWarnings("unused")
     public void uploadFile(String localFilePath, String remoteFilePath) {
+        FileObject fileObject = null;
+        FileObject localFile = null;
         try {
+            MANAGER.init();
             File f = new File(localFilePath);
-            FileObject localFile = MANAGER.resolveFile(f.getAbsolutePath());
-
-            Optional<FileObject> optional = doResolveFile(remoteFilePath);
-            if (optional.isPresent()) {
-                optional.get().copyFrom(localFile, Selectors.SELECT_ALL);
-                log.info("successfully upload file {}", remoteFilePath);
-            } else {
-                log.error("upload file {} failed ", remoteFilePath);
+            localFile = MANAGER.resolveFile(f.getAbsolutePath());
+            for (String baseUrl : vfs2Configuration.getBaseUrls()) {
+                Optional<FileObject> optional = doResolveFile(remoteFilePath);
+                if (optional.isPresent()) {
+                    fileObject = optional.get();
+                    fileObject.copyFrom(localFile, Selectors.SELECT_ALL);
+                    log.info("successfully upload file {}", remoteFilePath);
+                } else {
+                    log.error("upload file {} failed ", remoteFilePath);
+                }
             }
 
         } catch (IOException e) {
             log.error(e.getMessage(), e);
+        } finally {
+            doCloseAllResources(fileObject, localFile);
         }
-    }
-
-    @PreDestroy
-    public void destroy() {
-        MANAGER.close();
-        log.info("destroy finished");
     }
 
 }
