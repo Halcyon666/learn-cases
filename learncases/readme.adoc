@@ -2,7 +2,7 @@
 
 模块包结构
 
-
+* [x] `com.whalefall.learncases.backgroundinstancebean` | spring framework 6.2 支持异步初始化bean
 * [x] `com.whalefall.learncases.bytes` | 生僻字长度问题
 * [x] `com.whalefall.learncases.callc` | Java调用C
 * [x] `com.whalefall.learncases.design` | 模板设计模式 泛型VS接口、抽象类使用的差别
