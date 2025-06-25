@@ -16,7 +16,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 public class LogInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
-        log.info(this.getClass().getName() + "Request: " + request.getRequestURL());
+        log.info("{}Request: {}", this.getClass().getName(), request.getRequestURL());
         return true;
     }
 }

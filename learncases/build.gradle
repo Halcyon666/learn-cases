@@ -26,6 +26,10 @@ jacoco {
     reportsDirectory = layout.buildDirectory.dir("jacoco/")
 }
 
+configurations.configureEach {
+    exclude group: 'commons-logging', module: 'commons-logging'
+}
+
 dependencies {
     compileOnly 'org.projectlombok:lombok'
     implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -34,7 +38,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.yaml:snakeyaml:2.3'
     implementation 'org.greenrobot:eventbus-java:3.3.1'
-    implementation 'org.apache.httpcomponents:httpclient:4.5.14' exclude group: 'commons-logging'
+    implementation 'org.apache.httpcomponents:httpclient:4.5.14'
     // https://mvnrepository.com/artifact/io.netty/netty-all
     implementation 'io.netty:netty-all:4.1.116.Final'
     // https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java
@@ -54,7 +58,7 @@ dependencies {
     implementation 'org.apache.commons:commons-vfs2:2.9.0'
     // https://mvnrepository.com/artifact/commons-net/commons-net
     implementation 'commons-net:commons-net:3.11.1'
-
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
     // 只是在 Spring 环境下提供了一些额外的集成支持
     // implementation 'org.kie:kie-spring:7.9.0.Final'
 

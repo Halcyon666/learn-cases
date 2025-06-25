@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket Chat</title>
+</head>
+<body>
+<h2>WebSocket Demo</h2>
+<input type="text" id="message" placeholder="输入消息">
+<button onclick="sendMessage()">发送</button>
+<pre id="log"></pre>
+
+<script>
+    const socket = new WebSocket("ws://localhost:8080/ws/chat");
+
+    socket.onopen = () => log("✅ 已连接服务器");
+
+    socket.onmessage = (event) => log("📩 服务器: " + event.data);
+
+    function sendMessage() {
+        const msg = document.getElementById("message").value;
+        socket.send(msg);
+        log("📤 我: " + msg);
+    }
+
+    function log(message) {
+        document.getElementById("log").textContent += message + "\n";
+    }
+</script>
+</body>
+</html>

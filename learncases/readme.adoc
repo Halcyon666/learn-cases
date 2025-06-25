@@ -27,6 +27,7 @@
 * [x] `com.whalefall.learncases.valid` | 为标准校验或者自定义校验相关的内容
 * [x] `com.whalefall.use.apt.EventBusIndexTest` | 为标准校验或者自定义校验相关的内容
 * [x] `com.whalefall.learncases.ftp` | 使用vfs操作ftp服务器文件
+* [x] `com.whalefall.learncases.websocket` | add websocket
 
 * [ ] `com.whalefall.use.apt` | java APT 使用
 * [ ] `threads_report.txt` | thoughtful spring problems
