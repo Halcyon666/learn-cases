@@ -21,9 +21,10 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.meta.SimpleSubscriberInfo;
 import org.greenrobot.eventbus.meta.SubscriberInfoIndex;
 import org.greenrobot.eventbus.meta.SubscriberMethodInfo;
-import org.junit.Assert;
-import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 // do not change Junit4 -> junit5 in this file
 public class EventBusIndexTest {
@@ -35,7 +36,7 @@ public class EventBusIndexTest {
     @Test
     public void testManualIndexWithoutAnnotation() {
         SubscriberInfoIndex index = subscriberClass -> {
-            Assert.assertEquals(EventBusIndexTest.class, subscriberClass);
+            assertEquals(EventBusIndexTest.class, subscriberClass);
             SubscriberMethodInfo[] methodInfos = {
                     new SubscriberMethodInfo("someMethodWithoutAnnotation", String.class)
             };
@@ -46,7 +47,7 @@ public class EventBusIndexTest {
         eventBus.register(this);
         eventBus.post("Yepp");
         eventBus.unregister(this);
-        Assert.assertEquals("Yepp", value);
+        assertEquals("Yepp", value);
     }
 
     @SuppressWarnings("unused")
@@ -66,6 +67,6 @@ public class EventBusIndexTest {
     @SuppressWarnings("unused")
     @Subscribe
     public void onEvent(String event) {
-        Assert.assertEquals("Yepp1", event);
+        assertEquals("Yepp1", event);
     }
 }
