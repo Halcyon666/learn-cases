@@ -55,7 +55,7 @@ dependencies {
     // https://mvnrepository.com/artifact/commons-io/commons-io
     implementation 'commons-io:commons-io:2.18.0'
     // https://mvnrepository.com/artifact/org.apache.commons/commons-vfs2
-    implementation 'org.apache.commons:commons-vfs2:2.9.0'
+    implementation 'org.apache.commons:commons-vfs2:2.10.0'
     // https://mvnrepository.com/artifact/commons-net/commons-net
     implementation 'commons-net:commons-net:3.11.1'
     implementation 'org.springframework.boot:spring-boot-starter-websocket'
