@@ -61,7 +61,7 @@ dependencies {
     implementation 'org.kie:kie-api:10.1.0'
     implementation 'org.drools:drools-core:10.1.0'
     implementation 'org.drools:drools-compiler:10.1.0'
-    implementation 'org.drools:drools-xml-support:10.0.0'
+    implementation 'org.drools:drools-xml-support:10.1.0'
     implementation 'org.drools:drools-mvel:10.1.0'
     // https://mvnrepository.com/artifact/commons-io/commons-io
     implementation 'commons-io:commons-io:2.18.0'
