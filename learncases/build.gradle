@@ -68,7 +68,7 @@ dependencies {
     // https://mvnrepository.com/artifact/org.apache.commons/commons-vfs2
     implementation 'org.apache.commons:commons-vfs2:2.10.0'
     // https://mvnrepository.com/artifact/commons-net/commons-net
-    implementation 'commons-net:commons-net:3.11.1'
+    implementation 'commons-net:commons-net:3.12.0'
     implementation 'org.springframework.boot:spring-boot-starter-websocket'
     // 只是在 Spring 环境下提供了一些额外的集成支持
     // implementation 'org.kie:kie-spring:7.9.0.Final'
