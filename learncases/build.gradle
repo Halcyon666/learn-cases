@@ -7,6 +7,17 @@ plugins {
 }
 
 test {
+    // Add Mockito as a Java agent to avoid dynamic loading warnings
+    doFirst {
+        def byteBuddyAgent = configurations.testRuntimeClasspath
+                .resolvedConfiguration
+                .resolvedArtifacts
+                .find { it.name == 'byte-buddy-agent' }
+        if (byteBuddyAgent != null) {
+            jvmArgs "-javaagent:${byteBuddyAgent.file}"
+        }
+    }
+
     // report is always generated after tests run
     finalizedBy jacocoTestReport
 }
