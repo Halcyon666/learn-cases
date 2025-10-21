@@ -1,4 +1,4 @@
-package com.whalefall.learncases.design.functionalregistry.pojo;
+package com.whalefall.learncases.design.functionalregistry.v1v2.pojo;
 
 
 import java.util.HashMap;

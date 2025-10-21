@@ -1,4 +1,4 @@
-package com.whalefall.learncases.design.functionalregistry.template;
+package com.whalefall.learncases.design.functionalregistry.v1v2.template;
 
 import java.util.function.Supplier;
 

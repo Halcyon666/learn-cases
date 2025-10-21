@@ -1,9 +1,9 @@
-package com.whalefall.learncases.design.functionalregistry;
+package com.whalefall.learncases.design.functionalregistry.v1v2;
 
 
-import com.whalefall.learncases.design.functionalregistry.anno.UseTemplate;
-import com.whalefall.learncases.design.functionalregistry.service.Job;
-import com.whalefall.learncases.design.functionalregistry.template.Template;
+import com.whalefall.learncases.design.functionalregistry.v1v2.anno.UseTemplate;
+import com.whalefall.learncases.design.functionalregistry.v1v2.service.Business;
+import com.whalefall.learncases.design.functionalregistry.v1v2.template.Template;
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.function.Function;
 
 /**
- * use @UseTemplate annotation to bind Job and Template at startup time
+ * use @UseTemplate annotation to bind Business and Template at startup time
  * @param <T> The type of the parameter and return value of the job
  */
 @Slf4j
@@ -24,7 +24,7 @@ import java.util.function.Function;
 public class RegisterEnginV1<T> {
 
     @SuppressWarnings("all")
-    private final Map<String, Job<T>> jobs;
+    private final Map<String, Business<T>> jobs;
     @SuppressWarnings("all")
     private final Map<String, Template<T>> templates;
     private final Map<String, Function<T, T>> registry = new HashMap<>();
@@ -32,16 +32,16 @@ public class RegisterEnginV1<T> {
 
     @PostConstruct
     public void init() {
-        jobs.forEach((jobName, jobService) -> {
-            UseTemplate ann = jobService.getClass().getAnnotation(UseTemplate.class);
+        jobs.forEach((jobName, businessService) -> {
+            UseTemplate ann = businessService.getClass().getAnnotation(UseTemplate.class);
             if (ann == null) {
-                throw new IllegalStateException("Job " + jobService.getClass() + " has no @UseTemplate annotation");
+                throw new IllegalStateException("Business " + businessService.getClass() + " has no @UseTemplate annotation");
             }
             Class<?> templateClass = ann.value();
 
             @SuppressWarnings("unchecked")
             Template<T> templateToUse = (Template<T>) applicationContext.getBean(templateClass);
-            registry.put(jobName, param -> templateToUse.handler(() -> jobService.doJob(param)));
+            registry.put(jobName, param -> templateToUse.handler(() -> businessService.doJob(param)));
         });
     }
 

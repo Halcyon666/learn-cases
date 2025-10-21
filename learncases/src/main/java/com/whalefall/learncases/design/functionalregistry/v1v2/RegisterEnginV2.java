@@ -1,8 +1,8 @@
-package com.whalefall.learncases.design.functionalregistry;
+package com.whalefall.learncases.design.functionalregistry.v1v2;
 
 
-import com.whalefall.learncases.design.functionalregistry.service.Job;
-import com.whalefall.learncases.design.functionalregistry.template.Template;
+import com.whalefall.learncases.design.functionalregistry.v1v2.service.Business;
+import com.whalefall.learncases.design.functionalregistry.v1v2.template.Template;
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.function.Function;
 
 /**
- * use parameter to bind Job and Template at runtime time
+ * use parameter to bind Business and Template at runtime time
  * @param <T>
  */
 @Slf4j
@@ -23,7 +23,7 @@ import java.util.function.Function;
 public class RegisterEnginV2<T> {
 
     @SuppressWarnings("all")
-    private final Map<String, Job<T>> jobs;
+    private final Map<String, Business<T>> jobs;
     @SuppressWarnings("all")
     private final Map<String, Template<T>> templates;
     private final Map<String, Function<T, T>> registry = new HashMap<>();
@@ -32,7 +32,7 @@ public class RegisterEnginV2<T> {
     // if only a few times to call run method, so pass template class each time
     @PostConstruct
     public void init() {
-        jobs.forEach((jobName, jobService) -> registry.put(jobName, jobService::doJob));
+        jobs.forEach((jobName, businessService) -> registry.put(jobName, businessService::doJob));
     }
 
     public T run(String jobName, T params, Class<? extends Template<T>> templateClass) {

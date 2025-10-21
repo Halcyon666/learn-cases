@@ -1,8 +1,11 @@
 package com.whalefall.learncases.design.functionalregistry;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.whalefall.learncases.design.functionalregistry.pojo.TxData;
-import com.whalefall.learncases.design.functionalregistry.template.TemplateImpl1;
+import com.whalefall.learncases.design.functionalregistry.v1v2.RegisterEnginV1;
+import com.whalefall.learncases.design.functionalregistry.v1v2.RegisterEnginV2;
+import com.whalefall.learncases.design.functionalregistry.v1v2.RunJobController;
+import com.whalefall.learncases.design.functionalregistry.v1v2.pojo.TxData;
+import com.whalefall.learncases.design.functionalregistry.v1v2.template.TemplateImpl1;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -22,7 +25,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-class RunJobControllerTest {
+class RunBusinessControllerTest {
 
     private RegisterEnginV1<TxData> enginV1;
     private RegisterEnginV2<TxData> enginV2;

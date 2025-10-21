@@ -1,7 +1,7 @@
-package com.whalefall.learncases.design.functionalregistry.service;
+package com.whalefall.learncases.design.functionalregistry.v1v2.service;
 
-import com.whalefall.learncases.design.functionalregistry.anno.UseTemplate;
-import com.whalefall.learncases.design.functionalregistry.template.TemplateImpl2;
+import com.whalefall.learncases.design.functionalregistry.v1v2.anno.UseTemplate;
+import com.whalefall.learncases.design.functionalregistry.v1v2.template.TemplateImpl2;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,7 @@ import java.util.Map;
 @Service
 @Slf4j
 @UseTemplate(TemplateImpl2.class)
-public class Job2 implements Job<Map<String, Object>> {
+public class Business2 implements Business<Map<String, Object>> {
 
 
     @Override

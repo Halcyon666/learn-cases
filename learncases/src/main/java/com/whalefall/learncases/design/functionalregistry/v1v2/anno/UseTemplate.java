@@ -1,4 +1,4 @@
-package com.whalefall.learncases.design.functionalregistry.anno;
+package com.whalefall.learncases.design.functionalregistry.v1v2.anno;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

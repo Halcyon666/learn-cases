@@ -1,7 +1,7 @@
-package com.whalefall.learncases.design.functionalregistry;
+package com.whalefall.learncases.design.functionalregistry.v1v2;
 
-import com.whalefall.learncases.design.functionalregistry.pojo.TxData;
-import com.whalefall.learncases.design.functionalregistry.template.TemplateImpl1;
+import com.whalefall.learncases.design.functionalregistry.v1v2.pojo.TxData;
+import com.whalefall.learncases.design.functionalregistry.v1v2.template.TemplateImpl1;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

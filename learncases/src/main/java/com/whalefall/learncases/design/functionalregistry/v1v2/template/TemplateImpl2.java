@@ -1,4 +1,4 @@
-package com.whalefall.learncases.design.functionalregistry.template;
+package com.whalefall.learncases.design.functionalregistry.v1v2.template;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

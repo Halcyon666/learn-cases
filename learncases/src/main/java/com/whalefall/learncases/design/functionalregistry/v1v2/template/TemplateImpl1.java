@@ -1,6 +1,6 @@
-package com.whalefall.learncases.design.functionalregistry.template;
+package com.whalefall.learncases.design.functionalregistry.v1v2.template;
 
-import com.whalefall.learncases.design.functionalregistry.pojo.TxData;
+import com.whalefall.learncases.design.functionalregistry.v1v2.pojo.TxData;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
