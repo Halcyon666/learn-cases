@@ -10,7 +10,7 @@ import java.util.function.Supplier;
  * @author Halcyon
  * @since 2025/10/20 22:25
  */
-@Component("templateImpl2")
+@Component("templateImpl2v2")
 @Slf4j
 public class TemplateImpl2 implements Template<Map<String, Object>> {
     @Override

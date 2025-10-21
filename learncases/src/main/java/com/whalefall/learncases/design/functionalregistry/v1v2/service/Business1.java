@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
  * @author Halcyon
  * @since 2025/10/20 22:28
  */
-@Service
+@Service("business1v1")
 @Slf4j
 @UseTemplate(TemplateImpl1.class)
 public class Business1 implements Business<TxData> {

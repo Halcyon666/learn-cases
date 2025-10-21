@@ -10,7 +10,7 @@ import java.util.function.Supplier;
  * @author Halcyon
  * @since 2025/10/20 22:25
  */
-@Component("templateImpl1")
+@Component("templateImpl1v1")
 @Slf4j
 public class TemplateImpl1 implements Template<TxData> {
     @Override
