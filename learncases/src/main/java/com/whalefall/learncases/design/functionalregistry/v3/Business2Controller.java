@@ -13,13 +13,13 @@ public class Business2Controller {
     private RegisterEnginV3<BusinessDto1, BusinessType1> registerEnginV3;
     /**
      * support template 1 and template 2
-     * @param jobName job name
+     * @param businessType job name
      * @param params parameters
      * @return result
      */
-    @PostMapping("/v3/business-type1/{jobName}")
-    public BusinessDto1 executeV1(@PathVariable String jobName, @RequestBody BusinessDto1 params) {
-        return registerEnginV3.run(jobName, params);
+    @PostMapping("/v3/{businessType}")
+    public BusinessDto1 executeV1(@PathVariable String businessType, @RequestBody BusinessDto1 params) {
+        return registerEnginV3.run(businessType, params);
     }
 
 

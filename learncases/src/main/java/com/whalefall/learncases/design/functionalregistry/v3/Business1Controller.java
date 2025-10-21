@@ -19,7 +19,7 @@ public class Business1Controller {
      * @param params parameters
      * @return result
      */
-    @PostMapping("/v3/business-type2/{jobName}")
+    @PostMapping("/v3/{jobName}")
     public BusinessDto2 executeV1(@PathVariable String jobName, @RequestBody BusinessDto2 params) {
 
         return registerEnginV3.run(jobName, params);
