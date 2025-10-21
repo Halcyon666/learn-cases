@@ -49,10 +49,10 @@ public class RegisterEnginV3<T, S extends Business<T>> {
         log.info("Registered businesses: {}, length {}", registerMessages, registerMessages.size());
     }
 
-    public T run(String jobName, T params) {
-        Function<T, T> fn = registry.get(jobName);
-        if (fn == null) throw new IllegalArgumentException("Unknown jobName: " + jobName);
-        log.info("Executing job: {}", jobName);
+    public T run(String businessType, T params) {
+        Function<T, T> fn = registry.get(businessType);
+        if (fn == null) throw new IllegalArgumentException("Unknown businessType: " + businessType);
+        log.info("Executing job: {}", businessType);
         return fn.apply(params);
     }
 

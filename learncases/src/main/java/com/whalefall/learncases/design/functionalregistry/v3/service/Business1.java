@@ -1,7 +1,7 @@
 package com.whalefall.learncases.design.functionalregistry.v3.service;
 
 import com.whalefall.learncases.design.functionalregistry.v3.anno.UseTemplate;
-import com.whalefall.learncases.design.functionalregistry.v3.pojo.TxData;
+import com.whalefall.learncases.design.functionalregistry.v3.pojo.BusinessDto1;
 import com.whalefall.learncases.design.functionalregistry.v3.template.TemplateImpl1;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ public class Business1 implements BusinessType1 {
 
 
     @Override
-    public TxData doBusiness1(TxData t) {
+    public BusinessDto1 doBusiness1(BusinessDto1 t) {
         return t;
     }
 }

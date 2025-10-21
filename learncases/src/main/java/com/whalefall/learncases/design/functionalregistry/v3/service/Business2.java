@@ -1,11 +1,10 @@
 package com.whalefall.learncases.design.functionalregistry.v3.service;
 
 import com.whalefall.learncases.design.functionalregistry.v3.anno.UseTemplate;
+import com.whalefall.learncases.design.functionalregistry.v3.pojo.BusinessDto2;
 import com.whalefall.learncases.design.functionalregistry.v3.template.TemplateImpl2;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
-import java.util.Map;
 
 /**
  * @author Halcyon
@@ -17,7 +16,7 @@ import java.util.Map;
 public class Business2 implements BusinessType2 {
 
     @Override
-    public Map<String, Object> doBusiness2(Map<String, Object> t) {
+    public BusinessDto2 doBusiness2(BusinessDto2 t) {
         return t;
     }
 }

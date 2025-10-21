@@ -19,13 +19,13 @@ The `com.whalefall.learncases.design.functionalregistry` package provides a fram
 === Template
 - **Responsibility**: Defines the execution flow for Businesss. Templates handle pre- and post-processing and delegate the core business logic to the Business.
 - **Implementations**:
-  - `TemplateImpl1`: Handles `TxData` objects.
+  - `TemplateImpl1`: Handles `BusinessDto1` objects.
   - `TemplateImpl2`: Handles `Map<String, Object>`.
 
 === Business
 - **Responsibility**: Represents the actual business logic to be executed.
 - **Implementations**:
-  - `Business1`: Processes `TxData` objects.
+  - `Business1`: Processes `BusinessDto1` objects.
   - `Business2`: Processes `Map<String, Object>`.
 
 == Usage Examples
