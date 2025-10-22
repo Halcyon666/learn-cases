@@ -10,4 +10,6 @@ import lombok.Data;
 @Data
 public class InputDto3 {
     private String field1;
+    private String key2;
+    private String key3;
 }

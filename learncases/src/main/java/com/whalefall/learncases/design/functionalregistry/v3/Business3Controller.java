@@ -7,31 +7,59 @@ import com.whalefall.learncases.design.functionalregistry.v3.pojo.RequestDto;
 import com.whalefall.learncases.design.functionalregistry.v3.pojo.ResponseDto;
 import com.whalefall.learncases.design.functionalregistry.v3.service.BusinessType3;
 import jakarta.annotation.Resource;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 
 import static cn.hutool.core.text.CharSequenceUtil.format;
 
 @RestController
 @RequestMapping("/run")
+@Slf4j
 public class Business3Controller<I, O> {
 
     @Resource
     private RegisterEnginV3<BusinessContext<I, O>, BusinessType3<I, O>> registerEnginV3;
+
     /**
+     * ###
+     * POST http://localhost:8080/run/v33/business3
+     * Content-Type: application/json
+     * <p>
+     * {
+     * "otherParams": {
+     * "field1": "value1",
+     * "key2": 123,
+     * "key3": true,
+     * "key4": {
+     * "nestedKey": "nestedValue"
+     * },
+     * "key5": ["item1", "item2"]
+     * }
+     * }
      * businessType = 3
+     *
      * @param businessType job name
-     * @param requestDto parameters
+     * @param requestDto   parameters
      * @return result
      */
     @PostMapping("/v33/{businessType}")
-    @SuppressWarnings("unchecked")
-    public ResponseDto executeV1(@PathVariable String businessType, @RequestBody RequestDto requestDto) {
+    public ResponseDto executeV1(@PathVariable String businessType,
+                                 @RequestBody RequestDto requestDto)
+            throws NoSuchMethodException, InvocationTargetException,
+            InstantiationException, IllegalAccessException {
         BusinessContext<I, O> businessContext = new BusinessContext<>();
-        InputDto3 inputDto3 = new InputDto3();
-        inputDto3.setField1(requestDto.getRequestField());
-        businessContext.setInput((I) inputDto3);
+        // 假如我用注解的方式，在Business类上指定Input的Class类型和Output的Class类型
+        @SuppressWarnings("unchecked")
+        Class<I> inputClass = (Class<I>) InputDto3.class;
+        I inputDto3 = inputClass.getDeclaredConstructor().newInstance();
+
+        BeanUtil.copyProperties(requestDto.getOtherParams(), inputDto3);
+        // Converted requestDto to inputDto3: InputDto3(field1=value1, key2=123, key3=true)
+        log.info("Converted requestDto to inputDto3: {}", inputDto3);
+        businessContext.setInput(inputDto3);
         BusinessContext<I, O> ioBusinessContext = registerEnginV3.run(businessType, businessContext);
         O output = ioBusinessContext.getOutput();
         Map<String, Object> stringObjectMap = BeanUtil.beanToMap(output);

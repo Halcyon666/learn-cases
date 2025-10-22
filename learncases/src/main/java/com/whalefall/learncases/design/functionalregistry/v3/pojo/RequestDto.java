@@ -2,6 +2,8 @@ package com.whalefall.learncases.design.functionalregistry.v3.pojo;
 
 import lombok.Data;
 
+import java.util.Map;
+
 /**
  * web层DTO
  * @author Halcyon
@@ -9,5 +11,5 @@ import lombok.Data;
  */
 @Data
 public class RequestDto {
-    private String requestField;
+    private Map<String ,Object> otherParams;
 }
