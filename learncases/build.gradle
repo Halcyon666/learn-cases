@@ -72,7 +72,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-websocket'
     // 只是在 Spring 环境下提供了一些额外的集成支持
     // implementation 'org.kie:kie-spring:7.9.0.Final'
-
+// https://mvnrepository.com/artifact/cn.hutool/hutool-all
+    implementation 'cn.hutool:hutool-all:5.8.41'
     implementation project(":spring-spi")
     annotationProcessor 'org.projectlombok:lombok'
     annotationProcessor project(':annotation-processor')
