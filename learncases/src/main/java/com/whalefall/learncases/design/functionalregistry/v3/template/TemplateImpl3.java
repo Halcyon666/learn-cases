@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class TemplateImpl3<I, O> implements Template<BusinessContext<I, O>, BusinessType3<I, O>> {
 
     @Override
-    public BusinessContext<I, O> handler(String txcode, BusinessContext<I, O> param, BusinessType3<I, O> businessService) {
-        return businessService.doBusiness2(param);
+    public void handler(String txcode, BusinessContext<I, O> param, BusinessType3<I, O> businessService) {
+        businessService.doBusiness2(param);
     }
 }

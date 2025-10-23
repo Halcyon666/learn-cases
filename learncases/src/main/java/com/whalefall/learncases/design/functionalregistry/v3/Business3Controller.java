@@ -23,6 +23,7 @@ public class Business3Controller<I, O> {
     @Resource
     private RegisterEnginV3<BusinessContext<I, O>, BusinessType3<I, O>> registerEnginV3;
 
+    @SuppressWarnings("all")
     /**
      * ###
      * POST http://localhost:8080/run/v33/business3
@@ -60,8 +61,8 @@ public class Business3Controller<I, O> {
         // Converted requestDto to inputDto3: InputDto3(field1=value1, key2=123, key3=true)
         log.info("Converted requestDto to inputDto3: {}", inputDto3);
         businessContext.setInput(inputDto3);
-        BusinessContext<I, O> ioBusinessContext = registerEnginV3.run(businessType, businessContext);
-        O output = ioBusinessContext.getOutput();
+        registerEnginV3.run(businessType, businessContext);
+        O output = businessContext.getOutput();
         Map<String, Object> stringObjectMap = BeanUtil.beanToMap(output);
         // 这里可以是一个xml或者别的定义，来打包返回结果
         // 假设先写死Output的类型是OutputDto3

@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import java.util.function.Function;
+import java.util.function.Consumer;
 
 /**
  * use @UseTemplate annotation to bind Business and Template at startup time
@@ -29,7 +29,7 @@ public class RegisterEnginV3<T, S extends Business<T>> {
     private final Map<String, S> businessesMap;
     @SuppressWarnings("all")
     private final Map<String, Template<T, S>> templates;
-    private final Map<String, Function<T, T>> registry = new HashMap<>();
+    private final Map<String, Consumer<T>> registry = new HashMap<>();
     private final ApplicationContext applicationContext;
 
     @PostConstruct
@@ -49,14 +49,11 @@ public class RegisterEnginV3<T, S extends Business<T>> {
         log.info("Registered businesses: {}, length {}", registerMessages, registerMessages.size());
     }
 
-    public T run(String businessType, T params) {
-        Function<T, T> fn = registry.get(businessType);
-        if (fn == null) throw new IllegalArgumentException("Unknown businessType: " + businessType);
+    public void run(String businessType, T params) {
+        Consumer<T> consumer = registry.get(businessType);
+        if (consumer == null) throw new IllegalArgumentException("Unknown businessType: " + businessType);
         log.info("Executing job: {}", businessType);
-        return fn.apply(params);
+        consumer.accept(params);
     }
-
-
-
 }
 
