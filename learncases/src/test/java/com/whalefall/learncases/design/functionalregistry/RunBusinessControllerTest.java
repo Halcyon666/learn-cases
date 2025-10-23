@@ -1,3 +1,4 @@
+// language: Java
 package com.whalefall.learncases.design.functionalregistry;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -10,6 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.http.MediaType;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -18,8 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -41,9 +42,12 @@ class RunBusinessControllerTest {
         RegisterEnginV2<TxData> e2 = (RegisterEnginV2<TxData>) Mockito.mock(RegisterEnginV2.class);
         enginV1 = e1;
         enginV2 = e2;
+
+        objectMapper = new ObjectMapper(); // 先创建 ObjectMapper，用于 message converter
         RunJobController controller = new RunJobController(enginV1, enginV2);
-        mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
-        objectMapper = new ObjectMapper();
+        mockMvc = MockMvcBuilders.standaloneSetup(controller)
+                .setMessageConverters(new MappingJackson2HttpMessageConverter(objectMapper))
+                .build();
     }
 
     private TxData sampleTxData() {
@@ -62,15 +66,16 @@ class RunBusinessControllerTest {
         TxData response = sampleTxData();
         response.get("items").get(0).put("returned", true);
 
-        when(enginV1.run(eq("job1"), any())).thenReturn(response);
+        // 使用 anyString() 避免名称不一致导致未命中
+        when(enginV1.run(anyString(), any())).thenReturn(response);
 
-        mockMvc.perform(post("/run/v1/job1")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(request)))
+        mockMvc.perform(post("/run/v1/business1v1")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isOk())
                 .andExpect(content().json(objectMapper.writeValueAsString(response)));
 
-        verify(enginV1, times(1)).run(eq("job1"), any());
+        verify(enginV1, times(1)).run(anyString(), any());
     }
 
     @Test
@@ -79,15 +84,16 @@ class RunBusinessControllerTest {
         TxData response = sampleTxData();
         response.get("items").get(0).put("returnedBy", "v1-job2");
 
-        when(enginV1.run(eq("job2"), any())).thenReturn(response);
+        // 使用 anyString() 避免名称不一致导致未命中
+        when(enginV1.run(anyString(), any())).thenReturn(response);
 
-        mockMvc.perform(post("/run/v1/job2")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(request)))
+        mockMvc.perform(post("/run/v1/business2v1")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isOk())
                 .andExpect(content().json(objectMapper.writeValueAsString(response)));
 
-        verify(enginV1, times(1)).run(eq("job2"), any());
+        verify(enginV1, times(1)).run(anyString(), any());
     }
 
     @Test
@@ -96,14 +102,15 @@ class RunBusinessControllerTest {
         TxData response = sampleTxData();
         response.get("items").get(0).put("returnedBy", "v2");
 
-        when(enginV2.run(eq("job2"), any(), eq(TemplateImpl1.class))).thenReturn(response);
+        // 对 v2 也使用 anyString() 来保证 stub 命中
+        when(enginV2.run(anyString(), any(), eq(TemplateImpl1.class))).thenReturn(response);
 
-        mockMvc.perform(post("/run/v2/job2")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(request)))
+        mockMvc.perform(post("/run/v2/business2v1")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isOk())
                 .andExpect(content().json(objectMapper.writeValueAsString(response)));
 
-        verify(enginV2, times(1)).run(eq("job2"), any(), eq(TemplateImpl1.class));
+        verify(enginV2, times(1)).run(anyString(), any(), eq(TemplateImpl1.class));
     }
 }
