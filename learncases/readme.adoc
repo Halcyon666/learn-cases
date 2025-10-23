@@ -7,6 +7,7 @@
 * [x] `com.whalefall.learncases.callc` | Java调用C
 * [x] `com.whalefall.learncases.design` | 模板设计模式 泛型VS接口、抽象类使用的差别
 * [x] `com.whalefall.learncases.design.generic` | 泛型使用
+* [x] `com.whalefall.learncases.design.functionalregistry.v1v2` | 功能注册执行引擎
 * [x] `com.whalefall.learncases.drools` | drools规则引擎简单使用
 * [x] `com.whalefall.learncases.exception` | 全局异常处理
 * [x] `com.whalefall.learncases.filter` | 过滤器
@@ -20,6 +21,7 @@
 * [x] `com.whalefall.learncases.override` | static方法可以重载隐藏final方法可重载不可重写
 * [x] `com.whalefall.learncases.spel` | SPEL方法注解简单使用
 * [x] `com.whalefall.learncases.springframework.value` | SPEL方法注解简单使用
+* [x] `com.whalefall.learncases.springframework.beanname` | SPEL方法注解简单使用
 * [x] `com.whalefall.staticmock.MyServiceTest` | 单元测试静态Mock
 * [x] `com.whalefall.learncases.springspi` | spring SPI用法
 * [x] `com.whalefall.learncases.testsingleton.Singleton` | 单例设计模式下非static对象也会只有一份
