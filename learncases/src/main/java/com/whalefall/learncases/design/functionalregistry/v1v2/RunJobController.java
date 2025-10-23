@@ -25,7 +25,7 @@ public class RunJobController {
      */
     @PostMapping("/v1/{jobName}")
     public TxData executeV1(@PathVariable String jobName, @RequestBody TxData params) {
-        return registerEnginV1.run(jobName, params);
+        return registerEnginV1.run("NEW" + jobName, params);
     }
 
     /**
@@ -36,7 +36,7 @@ public class RunJobController {
      */
     @PostMapping("/v2/{jobName}")
     public TxData executeV21(@PathVariable String jobName, @RequestBody TxData params) {
-        return registerEnginV2.run(jobName, params, TemplateImpl1.class);
+        return registerEnginV2.run("NEW" + jobName, params, TemplateImpl1.class);
     }
 
 }
