@@ -8,6 +8,7 @@ import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
+import org.springframework.core.ResolvableType;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -43,10 +44,30 @@ public class RegisterEnginV3<T, S extends Business<T>> {
             Class<?> templateClass = ann.value();
             @SuppressWarnings("unchecked")
             Template<T, S> templateToUse = (Template<T, S>) applicationContext.getBean(templateClass);
+            checkConsistentGenericType(businessService, templateToUse);
+
             registry.put(txcode, param -> templateToUse.handler(txcode, param, businessService));
             registerMessages.add(txcode + " with template: " + templateClass.getName());
         });
         log.info("Registered businesses: {}, length {}", registerMessages, registerMessages.size());
+    }
+
+    private static <T, S extends Business<T>> void checkConsistentGenericType(S businessService, Template<T, S> templateToUse) {
+        Class<?> templateGeneric = getGeneric(templateToUse, Template.class);
+        Class<?> businessGeneric = getGeneric(businessService, Business.class);
+
+        if (businessGeneric != null && templateGeneric != null &&
+            !templateGeneric.isAssignableFrom(businessGeneric)) {
+            throw new IllegalStateException("❌ Template type mismatch: "
+                                            + templateGeneric.getSimpleName()
+                                            + " vs " + businessGeneric.getSimpleName());
+        }
+    }
+
+    private static Class<?> getGeneric(Object obj, Class<?> type) {
+        ResolvableType resolvableType = ResolvableType.forClass(obj.getClass())
+                .as(type);
+        return resolvableType.getGeneric(0).resolve();
     }
 
     public void run(String businessType, T params) {
