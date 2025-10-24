@@ -19,11 +19,10 @@ public class Business3 implements BusinessType3<InputDto3, OutputDto3> {
 
 
     @Override
-    public BusinessContext<InputDto3, OutputDto3> doBusiness2(BusinessContext<InputDto3, OutputDto3> businessContext) {
+    public void doBusiness2(BusinessContext<InputDto3, OutputDto3> businessContext) {
         OutputDto3 output = new OutputDto3();
         output.setField2("result from Business3");
         output.setField3("xxx");
         businessContext.setOutput(output);
-        return businessContext;
     }
 }
