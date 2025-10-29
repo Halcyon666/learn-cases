@@ -32,6 +32,8 @@
 * [x] `com.whalefall.learncases.websocket` | add websocket
 * [x] `com.whalefall.learncases.lambda.custom` | jar file FunctionalInterface can be extended by user implement class
 
+
+* [x] https://github.com/Halcyon666/java-agent-sample[java-agent-sample] | java agent sample
 * [ ] `com.whalefall.use.apt` | java APT 使用
 * [ ] `threads_report.txt` | thoughtful spring problems
 
