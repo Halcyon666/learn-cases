@@ -31,6 +31,7 @@
 * [x] `com.whalefall.learncases.ftp` | 使用vfs操作ftp服务器文件
 * [x] `com.whalefall.learncases.websocket` | add websocket
 * [x] `com.whalefall.learncases.lambda.custom` | jar file FunctionalInterface can be extended by user implement class
+* [x] `com.whalefall.learncases.tracer` | trace stuff, delay tcp to http trace
 
 
 * [x] https://github.com/Halcyon666/java-agent-sample[java-agent-sample] | java agent sample

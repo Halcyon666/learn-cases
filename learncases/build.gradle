@@ -88,6 +88,16 @@ dependencies {
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.6.3'
     // https://mvnrepository.com/artifact/org.mockito/mockito-inline
     testImplementation 'org.mockito:mockito-inline:5.2.0'
+
+    // OpenTracing API (Span, Tracer, SpanContext)
+    implementation "io.opentracing:opentracing-api:0.33.0"
+
+    // Jaeger OpenTracing implementation
+    implementation "io.jaegertracing:jaeger-client:1.8.1"
+
+    // (Optional but very useful) Jaeger tracer configuration helpers
+    implementation "io.jaegertracing:jaeger-core:1.8.1"
+    implementation "io.opentracing:opentracing-util:0.33.0"
 }
 
 group = rootProject.group
