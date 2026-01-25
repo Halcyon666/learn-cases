@@ -20,6 +20,15 @@ public class ControllerA {
         this.serviceA = serviceA;
     }
 
+    /**
+     * 测试A服务接口
+     * <p>
+     * GET /testA
+     * <p>
+     * 功能说明：调用ServiceA的handle方法执行业务逻辑，通过异常处理器捕获并记录异常信息
+     *
+     * @return boolean 表示业务执行是否成功
+     */
     @GetMapping("/testA")
     public boolean getA() {
         return serviceA.handle(e -> log.error(e.getMessage(), e));

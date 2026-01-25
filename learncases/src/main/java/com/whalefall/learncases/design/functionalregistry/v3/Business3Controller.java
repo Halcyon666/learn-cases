@@ -15,6 +15,17 @@ import java.util.Map;
 
 import static cn.hutool.core.text.CharSequenceUtil.format;
 
+/**
+ * 业务3控制器 - 功能注册执行引擎V3版本
+ * <p>
+ * 提供基于业务类型（businessType）的通用业务执行接口，支持动态业务逻辑调用。
+ * 该控制器是功能注册执行引擎（Functional Registry Execution Engine）的V3实现，
+ * 通过将业务逻辑与执行模板解耦，实现高可扩展、类型安全的业务执行框架。
+ * </p>
+ *
+ * @author Halcyon
+ * @since 2025/10/22
+ */
 @RestController
 @RequestMapping("/run")
 @Slf4j
@@ -25,26 +36,47 @@ public class Business3Controller<I, O> {
 
     @SuppressWarnings("all")
     /**
-     * ###
+     * 执行业务3接口
+     * <p>
+     * POST /run/v33/{businessType} - 根据业务类型执行对应的业务逻辑
+     * </p>
+     * <p>
+     * 请求示例：
+     * <pre>
      * POST http://localhost:8080/run/v33/business3
      * Content-Type: application/json
-     * <p>
-     * {
-     * "otherParams": {
-     * "field1": "value1",
-     * "key2": 123,
-     * "key3": true,
-     * "key4": {
-     * "nestedKey": "nestedValue"
-     * },
-     * "key5": ["item1", "item2"]
-     * }
-     * }
-     * businessType = 3
      *
-     * @param businessType job name
-     * @param requestDto   parameters
-     * @return result
+     * {
+     *   "otherParams": {
+     *     "field1": "value1",
+     *     "key2": 123,
+     *     "key3": true,
+     *     "key4": {
+     *       "nestedKey": "nestedValue"
+     *     },
+     *     "key5": ["item1", "item2"]
+     *   }
+     * }
+     * </pre>
+     * </p>
+     * <p>
+     * 参数说明：
+     * <ul>
+     *   <li>{@code businessType}：业务类型标识符，用于匹配对应的业务实现类</li>
+     *   <li>{@code requestDto}：请求数据传输对象，包含业务参数</li>
+     * </ul>
+     * </p>
+     * <p>
+     * 返回值：ResponseDto - 包含处理结果的响应对象
+     * </p>
+     *
+     * @param businessType 业务类型标识符
+     * @param requestDto   请求数据传输对象
+     * @return 处理结果的响应对象
+     * @throws NoSuchMethodException      当反射创建实例失败时抛出
+     * @throws InvocationTargetException  当反射调用方法失败时抛出
+     * @throws InstantiationException     当反射创建实例失败时抛出
+     * @throws IllegalAccessException     当访问私有成员失败时抛出
      */
     @PostMapping("/v33/{businessType}")
     public ResponseDto executeV1(@PathVariable String businessType,

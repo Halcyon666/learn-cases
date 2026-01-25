@@ -1,3 +1,4 @@
+
 package com.whalefall.learncases.design.case1;
 
 import lombok.extern.slf4j.Slf4j;
@@ -5,7 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * 直接使用 ProcessService 不进行二次封装
+ * B服务控制器
+ * <p>
+ * 直接使用ProcessService不进行二次封装的实现方式
  *
  * @author WhaleFall
  * @date 2022-07-24 6:34
@@ -23,6 +26,16 @@ public class ServiceB implements IService {
         this.newProcessService = newProcessService;
     }
 
+    /**
+     * 测试B服务接口
+     * <p>
+     * GET /testB
+     * <p>
+     * 功能说明：调用ProcessService执行B服务业务逻辑，通过异常处理器捕获并记录异常信息
+     * 该服务实现了IService接口，包含doService和doLog方法
+     *
+     * @return String 返回"testb"字符串作为响应
+     */
     @GetMapping("testB")
     public String test() {
         newProcessService.handle(this, e -> log.error(e.getMessage(), e));
@@ -38,11 +51,4 @@ public class ServiceB implements IService {
         return true;
     }
 
-    @SuppressWarnings("all")
-    @Override
-    public void doLog() {
-        if (1 == 1)
-            throw new RuntimeException("B Exception msg2");
-        log.error("B do log");
-    }
 }

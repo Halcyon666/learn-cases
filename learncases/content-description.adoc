@@ -22,19 +22,25 @@
 * [x] `com.whalefall.learncases.spel` | SPEL方法注解简单使用
 * [x] `com.whalefall.learncases.springframework.value` | SPEL方法注解简单使用
 * [x] `com.whalefall.learncases.springframework.beanname` | SPEL方法注解简单使用
-* [x] `com.whalefall.staticmock.MyServiceTest` | 单元测试静态Mock
 * [x] `com.whalefall.learncases.springspi` | spring SPI用法
 * [x] `com.whalefall.learncases.testsingleton.Singleton` | 单例设计模式下非static对象也会只有一份
-* [x] `com.whalefall.threadlocal.ThreadLocalTests` | threadlocal使用
 * [x] `com.whalefall.learncases.valid` | 为标准校验或者自定义校验相关的内容
-* [x] `com.whalefall.use.apt.EventBusIndexTest` | 为标准校验或者自定义校验相关的内容
 * [x] `com.whalefall.learncases.ftp` | 使用vfs操作ftp服务器文件
 * [x] `com.whalefall.learncases.websocket` | add websocket
 * [x] `com.whalefall.learncases.lambda.custom` | jar file FunctionalInterface can be extended by user implement class
 * [x] `com.whalefall.learncases.tracer` | trace stuff, delay tcp to http trace
 
+// 测试相关模块
+* [x] `com.whalefall.staticmock.MyServiceTest` | 单元测试静态Mock
+* [x] `com.whalefall.staticmock.MyService1Test` | 单元测试静态Mock扩展示例
+* [x] `com.whalefall.threadlocal.ThreadLocalTests` | threadlocal使用
 
+// 注解处理器模块
+* [x] `com.whalefall.use.apt` | java APT 使用 - 包含BuilderProperty注解和Person类
+* [x] `com.whalefall.apt` | 注解处理器模块 - 实现MyAnnotationProcessor，用于处理BuilderProperty注解
+* [x] `com.whalefall.annotation-processor` | 独立的注解处理器模块，遵循SPI规范
+
+// 外部依赖和资源
 * [x] https://github.com/Halcyon666/java-agent-sample[java-agent-sample] | java agent sample
-* [ ] `com.whalefall.use.apt` | java APT 使用
 * [ ] `threads_report.txt` | thoughtful spring problems
 

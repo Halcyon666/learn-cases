@@ -4,3 +4,13 @@ app:
 ftp:
   base-url1: "ftp://user:password@ftp.example.com/"
   base-url2: "ftp://user:password@ftp.example.com/"
+springdoc:
+  api-docs:
+    path: /v3/api-docs  # 默认的 JSON 文档路径
+    enabled: true
+  swagger-ui:
+    path: /swagger-ui.html # 自定义 UI 访问路径
+    enabled: true
+    tags-sorter: alpha     # 接口按字母排序
+    operations-sorter: method # 接口方法排序
+    
