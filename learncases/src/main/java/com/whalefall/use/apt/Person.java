@@ -15,19 +15,53 @@ import org.greenrobot.eventbus.Subscribe;
 @Slf4j
 public class Person {
 
-    private int age;
-
     private String name;
 
-    @BuilderProperty
-    @SuppressWarnings("unused")
+    private int age;
+
+    private boolean active;
+
+    private double score;
+
+    private String address;
+
+    private String email;
+
+    private String city;
+
+    @BuilderProperty(required = true, order = 1)
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @BuilderProperty(required = true, order = 2)
     public void setAge(int age) {
         this.age = age;
     }
 
-    @BuilderProperty
-    public void setName(String name) {
-        this.name = name;
+    @BuilderProperty(required = false, defaultValue = "true", order = 3)
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    @BuilderProperty(required = false, defaultValue = "0.0", order = 4)
+    public void setScore(double score) {
+        this.score = score;
+    }
+
+    @BuilderProperty(required = false, defaultValue = "Unknown", order = 5)
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    @BuilderProperty(required = false, order = 6)
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @BuilderProperty(required = false, defaultValue = "New York", order = 7)
+    public void setCity(String city) {
+        this.city = city;
     }
 
     @Subscribe

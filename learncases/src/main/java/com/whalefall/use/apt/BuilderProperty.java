@@ -13,4 +13,10 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.SOURCE)
 public @interface BuilderProperty {
+
+    boolean required() default true;
+
+    String defaultValue() default "";
+
+    int order() default 0;
 }
